@@ -49,20 +49,6 @@ function AtharMainContent() {
     QuranVaultService.getInstance().initialize().catch(() => {});
   }, []);
 
-  // Android Full Screen Immersive Mode (Safely guarded for current & future builds)
-  useEffect(() => {
-    if (Platform.OS === 'android') {
-      try {
-        const navBar = require('expo-navigation-bar');
-        if (navBar && typeof navBar.setVisibilityAsync === 'function') {
-          navBar.setVisibilityAsync('hidden').catch(() => {});
-        }
-      } catch (err) {
-        // ExpoNavigationBar native module not compiled into current dev APK binary yet
-      }
-    }
-  }, []);
-
   // 1-second clock heartbeat
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);

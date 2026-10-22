@@ -22,13 +22,6 @@
           "icon": "./assets/notification-icon.png",
           "color": "#C5A059"
         }
-      ],
-      [
-        "expo-navigation-bar",
-        {
-          "hidden": true,
-          "style": "light"
-        }
       ]
     ],
     "ios": {

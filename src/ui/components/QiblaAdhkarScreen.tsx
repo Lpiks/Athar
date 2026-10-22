@@ -26,7 +26,7 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
   longitude = 3.0588,
   onScroll,
 }) => {
-  // Main Sub-Tab: 'qibla' (بوصلة القبلة) vs 'adhkar' (حصن المسلم والأذكار)
+  // Main Sub-Tab: 'qibla' (الأسطرلاب الفلكي للقبلة) vs 'adhkar' (حصن المسلم والأذكار)
   const [screenTab, setScreenTab] = useState<'qibla' | 'adhkar'>('qibla');
 
   // Adhkar Category: morning | evening | after_prayer | sleep
@@ -54,7 +54,6 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
         Magnetometer.setUpdateInterval(60); // Responsive 16.6 FPS update
         subscription = Magnetometer.addListener((data) => {
           let { x, y } = data;
-          // Calculate heading in degrees from magnetic north
           let angle = Math.atan2(-x, y) * (180 / Math.PI);
           if (angle < 0) angle += 360;
           setHeading(angle);
@@ -88,9 +87,9 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
     wasAlignedRef.current = isAlignedWithQibla;
   }, [isAlignedWithQibla]);
 
-  // Cardinal direction label for current phone heading
+  // Cardinal direction label for current phone heading in Arabic
   const getHeadingCardinal = (deg: number) => {
-    const dirs = ['شمال', 'شمال شرق', 'شرق', 'جنوب شرق', 'جنوب', 'جنوب غرب', 'غرب', 'شمال غرب'];
+    const dirs = ['شَمَال', 'شَمَال شَرْق', 'شَرْق', 'جَنُوب شَرْق', 'جَنُوب', 'جَنُوب غَرْب', 'غَرْب', 'شَمَال غَرْب'];
     const idx = Math.round(deg / 45) % 8;
     return dirs[idx];
   };
@@ -114,8 +113,11 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
     { key: 'sleep', label: 'أذكار النوم', icon: 'bed-outline' },
   ];
 
-  // 12 Astrolabe Degree Ticks around the 360° dial
-  const dialTicks = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330];
+  // Astrolabe 24 Degree Ticks (Every 15° with major ticks at 30°)
+  const astrolabeTicks = [
+    0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165,
+    180, 195, 210, 225, 240, 255, 270, 285, 300, 315, 330, 345,
+  ];
 
   return (
     <ScrollView
@@ -130,7 +132,7 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
         style={{
           flexDirection: 'row',
           backgroundColor: THEME.colors.surfaceElevated,
-          borderRadius: 18,
+          borderRadius: 20,
           padding: 4,
           marginBottom: 16,
           borderWidth: 1,
@@ -143,7 +145,7 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
           style={{
             flex: 1,
             paddingVertical: 10,
-            borderRadius: 14,
+            borderRadius: 16,
             backgroundColor: screenTab === 'qibla' ? THEME.colors.gold : 'transparent',
             alignItems: 'center',
             flexDirection: 'row',
@@ -152,18 +154,18 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
         >
           <Ionicons
             name="compass"
-            size={17}
-            color={screenTab === 'qibla' ? '#000' : THEME.colors.textSecondary}
+            size={18}
+            color={screenTab === 'qibla' ? '#0A0E13' : THEME.colors.textSecondary}
             style={{ marginRight: 6 }}
           />
           <Text
             style={{
               fontFamily: THEME.fonts.arabicBold,
-              fontSize: 13.5,
-              color: screenTab === 'qibla' ? '#000' : THEME.colors.textSecondary,
+              fontSize: 14,
+              color: screenTab === 'qibla' ? '#0A0E13' : THEME.colors.textSecondary,
             }}
           >
-            بوصلة القبلة
+            الأسطرلاب الفلكي
           </Text>
         </TouchableOpacity>
 
@@ -173,7 +175,7 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
           style={{
             flex: 1,
             paddingVertical: 10,
-            borderRadius: 14,
+            borderRadius: 16,
             backgroundColor: screenTab === 'adhkar' ? THEME.colors.gold : 'transparent',
             alignItems: 'center',
             flexDirection: 'row',
@@ -182,178 +184,262 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
         >
           <Ionicons
             name="book-outline"
-            size={17}
-            color={screenTab === 'adhkar' ? '#000' : THEME.colors.textSecondary}
+            size={18}
+            color={screenTab === 'adhkar' ? '#0A0E13' : THEME.colors.textSecondary}
             style={{ marginRight: 6 }}
           />
           <Text
             style={{
               fontFamily: THEME.fonts.arabicBold,
-              fontSize: 13.5,
-              color: screenTab === 'adhkar' ? '#000' : THEME.colors.textSecondary,
+              fontSize: 14,
+              color: screenTab === 'adhkar' ? '#0A0E13' : THEME.colors.textSecondary,
             }}
           >
-            حصن المسلم
+            حصن المسلم والأذكار
           </Text>
         </TouchableOpacity>
       </View>
 
       {/* ========================================================================= */}
-      {/* TAB 1: ROYAL ASTRONOMICAL QIBLA COMPASS                                  */}
+      {/* TAB 1: IMPERIAL ISLAMIC ASTROLABE QIBLA COMPASS                          */}
       {/* ========================================================================= */}
       {screenTab === 'qibla' && (
         <View>
-          {/* Master Compass Card */}
+          {/* Imperial Astrolabe Container Card */}
           <View
             style={{
-              backgroundColor: THEME.colors.surface,
+              backgroundColor: '#070A0F',
               borderColor: isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.goldBorder,
-              borderWidth: 1.6,
-              borderRadius: 28,
-              paddingVertical: 22,
+              borderWidth: 1.8,
+              borderRadius: 32,
+              paddingVertical: 20,
               paddingHorizontal: 16,
               alignItems: 'center',
               marginBottom: 16,
+              position: 'relative',
               ...THEME.shadows.card,
-              ...(isAlignedWithQibla ? THEME.shadows.glowEmerald : {}),
+              ...(isAlignedWithQibla ? THEME.shadows.glowEmerald : THEME.shadows.glowGold),
             }}
           >
-            {/* Top Subtitle */}
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 6 }}>
-              <Ionicons
-                name="location-sharp"
-                size={14}
-                color={isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.gold}
-                style={{ marginRight: 4 }}
-              />
-              <Text
+            {/* Authentic Astrolabe Crown / Suspension Ring (عروة وكرسي الأسطرلاب) */}
+            <View style={{ alignItems: 'center', marginTop: -6, marginBottom: 8 }}>
+              {/* Outer Suspension Ring */}
+              <View
                 style={{
-                  color: THEME.colors.textSecondary,
-                  fontFamily: THEME.fonts.arabic,
-                  fontSize: 12,
+                  width: 32,
+                  height: 32,
+                  borderRadius: 16,
+                  borderWidth: 2,
+                  borderColor: isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.gold,
+                  backgroundColor: 'transparent',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: -4,
                 }}
               >
-                مكة المكرمة · الكعبة المشرفة (المسجد الحرام)
+                <View
+                  style={{
+                    width: 12,
+                    height: 12,
+                    borderRadius: 6,
+                    borderWidth: 1.5,
+                    borderColor: isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.goldLight,
+                  }}
+                />
+              </View>
+
+              {/* Moorish Throne Base Arch (كرسي الأسطرلاب) */}
+              <View
+                style={{
+                  width: 64,
+                  height: 12,
+                  borderTopLeftRadius: 10,
+                  borderTopRightRadius: 10,
+                  backgroundColor: isAlignedWithQibla ? 'rgba(16, 185, 129, 0.25)' : 'rgba(197, 160, 89, 0.25)',
+                  borderWidth: 1,
+                  borderColor: isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.gold,
+                  borderBottomWidth: 0,
+                }}
+              />
+            </View>
+
+            {/* Sacred Ayah Calligraphy Inscription */}
+            <View
+              style={{
+                backgroundColor: 'rgba(197, 160, 89, 0.08)',
+                borderColor: isAlignedWithQibla ? 'rgba(52, 211, 153, 0.3)' : 'rgba(197, 160, 89, 0.25)',
+                borderWidth: 1,
+                borderRadius: 18,
+                paddingVertical: 7,
+                paddingHorizontal: 16,
+                marginBottom: 14,
+                alignItems: 'center',
+              }}
+            >
+              <Text
+                style={{
+                  color: isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.goldLight,
+                  fontFamily: THEME.fonts.quran,
+                  fontSize: 16.5,
+                  textAlign: 'center',
+                }}
+              >
+                ﴿ فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ ﴾
               </Text>
             </View>
 
-            {/* Dynamic Status Banner */}
+            {/* Dynamic Alignment Ribbon */}
             <View
               style={{
                 backgroundColor: isAlignedWithQibla
-                  ? 'rgba(16, 185, 129, 0.16)'
+                  ? 'rgba(16, 185, 129, 0.2)'
                   : 'rgba(197, 160, 89, 0.12)',
                 borderColor: isAlignedWithQibla
                   ? THEME.colors.emeraldLight
                   : THEME.colors.goldBorder,
-                borderWidth: 1,
-                borderRadius: 20,
-                paddingVertical: 7,
-                paddingHorizontal: 16,
-                marginBottom: 18,
+                borderWidth: 1.2,
+                borderRadius: 22,
+                paddingVertical: 8,
+                paddingHorizontal: 20,
+                marginBottom: 16,
                 flexDirection: 'row',
                 alignItems: 'center',
               }}
             >
               <Ionicons
-                name={isAlignedWithQibla ? 'checkmark-circle' : 'navigate-circle-outline'}
-                size={17}
+                name={isAlignedWithQibla ? 'shield-checkmark' : 'compass'}
+                size={18}
                 color={isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.goldLight}
-                style={{ marginRight: 6 }}
+                style={{ marginRight: 8 }}
               />
               <Text
                 style={{
                   color: isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.goldLight,
                   fontFamily: THEME.fonts.arabicBold,
-                  fontSize: 14,
+                  fontSize: 14.5,
                 }}
               >
                 {isAlignedWithQibla
-                  ? 'أنت باتجاه القبلة المشرفة بدقة (١٠٠٪) ✓'
+                  ? 'أَنْتَ بِاتِّجَاهِ القِبْلَةِ المُشَرَّفَةِ (١٠٠٪) ✓'
                   : delta > 0
-                  ? `⟳ أدر الهاتف يميناً بمقدار ${Math.round(delta)}°`
-                  : `⟲ أدر الهاتف يساراً بمقدار ${Math.round(Math.abs(delta))}°`}
+                  ? `أَدِرِ الهَاتِفَ يَمِيناً بِمِقْدَارِ ${Math.round(delta)}°`
+                  : `أَدِرِ الهَاتِفَ يَسَاراً بِمِقْدَارِ ${Math.round(Math.abs(delta))}°`}
               </Text>
             </View>
 
             {/* =================================================================== */}
-            {/* THE ASTRONOMICAL COMPASS DIAL (270px Diameter)                     */}
+            {/* THE IMPERIAL ASTROLABE COMPASS (280px Diameter)                    */}
             {/* =================================================================== */}
             <View
               style={{
-                width: 270,
-                height: 270,
+                width: 280,
+                height: 280,
                 alignItems: 'center',
                 justifyContent: 'center',
                 position: 'relative',
-                marginVertical: 10,
+                marginVertical: 6,
               }}
             >
-              {/* Outer Glow Halo */}
+              {/* Fixed Top Reticle Sighting Spear (مؤشر سمت الرأس عند الساعة ١٢) */}
               <View
                 style={{
                   position: 'absolute',
-                  width: 268,
-                  height: 268,
-                  borderRadius: 134,
-                  borderWidth: 1,
-                  borderColor: isAlignedWithQibla
-                    ? 'rgba(52, 211, 153, 0.3)'
-                    : 'rgba(197, 160, 89, 0.25)',
+                  top: -9,
+                  alignItems: 'center',
+                  zIndex: 40,
+                }}
+              >
+                {/* Traditional Moorish Spearhead */}
+                <View
+                  style={{
+                    width: 0,
+                    height: 0,
+                    borderLeftWidth: 9,
+                    borderRightWidth: 9,
+                    borderTopWidth: 16,
+                    borderStyle: 'solid',
+                    borderLeftColor: 'transparent',
+                    borderRightColor: 'transparent',
+                    borderTopColor: isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.gold,
+                  }}
+                />
+              </View>
+
+              {/* Outer Brass Limb Ring (طوق الأسطرلاب المذهب) */}
+              <View
+                style={{
+                  position: 'absolute',
+                  width: 280,
+                  height: 280,
+                  borderRadius: 140,
+                  borderWidth: 3,
+                  borderColor: isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.gold,
+                  backgroundColor: '#05070B',
                 }}
               />
 
-              {/* 1. ROTATING COMPASS DIAL (Oriented to True/Magnetic Heading) */}
+              {/* Inner Decorative Bezel Filigree Ring */}
               <View
                 style={{
-                  width: 256,
-                  height: 256,
-                  borderRadius: 128,
-                  backgroundColor: THEME.colors.surfaceElevated,
-                  borderColor: isAlignedWithQibla ? THEME.colors.emerald : THEME.colors.gold,
-                  borderWidth: 2,
+                  position: 'absolute',
+                  width: 266,
+                  height: 266,
+                  borderRadius: 133,
+                  borderWidth: 1,
+                  borderColor: isAlignedWithQibla ? 'rgba(52, 211, 153, 0.4)' : 'rgba(197, 160, 89, 0.35)',
+                }}
+              />
+
+              {/* ROTATING ASTROLABE RETE & CELESTIAL DIAL */}
+              <View
+                style={{
+                  width: 260,
+                  height: 260,
+                  borderRadius: 130,
+                  backgroundColor: '#090D14',
                   alignItems: 'center',
                   justifyContent: 'center',
                   position: 'relative',
                   transform: [{ rotate: `${(-heading).toFixed(1)}deg` }],
-                  ...(isAlignedWithQibla ? THEME.shadows.glowEmerald : THEME.shadows.glowGold),
                 }}
               >
-                {/* Concentric Astrolabe Inner Ring */}
+                {/* Celestial Zodiac Outer Ring (دائرة البروج) */}
                 <View
                   style={{
                     position: 'absolute',
-                    width: 200,
-                    height: 200,
-                    borderRadius: 100,
+                    width: 218,
+                    height: 218,
+                    borderRadius: 109,
                     borderWidth: 1,
                     borderStyle: 'dashed',
-                    borderColor: 'rgba(197, 160, 89, 0.25)',
+                    borderColor: 'rgba(197, 160, 89, 0.35)',
                   }}
                 />
 
-                {/* Concentric Astrolabe Middle Ring */}
+                {/* Inner Astrolabe Ring */}
                 <View
                   style={{
                     position: 'absolute',
-                    width: 150,
-                    height: 150,
-                    borderRadius: 75,
+                    width: 170,
+                    height: 170,
+                    borderRadius: 85,
                     borderWidth: 1,
-                    borderColor: 'rgba(255, 255, 255, 0.06)',
+                    borderColor: 'rgba(255, 255, 255, 0.08)',
                   }}
                 />
 
-                {/* 12 Radial Hour / Degree Ticks */}
-                {dialTicks.map((tickAngle) => {
-                  const isMajor = tickAngle % 90 === 0;
+                {/* 24 Astrolabe Graduated Degree Ticks */}
+                {astrolabeTicks.map((tickAngle) => {
+                  const isCardinal = tickAngle % 90 === 0;
+                  const isMajor = tickAngle % 30 === 0;
+
                   return (
                     <View
-                      key={`tick_${tickAngle}`}
+                      key={`astrolabe_tick_${tickAngle}`}
                       style={{
                         position: 'absolute',
                         width: 2,
-                        height: 246,
+                        height: 254,
                         alignItems: 'center',
                         justifyContent: 'flex-start',
                         transform: [{ rotate: `${tickAngle}deg` }],
@@ -361,12 +447,14 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
                     >
                       <View
                         style={{
-                          width: isMajor ? 3 : 1.5,
-                          height: isMajor ? 11 : 6,
-                          backgroundColor: isMajor
+                          width: isCardinal ? 3 : isMajor ? 2 : 1,
+                          height: isCardinal ? 13 : isMajor ? 8 : 4.5,
+                          backgroundColor: isCardinal
                             ? tickAngle === 0
-                              ? '#EF4444' // North is crimson
+                              ? '#EF4444' // North is Royal Crimson
                               : THEME.colors.gold
+                            : isMajor
+                            ? THEME.colors.goldLight
                             : 'rgba(255, 255, 255, 0.25)',
                           borderRadius: 2,
                         }}
@@ -375,230 +463,210 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
                   );
                 })}
 
-                {/* Cardinal Direction 1: NORTH (شمال) at 0° */}
-                <View
-                  style={{
-                    position: 'absolute',
-                    top: 13,
-                    alignItems: 'center',
-                  }}
-                >
-                  <Text style={{ color: '#EF4444', fontWeight: 'bold', fontSize: 13 }}>
-                    ش
+                {/* Classical Calligraphic Cardinal Directions */}
+                {/* 1. NORTH (شَمَال) */}
+                <View style={{ position: 'absolute', top: 14, alignItems: 'center' }}>
+                  <Text
+                    style={{
+                      color: '#EF4444',
+                      fontFamily: THEME.fonts.arabicBold,
+                      fontSize: 12.5,
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    شَمَال
                   </Text>
-                  <Text style={{ color: '#EF4444', fontSize: 8.5, fontWeight: '700' }}>
-                    N
-                  </Text>
-                </View>
-
-                {/* Cardinal Direction 2: EAST (شرق) at 90° */}
-                <View
-                  style={{
-                    position: 'absolute',
-                    right: 14,
-                    alignItems: 'center',
-                  }}
-                >
-                  <Text style={{ color: THEME.colors.gold, fontWeight: 'bold', fontSize: 13 }}>
-                    ق
-                  </Text>
-                  <Text style={{ color: THEME.colors.goldLight, fontSize: 8.5 }}>
-                    E
+                  <Text style={{ color: '#EF4444', fontSize: 8, fontWeight: '700' }}>
+                    0° N
                   </Text>
                 </View>
 
-                {/* Cardinal Direction 3: SOUTH (جنوب) at 180° */}
-                <View
-                  style={{
-                    position: 'absolute',
-                    bottom: 13,
-                    alignItems: 'center',
-                  }}
-                >
-                  <Text style={{ color: THEME.colors.textMuted, fontWeight: 'bold', fontSize: 12 }}>
-                    ج
+                {/* 2. EAST (شَرْق) */}
+                <View style={{ position: 'absolute', right: 12, alignItems: 'center' }}>
+                  <Text
+                    style={{
+                      color: THEME.colors.gold,
+                      fontFamily: THEME.fonts.arabicBold,
+                      fontSize: 12,
+                    }}
+                  >
+                    شَرْق
                   </Text>
-                  <Text style={{ color: THEME.colors.textMuted, fontSize: 8.5 }}>
-                    S
-                  </Text>
-                </View>
-
-                {/* Cardinal Direction 4: WEST (غرب) at 270° */}
-                <View
-                  style={{
-                    position: 'absolute',
-                    left: 14,
-                    alignItems: 'center',
-                  }}
-                >
-                  <Text style={{ color: THEME.colors.textMuted, fontWeight: 'bold', fontSize: 12 }}>
-                    غ
-                  </Text>
-                  <Text style={{ color: THEME.colors.textMuted, fontSize: 8.5 }}>
-                    W
+                  <Text style={{ color: THEME.colors.goldLight, fontSize: 8 }}>
+                    90° E
                   </Text>
                 </View>
 
-                {/* KAABA BEACON (موقع الكعبة على قرص البوصلة) */}
-                {/* Positioned on the rotating dial at the exact calculated bearing */}
+                {/* 3. SOUTH (جَنُوب) */}
+                <View style={{ position: 'absolute', bottom: 14, alignItems: 'center' }}>
+                  <Text
+                    style={{
+                      color: THEME.colors.textMuted,
+                      fontFamily: THEME.fonts.arabicBold,
+                      fontSize: 11.5,
+                    }}
+                  >
+                    جَنُوب
+                  </Text>
+                  <Text style={{ color: THEME.colors.textMuted, fontSize: 8 }}>
+                    180° S
+                  </Text>
+                </View>
+
+                {/* 4. WEST (غَرْب) */}
+                <View style={{ position: 'absolute', left: 12, alignItems: 'center' }}>
+                  <Text
+                    style={{
+                      color: THEME.colors.textMuted,
+                      fontFamily: THEME.fonts.arabicBold,
+                      fontSize: 11.5,
+                    }}
+                  >
+                    غَرْب
+                  </Text>
+                  <Text style={{ color: THEME.colors.textMuted, fontSize: 8 }}>
+                    270° W
+                  </Text>
+                </View>
+
+                {/* =============================================================== */}
+                {/* KAABA ALIDADE & BEACON (عِضَادَة ومَوْقِعُ الكَعْبَةِ المُشَرَّفَةِ)        */}
+                {/* =============================================================== */}
                 <View
                   style={{
                     position: 'absolute',
-                    width: 256,
-                    height: 256,
+                    width: 260,
+                    height: 260,
                     alignItems: 'center',
                     justifyContent: 'flex-start',
                     transform: [{ rotate: `${qiblaBearing.toFixed(1)}deg` }],
                   }}
                 >
-                  {/* Glowing Laser Beam from Center to Kaaba */}
+                  {/* Fine Golden Sunray Laser Line */}
                   <View
                     style={{
                       position: 'absolute',
-                      top: 24,
-                      width: 2,
-                      height: 104,
+                      top: 28,
+                      width: 2.5,
+                      height: 102,
                       backgroundColor: isAlignedWithQibla
                         ? THEME.colors.emeraldLight
-                        : THEME.colors.goldLight,
-                      opacity: 0.7,
+                        : THEME.colors.gold,
+                      opacity: 0.85,
+                      borderRadius: 1,
                     }}
                   />
 
-                  {/* Kaaba Golden Badge on the Ring */}
+                  {/* Kaaba Golden Astrolabe Plaque */}
                   <View
                     style={{
-                      marginTop: -4,
+                      marginTop: -2,
                       backgroundColor: '#000',
                       borderColor: isAlignedWithQibla
                         ? THEME.colors.emeraldLight
                         : THEME.colors.gold,
                       borderWidth: 2,
-                      borderRadius: 18,
-                      paddingHorizontal: 8,
-                      paddingVertical: 3,
+                      borderRadius: 16,
+                      paddingHorizontal: 9,
+                      paddingVertical: 3.5,
                       flexDirection: 'row',
                       alignItems: 'center',
                       ...(isAlignedWithQibla ? THEME.shadows.glowEmerald : THEME.shadows.glowGold),
                     }}
                   >
-                    <Text style={{ fontSize: 11, marginRight: 2 }}>🕋</Text>
+                    <Text style={{ fontSize: 12, marginRight: 3 }}>🕋</Text>
                     <Text
                       style={{
                         color: isAlignedWithQibla
                           ? THEME.colors.emeraldLight
                           : THEME.colors.goldLight,
                         fontFamily: THEME.fonts.arabicBold,
-                        fontSize: 10,
+                        fontSize: 11,
                       }}
                     >
-                      القبلة
+                      الْقِبْلَة
                     </Text>
                   </View>
                 </View>
 
-                {/* Central Islamic Astrolabe Medallion (خاتم سليمان / النجمة الإسلامية) */}
+                {/* =============================================================== */}
+                {/* SACRED 8-POINTED STAR OF SOLOMON (خَاتَمُ سُلَيْمَانَ الأَسْطُرْلابِي)       */}
+                {/* =============================================================== */}
                 <View
                   style={{
-                    width: 76,
-                    height: 76,
+                    width: 86,
+                    height: 86,
                     alignItems: 'center',
                     justifyContent: 'center',
                     position: 'relative',
                   }}
                 >
-                  {/* 8-Pointed Star: Square 1 */}
+                  {/* Square 1: Gold Filigree Outline */}
                   <View
                     style={{
                       position: 'absolute',
-                      width: 58,
-                      height: 58,
-                      backgroundColor: '#090D12',
-                      borderColor: isAlignedWithQibla
-                        ? THEME.colors.emeraldLight
-                        : 'rgba(197, 160, 89, 0.4)',
-                      borderWidth: 1.2,
-                      borderRadius: 6,
-                    }}
-                  />
-
-                  {/* 8-Pointed Star: Square 2 (Rotated 45°) */}
-                  <View
-                    style={{
-                      position: 'absolute',
-                      width: 58,
-                      height: 58,
-                      backgroundColor: '#090D12',
-                      borderColor: isAlignedWithQibla
-                        ? THEME.colors.emeraldLight
-                        : 'rgba(197, 160, 89, 0.4)',
-                      borderWidth: 1.2,
-                      borderRadius: 6,
-                      transform: [{ rotate: '45deg' }],
-                    }}
-                  />
-
-                  {/* Center Core Circle with Kaaba Emblem */}
-                  <View
-                    style={{
-                      width: 42,
-                      height: 42,
-                      borderRadius: 21,
-                      backgroundColor: isAlignedWithQibla
-                        ? THEME.colors.emeraldDeep
-                        : '#141C26',
+                      width: 66,
+                      height: 66,
+                      backgroundColor: '#06090E',
                       borderColor: isAlignedWithQibla
                         ? THEME.colors.emeraldLight
                         : THEME.colors.gold,
                       borderWidth: 1.5,
+                      borderRadius: 8,
+                    }}
+                  />
+
+                  {/* Square 2: Rotated 45° with Arabesque Geometry */}
+                  <View
+                    style={{
+                      position: 'absolute',
+                      width: 66,
+                      height: 66,
+                      backgroundColor: '#06090E',
+                      borderColor: isAlignedWithQibla
+                        ? THEME.colors.emeraldLight
+                        : THEME.colors.gold,
+                      borderWidth: 1.5,
+                      borderRadius: 8,
+                      transform: [{ rotate: '45deg' }],
+                    }}
+                  />
+
+                  {/* Inner Concentric Golden Boss / Astrolabe Pivot */}
+                  <View
+                    style={{
+                      width: 46,
+                      height: 46,
+                      borderRadius: 23,
+                      backgroundColor: isAlignedWithQibla
+                        ? THEME.colors.emeraldDeep
+                        : '#111722',
+                      borderColor: isAlignedWithQibla
+                        ? THEME.colors.emeraldLight
+                        : THEME.colors.goldLight,
+                      borderWidth: 1.8,
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}
                   >
                     <Ionicons
                       name="cube"
-                      size={18}
+                      size={20}
                       color={isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.gold}
                     />
                   </View>
                 </View>
               </View>
-
-              {/* 2. FIXED TOP SIGHTING RETICLE (At 12 o'clock / Forward Phone Axis) */}
-              <View
-                style={{
-                  position: 'absolute',
-                  top: -8,
-                  alignItems: 'center',
-                  zIndex: 20,
-                }}
-              >
-                {/* Triangle Chevron Pointing Down */}
-                <View
-                  style={{
-                    width: 0,
-                    height: 0,
-                    borderLeftWidth: 8,
-                    borderRightWidth: 8,
-                    borderTopWidth: 13,
-                    borderStyle: 'solid',
-                    borderLeftColor: 'transparent',
-                    borderRightColor: 'transparent',
-                    borderTopColor: isAlignedWithQibla
-                      ? THEME.colors.emeraldLight
-                      : THEME.colors.gold,
-                  }}
-                />
-              </View>
             </View>
 
-            {/* Live Heading & Direction Footer */}
-            <View style={{ alignItems: 'center', marginTop: 4 }}>
+            {/* Live Astrolabe Readout Footer */}
+            <View style={{ alignItems: 'center', marginTop: 10 }}>
               <Text
                 style={{
                   color: isAlignedWithQibla ? THEME.colors.emeraldLight : THEME.colors.goldLight,
                   fontFamily: THEME.fonts.arabicBold,
-                  fontSize: 22,
+                  fontSize: 24,
+                  letterSpacing: 0.5,
                 }}
               >
                 {Math.round(heading)}° {getHeadingCardinal(heading)}
@@ -607,138 +675,149 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
                 style={{
                   color: THEME.colors.textMuted,
                   fontFamily: THEME.fonts.arabic,
-                  fontSize: 11.5,
+                  fontSize: 12,
+                  marginTop: 2,
                 }}
               >
                 {hasSensor
-                  ? 'البوصلة المغناطيسية تعمل بدقة عالية'
-                  : 'وضع ثابت (الجهاز لا يحتوي على مستشعر مغناطيسي)'}
+                  ? 'حساس البوصلة المغناطيسية نشط ويعمل بانتظام'
+                  : 'وضع ثابت (لا يوجد مستشعر بوصلة بالجهاز)'}
               </Text>
             </View>
           </View>
 
-          {/* Telemetry Dashboard Grid */}
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginBottom: 16,
-            }}
-          >
-            {/* Card 1: Qibla Bearing */}
+          {/* ===================================================================== */}
+          {/* ASTRONAVIGATION TELEMETRY PANELS (لوحة الملاحة الفلكية)              */}
+          {/* ===================================================================== */}
+          <View style={{ marginBottom: 16 }}>
+            {/* Panel 1: Qibla Bearing & Heading */}
             <View
               style={{
-                flex: 1,
                 backgroundColor: THEME.colors.surface,
                 borderColor: THEME.colors.cardBorder,
                 borderWidth: 1,
-                borderRadius: 20,
-                padding: 12,
-                marginRight: 8,
+                borderRadius: 24,
+                padding: 16,
+                marginBottom: 10,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
                 alignItems: 'center',
                 ...THEME.shadows.card,
               }}
             >
-              <Ionicons name="compass-outline" size={20} color={THEME.colors.gold} style={{ marginBottom: 4 }} />
-              <Text style={{ color: THEME.colors.textMuted, fontSize: 10, fontFamily: THEME.fonts.arabic }}>
-                زاوية القبلة
-              </Text>
-              <Text
+              {/* Right Col: Qibla Bearing */}
+              <View style={{ flex: 1 }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+                  <Ionicons name="compass" size={17} color={THEME.colors.gold} style={{ marginRight: 6 }} />
+                  <Text style={{ color: THEME.colors.textMuted, fontFamily: THEME.fonts.arabic, fontSize: 12 }}>
+                    زاوية القبلة (السمت الفلكي)
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: THEME.colors.goldLight,
+                    fontFamily: THEME.fonts.arabicBold,
+                    fontSize: 20,
+                  }}
+                >
+                  {qiblaBearing.toFixed(1)}°
+                </Text>
+                <Text style={{ color: THEME.colors.textSecondary, fontFamily: THEME.fonts.arabic, fontSize: 11 }}>
+                  الاتجاه: {qibla.cardinalDirection}
+                </Text>
+              </View>
+
+              {/* Vertical Gold Divider */}
+              <View
                 style={{
-                  color: THEME.colors.textPrimary,
-                  fontFamily: THEME.fonts.arabicBold,
-                  fontSize: 16,
-                  marginTop: 2,
+                  width: 1,
+                  height: 48,
+                  backgroundColor: 'rgba(197, 160, 89, 0.25)',
+                  marginHorizontal: 12,
                 }}
-              >
-                {qiblaBearing.toFixed(1)}°
-              </Text>
-              <Text style={{ color: THEME.colors.gold, fontSize: 9.5 }}>
-                {qibla.cardinalDirection}
-              </Text>
+              />
+
+              {/* Left Col: Distance to Mecca */}
+              <View style={{ flex: 1, alignItems: 'flex-start' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+                  <Ionicons name="navigate" size={17} color={THEME.colors.emeraldLight} style={{ marginRight: 6 }} />
+                  <Text style={{ color: THEME.colors.textMuted, fontFamily: THEME.fonts.arabic, fontSize: 12 }}>
+                    المسافة إلى مكة المكرمة
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    color: THEME.colors.emeraldLight,
+                    fontFamily: THEME.fonts.arabicBold,
+                    fontSize: 20,
+                  }}
+                >
+                  {qiblaDistanceKm.toLocaleString()} كم
+                </Text>
+                <Text style={{ color: THEME.colors.textSecondary, fontFamily: THEME.fonts.arabic, fontSize: 11 }}>
+                  حساب الدائرة العظمى (Geodesic)
+                </Text>
+              </View>
             </View>
 
-            {/* Card 2: Distance to Kaaba */}
+            {/* Panel 2: Coordinates & Device Status */}
             <View
               style={{
-                flex: 1.2,
                 backgroundColor: THEME.colors.surface,
                 borderColor: THEME.colors.cardBorder,
                 borderWidth: 1,
-                borderRadius: 20,
-                padding: 12,
+                borderRadius: 24,
+                padding: 16,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
                 alignItems: 'center',
                 ...THEME.shadows.card,
               }}
             >
-              <Ionicons name="navigate-outline" size={20} color={THEME.colors.emeraldLight} style={{ marginBottom: 4 }} />
-              <Text style={{ color: THEME.colors.textMuted, fontSize: 10, fontFamily: THEME.fonts.arabic }}>
-                المسافة إلى الكعبة
-              </Text>
-              <Text
-                style={{
-                  color: THEME.colors.textPrimary,
-                  fontFamily: THEME.fonts.arabicBold,
-                  fontSize: 16,
-                  marginTop: 2,
-                }}
-              >
-                {qiblaDistanceKm.toLocaleString()} كم
-              </Text>
-              <Text style={{ color: THEME.colors.emeraldLight, fontSize: 9.5 }}>
-                الدائرة العظمى
-              </Text>
-            </View>
+              <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+                <Ionicons name="location-outline" size={20} color={THEME.colors.gold} style={{ marginRight: 10 }} />
+                <View>
+                  <Text style={{ color: THEME.colors.textMuted, fontFamily: THEME.fonts.arabic, fontSize: 11 }}>
+                    إحداثيات الموقع الجغرافي
+                  </Text>
+                  <Text style={{ color: THEME.colors.textPrimary, fontFamily: THEME.fonts.arabicBold, fontSize: 13.5, marginTop: 1 }}>
+                    {latitude.toFixed(4)}°N · {longitude.toFixed(4)}°E
+                  </Text>
+                </View>
+              </View>
 
-            {/* Card 3: Coordinates */}
-            <View
-              style={{
-                flex: 1,
-                backgroundColor: THEME.colors.surface,
-                borderColor: THEME.colors.cardBorder,
-                borderWidth: 1,
-                borderRadius: 20,
-                padding: 12,
-                marginLeft: 8,
-                alignItems: 'center',
-                ...THEME.shadows.card,
-              }}
-            >
-              <Ionicons name="pin-outline" size={20} color={THEME.colors.goldLight} style={{ marginBottom: 4 }} />
-              <Text style={{ color: THEME.colors.textMuted, fontSize: 10, fontFamily: THEME.fonts.arabic }}>
-                موقعك الحالي
-              </Text>
-              <Text
+              <View
                 style={{
-                  color: THEME.colors.textPrimary,
-                  fontFamily: THEME.fonts.arabicBold,
-                  fontSize: 13,
-                  marginTop: 4,
+                  backgroundColor: 'rgba(197, 160, 89, 0.1)',
+                  borderColor: THEME.colors.goldBorder,
+                  borderWidth: 1,
+                  paddingHorizontal: 12,
+                  paddingVertical: 5,
+                  borderRadius: 12,
                 }}
               >
-                {latitude.toFixed(2)}°N
-              </Text>
-              <Text style={{ color: THEME.colors.textSecondary, fontSize: 9.5 }}>
-                {longitude.toFixed(2)}°E
-              </Text>
+                <Text style={{ color: THEME.colors.goldLight, fontFamily: THEME.fonts.arabicBold, fontSize: 11.5 }}>
+                  حساب فلكي دقيق
+                </Text>
+              </View>
             </View>
           </View>
 
-          {/* Compass Calibration & Accuracy Notice Card */}
+          {/* Astrolabe Calibration Tip */}
           <View
             style={{
-              backgroundColor: 'rgba(23, 32, 44, 0.7)',
-              borderColor: 'rgba(255, 255, 255, 0.08)',
+              backgroundColor: 'rgba(23, 32, 44, 0.8)',
+              borderColor: 'rgba(197, 160, 89, 0.2)',
               borderWidth: 1,
-              borderRadius: 18,
+              borderRadius: 20,
               padding: 14,
               flexDirection: 'row',
               alignItems: 'center',
             }}
           >
             <Ionicons
-              name="bulb-outline"
-              size={20}
+              name="sync-circle-outline"
+              size={22}
               color={THEME.colors.gold}
               style={{ marginRight: 10 }}
             />
@@ -747,11 +826,11 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
                 flex: 1,
                 color: THEME.colors.textSecondary,
                 fontFamily: THEME.fonts.arabic,
-                fontSize: 11.5,
-                lineHeight: 18,
+                fontSize: 12,
+                lineHeight: 19,
               }}
             >
-              لأعلى دقة: ضع الهاتف أفقياً على راحة يدك، وابتعد عن الأجسام المعدنية أو المغناطيسية. حرك الهاتف على شكل الرقم (8) لمعايرة البوصلة.
+              نصيحة المعايرة: أمسك الهاتف بشكل أفقي مستوٍ على راحة يدك، وحركه في الهواء على شكل الرقم (8) لمعايرة حساس البوصلة المغناطيسي بدقة.
             </Text>
           </View>
         </View>
@@ -779,9 +858,9 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
                     backgroundColor: isSelected ? THEME.colors.gold : THEME.colors.surface,
                     borderColor: isSelected ? THEME.colors.goldLight : THEME.colors.cardBorder,
                     borderWidth: 1,
-                    paddingHorizontal: 14,
-                    paddingVertical: 9,
-                    borderRadius: 16,
+                    paddingHorizontal: 15,
+                    paddingVertical: 10,
+                    borderRadius: 18,
                     marginRight: 8,
                     flexDirection: 'row',
                     alignItems: 'center',
@@ -790,15 +869,15 @@ export const QiblaAdhkarScreen: React.FC<QiblaAdhkarScreenProps> = ({
                 >
                   <Ionicons
                     name={c.icon as any}
-                    size={15}
-                    color={isSelected ? '#000' : THEME.colors.gold}
+                    size={16}
+                    color={isSelected ? '#0A0E13' : THEME.colors.gold}
                     style={{ marginRight: 6 }}
                   />
                   <Text
                     style={{
-                      color: isSelected ? '#000' : THEME.colors.textSecondary,
+                      color: isSelected ? '#0A0E13' : THEME.colors.textSecondary,
                       fontFamily: isSelected ? THEME.fonts.arabicBold : THEME.fonts.arabic,
-                      fontSize: 13,
+                      fontSize: 13.5,
                     }}
                   >
                     {c.label}

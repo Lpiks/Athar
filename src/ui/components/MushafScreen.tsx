@@ -12,6 +12,7 @@ import {
   NativeScrollEvent,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { THEME } from '../theme';
 import {
   QuranVaultService,
@@ -26,6 +27,26 @@ import {
   JuzMeta,
   PageMeta,
 } from '../../core/database';
+import {
+  detectWordTajweedRules,
+  getWordTajweedColor,
+  TAJWEED_COLORS,
+  TajweedRuleType,
+} from '../../core/memorization/tajweed';
+import { MistakeVaultService } from '../../core/memorization/mistakeVault';
+import { TajweedInspectorModal } from './TajweedInspectorModal';
+import { HifdhQuizModal } from './HifdhQuizModal';
+import { MistakeVaultModal } from './MistakeVaultModal';
+
+function getFirstLetterCues(text: string): string {
+  return text
+    .split(/\s+/)
+    .map((word) => {
+      const match = word.match(/[\u0621-\u064A]/);
+      return match ? match[0] + 'ـ..' : '..';
+    })
+    .join(' ');
+}
 
 export interface MushafScreenProps {
   onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
@@ -66,6 +87,30 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [searchResults, setSearchResults] = useState<SearchMatch[]>([]);
   const [searchLatencyMs, setSearchLatencyMs] = useState<number>(0);
+
+  // Hifdh (Memorization) & Tajweed Suite State
+  const [isHifdhActive, setIsHifdhActive] = useState<boolean>(false);
+  const [isTajweedColored, setIsTajweedColored] = useState<boolean>(false);
+  const [maskMode, setMaskMode] = useState<'NONE' | 'ALL' | 'FIRST_LETTER'>('NONE');
+  const [revealedAyahs, setRevealedAyahs] = useState<Record<number, boolean>>({});
+
+  // Tajweed & Hifdh Modals
+  const [selectedTajweedWord, setSelectedTajweedWord] = useState<{
+    wordText: string;
+    surahId: number;
+    ayahNumber: number;
+    pageNumber: number;
+    rules: TajweedRuleType[];
+  } | null>(null);
+
+  const [isQuizModalOpen, setIsQuizModalOpen] = useState<boolean>(false);
+  const [isMistakeVaultOpen, setIsMistakeVaultOpen] = useState<boolean>(false);
+  const mistakeVault = MistakeVaultService.getInstance();
+
+  // Reset revealed ayahs when flipping page
+  useEffect(() => {
+    setRevealedAyahs({});
+  }, [currentPage]);
 
   const vault = QuranVaultService.getInstance();
 
@@ -478,6 +523,41 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
             <Text style={{ fontSize: 12 }}>{isParchment ? '🌙' : '📜'}</Text>
           </TouchableOpacity>
 
+          {/* Hifdh Mode Toggle */}
+          <TouchableOpacity
+            onPress={() => {
+              const nextState = !isHifdhActive;
+              setIsHifdhActive(nextState);
+              if (nextState) {
+                setIsTajweedColored(true);
+              }
+            }}
+            style={{
+              backgroundColor: isHifdhActive
+                ? (isParchment ? 'rgba(160, 124, 54, 0.2)' : THEME.colors.emeraldDeep)
+                : (isParchment ? '#EAE2D3' : THEME.colors.surfaceElevated),
+              borderColor: isHifdhActive ? (isParchment ? goldTone : THEME.colors.emeraldLight) : 'transparent',
+              borderWidth: 1,
+              paddingHorizontal: 7,
+              paddingVertical: 4,
+              borderRadius: 8,
+              marginRight: 5,
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
+            <Text style={{ fontSize: 11, marginRight: 2 }}>🎓</Text>
+            <Text
+              style={{
+                color: isHifdhActive ? (isParchment ? goldTone : THEME.colors.emeraldLight) : textMain,
+                fontFamily: THEME.fonts.arabicBold,
+                fontSize: 10.5,
+              }}
+            >
+              التحفيظ
+            </Text>
+          </TouchableOpacity>
+
           {/* Search Trigger */}
           <TouchableOpacity
             onPress={() => setIsSearchModalOpen(true)}
@@ -500,6 +580,137 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
         scrollEventThrottle={16}
         contentContainerStyle={{ paddingBottom: insets.bottom + 105 }}
       >
+        {/* Hifdh & Tajweed Active Control Dock */}
+        {isHifdhActive && (
+          <View
+            style={{
+              backgroundColor: isParchment ? '#EFE7D8' : THEME.colors.surfaceElevated,
+              borderColor: isParchment ? borderCol : THEME.colors.cardBorder,
+              borderWidth: 1.2,
+              borderRadius: 18,
+              padding: 10,
+              marginBottom: 10,
+              ...THEME.shadows.card,
+            }}
+          >
+            {/* Top row: Mask modes & Tajweed toggle */}
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              {/* Mask Controls */}
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <TouchableOpacity
+                  onPress={() => {
+                    setMaskMode('ALL');
+                    setRevealedAyahs({});
+                  }}
+                  style={{
+                    backgroundColor: maskMode === 'ALL' ? goldTone : 'transparent',
+                    borderColor: goldTone,
+                    borderWidth: 1,
+                    paddingHorizontal: 8,
+                    paddingVertical: 4,
+                    borderRadius: 8,
+                    marginRight: 4,
+                  }}
+                >
+                  <Text style={{ fontSize: 10.5, fontFamily: THEME.fonts.arabicBold, color: maskMode === 'ALL' ? (isParchment ? '#FFF' : '#000') : textMain }}>
+                    🙈 حجب الكل
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPress={() => {
+                    setMaskMode('FIRST_LETTER');
+                    setRevealedAyahs({});
+                  }}
+                  style={{
+                    backgroundColor: maskMode === 'FIRST_LETTER' ? goldTone : 'transparent',
+                    borderColor: goldTone,
+                    borderWidth: 1,
+                    paddingHorizontal: 8,
+                    paddingVertical: 4,
+                    borderRadius: 8,
+                    marginRight: 4,
+                  }}
+                >
+                  <Text style={{ fontSize: 10.5, fontFamily: THEME.fonts.arabicBold, color: maskMode === 'FIRST_LETTER' ? (isParchment ? '#FFF' : '#000') : textMain }}>
+                    🔤 رؤوس الكلمات
+                  </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                  onPress={() => setMaskMode('NONE')}
+                  style={{
+                    backgroundColor: maskMode === 'NONE' ? goldTone : 'transparent',
+                    borderColor: goldTone,
+                    borderWidth: 1,
+                    paddingHorizontal: 8,
+                    paddingVertical: 4,
+                    borderRadius: 8,
+                  }}
+                >
+                  <Text style={{ fontSize: 10.5, fontFamily: THEME.fonts.arabicBold, color: maskMode === 'NONE' ? (isParchment ? '#FFF' : '#000') : textMain }}>
+                    👁️ كشف
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              {/* Tajweed Color Toggle */}
+              <TouchableOpacity
+                onPress={() => setIsTajweedColored(!isTajweedColored)}
+                style={{
+                  backgroundColor: isTajweedColored ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
+                  borderColor: isTajweedColored ? THEME.colors.emeraldLight : borderCol,
+                  borderWidth: 1,
+                  paddingHorizontal: 8,
+                  paddingVertical: 4,
+                  borderRadius: 8,
+                }}
+              >
+                <Text style={{ fontSize: 10.5, fontFamily: THEME.fonts.arabicBold, color: isTajweedColored ? THEME.colors.emeraldLight : textMain }}>
+                  🎨 التجويد: {isTajweedColored ? 'مفعّل' : 'معطّل'}
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* Bottom row: Quiz & Mistake Vault buttons */}
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+              <TouchableOpacity
+                onPress={() => setIsQuizModalOpen(true)}
+                style={{
+                  flex: 1,
+                  backgroundColor: 'rgba(197, 160, 89, 0.15)',
+                  borderColor: goldTone,
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  paddingVertical: 6,
+                  alignItems: 'center',
+                  marginRight: 6,
+                }}
+              >
+                <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 11 }}>
+                  ⚡ اختبار ربط الآيات
+                </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => setIsMistakeVaultOpen(true)}
+                style={{
+                  flex: 1,
+                  backgroundColor: 'rgba(239, 68, 68, 0.12)',
+                  borderColor: '#EF4444',
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  paddingVertical: 6,
+                  alignItems: 'center',
+                }}
+              >
+                <Text style={{ color: '#EF4444', fontFamily: THEME.fonts.arabicBold, fontSize: 11 }}>
+                  🚩 سجل الأخطاء ({mistakeVault.getMistakesForPage(currentPage).length})
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
         <View
           style={{
             backgroundColor: bgPage,
@@ -614,25 +825,137 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
                         writingDirection: 'rtl',
                       }}
                     >
-                      {surahAyahsOnPage.map((ayah) => (
-                        <Text
-                          key={`ayah_${ayah.id}`}
-                          onPress={() => setSelectedAyahForTafsir(ayah)}
-                          suppressHighlighting={false}
-                        >
-                          {ayah.text}{' '}
+                      {surahAyahsOnPage.map((ayah) => {
+                        const isMaskedAll = isHifdhActive && maskMode === 'ALL' && !revealedAyahs[ayah.id];
+                        const isMaskedCues = isHifdhActive && maskMode === 'FIRST_LETTER' && !revealedAyahs[ayah.id];
+
+                        if (isMaskedAll) {
+                          return (
+                            <Text
+                              key={`ayah_${ayah.id}`}
+                              onPress={() => setRevealedAyahs((prev) => ({ ...prev, [ayah.id]: true }))}
+                              style={{
+                                color: goldTone,
+                                backgroundColor: isParchment ? 'rgba(160, 124, 54, 0.15)' : 'rgba(255, 255, 255, 0.08)',
+                                borderRadius: 6,
+                              }}
+                            >
+                              {'  '}[ 🙈 انقر لكشف الآية {ayah.ayah_number} ]{'  '}
+                            </Text>
+                          );
+                        }
+
+                        if (isMaskedCues) {
+                          return (
+                            <Text
+                              key={`ayah_${ayah.id}`}
+                              onPress={() => setRevealedAyahs((prev) => ({ ...prev, [ayah.id]: true }))}
+                            >
+                              {getFirstLetterCues(ayah.text)}{' '}
+                              <Text
+                                style={{
+                                  color: goldTone,
+                                  fontFamily: THEME.fonts.quran,
+                                  fontSize: Math.round(fontSize * 0.8),
+                                  fontWeight: 'bold',
+                                }}
+                              >
+                                ﴿{ayah.ayah_number}﴾{' '}
+                              </Text>
+                            </Text>
+                          );
+                        }
+
+                        // Revealed / Active rendering with Tajweed coloration support
+                        if (isTajweedColored) {
+                          const words = ayah.text.split(/\s+/);
+                          return (
+                            <Text key={`ayah_${ayah.id}`}>
+                              {words.map((w, wIdx) => {
+                                const nextW = words[wIdx + 1] || '';
+                                const rules = detectWordTajweedRules(w, nextW, riwaya);
+                                const wordColor = getWordTajweedColor(rules);
+                                const isFlagged = mistakeVault.isFlagged(ayah.surah_id, ayah.ayah_number, w);
+
+                                return (
+                                  <Text
+                                    key={`word_${ayah.id}_${wIdx}`}
+                                    onPress={() => {
+                                      if (rules.length > 0 && rules[0] !== 'NORMAL') {
+                                        setSelectedTajweedWord({
+                                          wordText: w,
+                                          surahId: ayah.surah_id,
+                                          ayahNumber: ayah.ayah_number,
+                                          pageNumber: ayah.page_number,
+                                          rules,
+                                        });
+                                      } else {
+                                        setSelectedAyahForTafsir(ayah);
+                                      }
+                                    }}
+                                    onLongPress={() => {
+                                      if (isFlagged) {
+                                        mistakeVault.removeMistake(ayah.surah_id, ayah.ayah_number, w);
+                                      } else {
+                                        mistakeVault.flagMistake(
+                                          ayah.surah_id,
+                                          ayah.ayah_number,
+                                          ayah.page_number,
+                                          w,
+                                          'memory'
+                                        );
+                                      }
+                                    }}
+                                    style={{
+                                      color: isFlagged
+                                        ? '#EF4444'
+                                        : wordColor === TAJWEED_COLORS.NORMAL
+                                        ? textMain
+                                        : wordColor,
+                                      backgroundColor: isFlagged ? 'rgba(239, 68, 68, 0.2)' : 'transparent',
+                                      fontWeight: rules[0] !== 'NORMAL' ? 'bold' : 'normal',
+                                    }}
+                                  >
+                                    {w}{' '}
+                                  </Text>
+                                );
+                              })}
+                              <Text
+                                onPress={() => setSelectedAyahForTafsir(ayah)}
+                                style={{
+                                  color: goldTone,
+                                  fontFamily: THEME.fonts.quran,
+                                  fontSize: Math.round(fontSize * 0.8),
+                                  fontWeight: 'bold',
+                                }}
+                              >
+                                ﴿{ayah.ayah_number}﴾{' '}
+                              </Text>
+                            </Text>
+                          );
+                        }
+
+                        // Normal plain text flow
+                        return (
                           <Text
-                            style={{
-                              color: goldTone,
-                              fontFamily: THEME.fonts.quran,
-                              fontSize: Math.round(fontSize * 0.8),
-                              fontWeight: 'bold',
-                            }}
+                            key={`ayah_${ayah.id}`}
+                            onPress={() => setSelectedAyahForTafsir(ayah)}
+                            suppressHighlighting={false}
                           >
-                            ﴿{ayah.ayah_number}﴾{' '}
+                            {ayah.text}{' '}
+                            <Text
+                              style={{
+                                color: goldTone,
+                                fontFamily: THEME.fonts.quran,
+                                fontSize: Math.round(fontSize * 0.8),
+                                fontWeight: 'bold',
+                              }}
+                            >
+                              ﴿{ayah.ayah_number}﴾{' '}
+                            </Text>
                           </Text>
-                        </Text>
-                      ))}
+                        );
+                      })}
                     </Text>
                   </View>
                 );
@@ -1197,6 +1520,36 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
           />
         </View>
       </Modal>
+
+      {/* Tajweed Rule & Makhraj Inspector Modal */}
+      {selectedTajweedWord && (
+        <TajweedInspectorModal
+          visible={!!selectedTajweedWord}
+          onClose={() => setSelectedTajweedWord(null)}
+          wordText={selectedTajweedWord.wordText}
+          surahId={selectedTajweedWord.surahId}
+          ayahNumber={selectedTajweedWord.ayahNumber}
+          pageNumber={selectedTajweedWord.pageNumber}
+          rules={selectedTajweedWord.rules}
+        />
+      )}
+
+      {/* Next Ayah Linking Quiz Challenge */}
+      <HifdhQuizModal
+        visible={isQuizModalOpen}
+        onClose={() => setIsQuizModalOpen(false)}
+        pageAyahs={pageAyahs}
+        allAyahs={pageAyahs}
+      />
+
+      {/* Personal Mistake Vault & Weak Spot Review */}
+      <MistakeVaultModal
+        visible={isMistakeVaultOpen}
+        onClose={() => setIsMistakeVaultOpen(false)}
+        onJumpToPage={(p) => {
+          handleDirectJump(p);
+        }}
+      />
     </View>
   );
 };

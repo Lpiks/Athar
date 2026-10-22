@@ -15,7 +15,14 @@
       "expo-sqlite",
       "expo-status-bar",
       "expo-font",
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#C5A059"
+        }
+      ]
     ],
     "ios": {
       "supportsTablet": true,
@@ -24,7 +31,7 @@
     "android": {
       "package": "cloud.steppingstones.athar",
       "adaptiveIcon": {
-        "backgroundColor": "#030308",
+        "backgroundColor": "#022623",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"

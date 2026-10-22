@@ -198,7 +198,7 @@ function AtharMainContent() {
     <View style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
       <StatusBar style="light" />
 
-      {/* Top Sovereign App Header with Brand Logo */}
+      {/* Top Sovereign App Header with Brand Logo (RTL Arabic Layout) */}
       <View
         style={{
           backgroundColor: THEME.colors.canvas,
@@ -207,12 +207,13 @@ function AtharMainContent() {
           paddingTop: Math.max(insets.top, 12),
           paddingBottom: 10,
           paddingHorizontal: 16,
-          flexDirection: 'row',
+          flexDirection: 'row-reverse',
           justifyContent: 'space-between',
           alignItems: 'center',
         }}
       >
-        <View className="flex-row items-center">
+        {/* Brand Identity on Right Side (RTL) */}
+        <View style={{ flexDirection: 'row-reverse', alignItems: 'center' }}>
           <Image
             source={require('./assets/icon.png')}
             style={{
@@ -221,21 +222,21 @@ function AtharMainContent() {
               borderRadius: 10,
               borderWidth: 1.2,
               borderColor: THEME.colors.goldBorder,
-              marginRight: 10,
+              marginLeft: 10,
             }}
             resizeMode="cover"
           />
-          <View>
-            <Text style={{ color: THEME.colors.goldLight, fontSize: 18, fontFamily: THEME.fonts.arabicBold }}>
+          <View style={{ alignItems: 'flex-end' }}>
+            <Text style={{ color: THEME.colors.goldLight, fontSize: 18, fontFamily: THEME.fonts.arabicBold, textAlign: 'right' }}>
               أَثَــر
             </Text>
-            <Text style={{ color: THEME.colors.textMuted, fontSize: 8.5, letterSpacing: 1 }}>
+            <Text style={{ color: THEME.colors.textMuted, fontSize: 8.5, letterSpacing: 0.5, textAlign: 'right' }}>
               ATHAR · SOVEREIGN ISLAMIC SUITE
             </Text>
           </View>
         </View>
 
-        {/* Status Indicator */}
+        {/* Status Indicator on Left Side (RTL) */}
         <View
           style={{
             backgroundColor: THEME.colors.emeraldGlass,

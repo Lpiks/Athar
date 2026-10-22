@@ -49,7 +49,7 @@ export const KhatmahSettingsScreen: React.FC = () => {
           </Text>
         </View>
 
-        <Text style={{ color: THEME.colors.textPrimary }} className="text-xl font-bold font-uthmani mt-2 mb-1">
+        <Text style={{ color: THEME.colors.textPrimary, fontFamily: THEME.fonts.arabicBold }} className="text-xl mt-2 mb-1">
           متابعة الختمة القرآنية المباركة
         </Text>
 

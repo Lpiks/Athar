@@ -43,6 +43,11 @@ export const THEME = {
     textMuted: '#64748B',
     textSubtle: '#475569',
   },
+  fonts: {
+    quran: 'AmiriQuran',
+    arabic: 'AmiriRegular',
+    arabicBold: 'AmiriBold',
+  },
   shadows: {
     card: {
       shadowColor: '#000',

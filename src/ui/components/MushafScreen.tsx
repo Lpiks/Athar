@@ -25,6 +25,8 @@ export const MushafScreen: React.FC = () => {
   const [riwaya, setRiwaya] = useState<Riwaya>('WARSH');
   // Visual Mode: Parchment (ورقي) vs Obsidian Night (ليلي)
   const [isParchment, setIsParchment] = useState<boolean>(true);
+  // Dynamic Font Size Scaling for comfortable reading
+  const [fontSize, setFontSize] = useState<number>(23);
 
   // Surahs & Ayahs state
   const [surahs] = useState<Surah[]>(SURAHS_CATALOG);
@@ -207,8 +209,36 @@ export const MushafScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Right Action Icons: Search & Theme Toggle */}
+        {/* Right Action Icons: Font Size, Search & Theme Toggle */}
         <View className="flex-row items-center">
+          {/* Font Size Decrement */}
+          <TouchableOpacity
+            onPress={() => setFontSize((prev) => Math.max(18, prev - 2))}
+            style={{
+              backgroundColor: isParchment ? '#EAE2D3' : THEME.colors.surfaceElevated,
+              paddingHorizontal: 8,
+              paddingVertical: 6,
+              borderRadius: 10,
+              marginRight: 4,
+            }}
+          >
+            <Text style={{ fontSize: 11, fontWeight: 'bold', color: textMain }}>A-</Text>
+          </TouchableOpacity>
+
+          {/* Font Size Increment */}
+          <TouchableOpacity
+            onPress={() => setFontSize((prev) => Math.min(36, prev + 2))}
+            style={{
+              backgroundColor: isParchment ? '#EAE2D3' : THEME.colors.surfaceElevated,
+              paddingHorizontal: 8,
+              paddingVertical: 6,
+              borderRadius: 10,
+              marginRight: 6,
+            }}
+          >
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: textMain }}>A+</Text>
+          </TouchableOpacity>
+
           <TouchableOpacity
             onPress={() => setIsParchment(!isParchment)}
             style={{
@@ -253,18 +283,18 @@ export const MushafScreen: React.FC = () => {
           }}
         >
           <View className="flex-row items-center justify-between w-full mb-1">
-            <Text style={{ color: goldTone }} className="text-[11px] font-semibold">
+            <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold }} className="text-xs">
               الجزء {selectedSurah.page_number <= 21 ? '١' : Math.ceil(selectedSurah.page_number / 20)}
             </Text>
-            <Text style={{ color: goldTone }} className="text-xl font-bold font-uthmani">
+            <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 24 }}>
               سُورَةُ {selectedSurah.name_ar}
             </Text>
-            <Text style={{ color: goldTone }} className="text-[11px] font-semibold">
+            <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold }} className="text-xs">
               صفحة {selectedSurah.page_number}
             </Text>
           </View>
 
-          <Text style={{ color: THEME.colors.textMuted }} className="text-[11px]">
+          <Text style={{ color: THEME.colors.textMuted, fontFamily: THEME.fonts.arabic, fontSize: 12 }}>
             {selectedSurah.type === 'meccan' ? 'مَكِّيَّةٌ' : 'مَدَنِيَّةٌ'} · {selectedSurah.total_ayahs} آيَاتٍ · رواية {riwaya === 'WARSH' ? 'ورش عن نافع' : 'حفص عن عاصم'}
           </Text>
         </View>
@@ -275,8 +305,8 @@ export const MushafScreen: React.FC = () => {
             <Text
               style={{
                 color: goldTone,
-                fontSize: 22,
-                fontFamily: 'serif',
+                fontSize: Math.round(fontSize * 1.15),
+                fontFamily: THEME.fonts.quran,
                 textAlign: 'center',
                 letterSpacing: 1,
               }}
@@ -300,8 +330,9 @@ export const MushafScreen: React.FC = () => {
           <Text
             style={{
               color: textMain,
-              fontSize: 21,
-              lineHeight: 50,
+              fontFamily: THEME.fonts.quran,
+              fontSize: fontSize,
+              lineHeight: Math.round(fontSize * 2.2),
               textAlign: 'justify',
               writingDirection: 'rtl',
             }}
@@ -316,7 +347,8 @@ export const MushafScreen: React.FC = () => {
                 <Text
                   style={{
                     color: goldTone,
-                    fontSize: 15,
+                    fontFamily: THEME.fonts.quran,
+                    fontSize: Math.round(fontSize * 0.8),
                     fontWeight: 'bold',
                   }}
                 >

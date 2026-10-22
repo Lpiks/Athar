@@ -135,9 +135,9 @@ export const PrayerScheduleList: React.FC<PrayerScheduleListProps> = ({
                   <Text
                     style={{
                       color: isCurrent ? THEME.colors.goldLight : THEME.colors.textPrimary,
-                      fontWeight: isCurrent ? 'bold' : '600',
+                      fontFamily: isCurrent ? THEME.fonts.arabicBold : THEME.fonts.arabic,
+                      fontSize: 18,
                     }}
-                    className="text-base font-uthmani"
                   >
                     {p.name}
                   </Text>
@@ -147,8 +147,8 @@ export const PrayerScheduleList: React.FC<PrayerScheduleListProps> = ({
                       className="px-2 py-0.5 rounded-full ml-2 border border-amber-500/30"
                     >
                       <Text
-                        style={{ color: THEME.colors.goldLight }}
-                        className="text-[10px] font-bold"
+                        style={{ color: THEME.colors.goldLight, fontFamily: THEME.fonts.arabicBold }}
+                        className="text-[10px]"
                       >
                         الصلاة الحالية
                       </Text>
@@ -156,8 +156,8 @@ export const PrayerScheduleList: React.FC<PrayerScheduleListProps> = ({
                   )}
                 </View>
                 <Text
-                  style={{ color: THEME.colors.textMuted }}
-                  className="text-[10px] mt-0.5"
+                  style={{ color: THEME.colors.textMuted, fontFamily: THEME.fonts.arabic, fontSize: 11 }}
+                  className="mt-0.5"
                 >
                   {p.desc}
                 </Text>

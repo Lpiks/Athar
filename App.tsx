@@ -1,8 +1,10 @@
 import './global.css';
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
+import { useFonts } from 'expo-font';
+import * as Location from 'expo-location';
 import { THEME } from './src/ui/theme';
 import {
   AtharAstronomicalSuite,
@@ -30,6 +32,14 @@ type AppTab = 'prayer' | 'quran' | 'qibla' | 'settings';
 export default function App() {
   const [activeTab, setActiveTab] = useState<AppTab>('prayer');
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
+  const [coords, setCoords] = useState(DEFAULT_COORDS);
+
+  // Load authentic Quranic and Arabic calligraphy fonts
+  const [fontsLoaded] = useFonts({
+    AmiriRegular: require('./assets/fonts/Amiri-Regular.ttf'),
+    AmiriBold: require('./assets/fonts/Amiri-Bold.ttf'),
+    AmiriQuran: require('./assets/fonts/AmiriQuran-Regular.ttf'),
+  });
 
   // 1-second clock heartbeat
   useEffect(() => {
@@ -37,11 +47,35 @@ export default function App() {
     return () => clearInterval(timer);
   }, []);
 
-  // Compute live deterministic prayer times
+  // Request & Auto-Detect Location (GPS) with seamless fallback
+  useEffect(() => {
+    (async () => {
+      try {
+        const { status } = await Location.requestForegroundPermissionsAsync();
+        if (status === 'granted') {
+          const loc = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
+          const [place] = await Location.reverseGeocodeAsync({
+            latitude: loc.coords.latitude,
+            longitude: loc.coords.longitude,
+          });
+          const cityName = place?.city || place?.region || place?.subregion || 'موقعك الحالي';
+          setCoords({
+            latitude: loc.coords.latitude,
+            longitude: loc.coords.longitude,
+            cityAr: cityName,
+          });
+        }
+      } catch (err) {
+        // Fallback to Algiers coordinates
+      }
+    })();
+  }, []);
+
+  // Compute live deterministic prayer times for current location
   const prayerTimes = AtharAstronomicalSuite.getPrayerTimes(
     currentTime,
-    DEFAULT_COORDS.latitude,
-    DEFAULT_COORDS.longitude
+    coords.latitude,
+    coords.longitude
   );
 
   const prayerState = PrayerTimeCalculator.getCurrentPrayerState(
@@ -49,13 +83,45 @@ export default function App() {
     currentTime
   );
 
-  // Exact alarms initialization
+  // Exact alarms initialization on startup
   useEffect(() => {
     const alarmManager = ExactAlarmManager.getInstance();
-    alarmManager.scheduleUpcomingAdhans(DEFAULT_COORDS.latitude, DEFAULT_COORDS.longitude);
-  }, []);
+    alarmManager.scheduleUpcomingAdhans(coords.latitude, coords.longitude);
+  }, [coords.latitude, coords.longitude]);
 
   const activeCurrentPrayer = prayerState.currentPrayer === 'none' ? Prayer.FAJR : prayerState.currentPrayer;
+
+  // Render high-end sacred splash screen while fonts mount
+  if (!fontsLoaded) {
+    return (
+      <View style={{ flex: 1, backgroundColor: THEME.colors.canvas, alignItems: 'center', justifyContent: 'center' }}>
+        <StatusBar style="light" />
+        <View
+          style={{
+            width: 72,
+            height: 72,
+            borderRadius: 36,
+            backgroundColor: THEME.colors.goldGlass,
+            borderColor: THEME.colors.gold,
+            borderWidth: 1.5,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: 20,
+            ...THEME.shadows.glowGold,
+          }}
+        >
+          <Text style={{ color: THEME.colors.goldLight, fontSize: 32, fontWeight: 'bold' }}>أَ</Text>
+        </View>
+        <Text style={{ color: THEME.colors.goldLight, fontSize: 24, fontWeight: 'bold', letterSpacing: 2 }}>
+          أَثَــر
+        </Text>
+        <Text style={{ color: THEME.colors.textMuted, fontSize: 11, letterSpacing: 2, marginTop: 4, marginBottom: 24 }}>
+          ATHAR · SOVEREIGN ISLAMIC SUITE
+        </Text>
+        <ActivityIndicator color={THEME.colors.gold} size="small" />
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
@@ -88,15 +154,15 @@ export default function App() {
               marginRight: 10,
             }}
           >
-            <Text style={{ color: THEME.colors.goldLight, fontWeight: 'bold', fontSize: 16 }}>
+            <Text style={{ color: THEME.colors.goldLight, fontFamily: THEME.fonts.arabicBold, fontSize: 16 }}>
               أَ
             </Text>
           </View>
           <View>
-            <Text style={{ color: THEME.colors.goldLight, fontSize: 18, fontWeight: 'bold' }}>
+            <Text style={{ color: THEME.colors.goldLight, fontSize: 19, fontFamily: THEME.fonts.arabicBold }}>
               أَثَــر
             </Text>
-            <Text style={{ color: THEME.colors.textMuted, fontSize: 9, letterSpacing: 1 }}>
+            <Text style={{ color: THEME.colors.textMuted, fontSize: 8.5, letterSpacing: 1 }}>
               ATHAR · SOVEREIGN ISLAMIC SUITE
             </Text>
           </View>
@@ -113,7 +179,7 @@ export default function App() {
             borderRadius: 12,
           }}
         >
-          <Text style={{ color: THEME.colors.emeraldLight, fontSize: 10, fontWeight: 'bold' }}>
+          <Text style={{ color: THEME.colors.emeraldLight, fontSize: 11, fontFamily: THEME.fonts.arabicBold }}>
             صدقة جارية 🕊️
           </Text>
         </View>
@@ -130,7 +196,7 @@ export default function App() {
               currentPrayer={activeCurrentPrayer}
               nextPrayer={prayerState.nextPrayer}
               nextPrayerTime={prayerState.nextPrayerTime}
-              city={DEFAULT_COORDS.cityAr}
+              city={coords.cityAr}
             />
             <PrayerScheduleList
               prayerTimes={prayerTimes}
@@ -141,7 +207,12 @@ export default function App() {
 
         {activeTab === 'quran' && <MushafScreen />}
 
-        {activeTab === 'qibla' && <QiblaAdhkarScreen />}
+        {activeTab === 'qibla' && (
+          <QiblaAdhkarScreen
+            latitude={coords.latitude}
+            longitude={coords.longitude}
+          />
+        )}
 
         {activeTab === 'settings' && <KhatmahSettingsScreen />}
       </View>
@@ -160,7 +231,7 @@ export default function App() {
           flexDirection: 'row',
           justifyContent: 'space-around',
           alignItems: 'center',
-          paddingVertical: 10,
+          paddingVertical: 8,
           paddingHorizontal: 6,
           ...THEME.shadows.card,
         }}
@@ -170,22 +241,17 @@ export default function App() {
           onPress={() => setActiveTab('prayer')}
           style={{
             alignItems: 'center',
-            paddingVertical: 4,
-            paddingHorizontal: 12,
-            borderRadius: 16,
+            paddingVertical: 6,
+            paddingHorizontal: 14,
+            borderRadius: 18,
             backgroundColor: activeTab === 'prayer' ? THEME.colors.goldGlass : 'transparent',
+            borderColor: activeTab === 'prayer' ? THEME.colors.goldBorder : 'transparent',
+            borderWidth: activeTab === 'prayer' ? 1 : 0,
           }}
           activeOpacity={0.7}
         >
-          <Text style={{ fontSize: 18, marginBottom: 2 }}>🕌</Text>
-          <Text
-            style={{
-              color: activeTab === 'prayer' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 11,
-              fontWeight: activeTab === 'prayer' ? 'bold' : 'normal',
-            }}
-          >
-            الصلاة
+          <Text style={{ color: activeTab === 'prayer' ? THEME.colors.goldLight : THEME.colors.textMuted, fontSize: 14, fontFamily: THEME.fonts.arabicBold }}>
+            🕌 الصلاة
           </Text>
         </TouchableOpacity>
 
@@ -194,22 +260,17 @@ export default function App() {
           onPress={() => setActiveTab('quran')}
           style={{
             alignItems: 'center',
-            paddingVertical: 4,
-            paddingHorizontal: 12,
-            borderRadius: 16,
+            paddingVertical: 6,
+            paddingHorizontal: 14,
+            borderRadius: 18,
             backgroundColor: activeTab === 'quran' ? THEME.colors.goldGlass : 'transparent',
+            borderColor: activeTab === 'quran' ? THEME.colors.goldBorder : 'transparent',
+            borderWidth: activeTab === 'quran' ? 1 : 0,
           }}
           activeOpacity={0.7}
         >
-          <Text style={{ fontSize: 18, marginBottom: 2 }}>📖</Text>
-          <Text
-            style={{
-              color: activeTab === 'quran' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 11,
-              fontWeight: activeTab === 'quran' ? 'bold' : 'normal',
-            }}
-          >
-            المصحف
+          <Text style={{ color: activeTab === 'quran' ? THEME.colors.goldLight : THEME.colors.textMuted, fontSize: 14, fontFamily: THEME.fonts.arabicBold }}>
+            📖 المصحف
           </Text>
         </TouchableOpacity>
 
@@ -218,22 +279,17 @@ export default function App() {
           onPress={() => setActiveTab('qibla')}
           style={{
             alignItems: 'center',
-            paddingVertical: 4,
-            paddingHorizontal: 12,
-            borderRadius: 16,
+            paddingVertical: 6,
+            paddingHorizontal: 14,
+            borderRadius: 18,
             backgroundColor: activeTab === 'qibla' ? THEME.colors.goldGlass : 'transparent',
+            borderColor: activeTab === 'qibla' ? THEME.colors.goldBorder : 'transparent',
+            borderWidth: activeTab === 'qibla' ? 1 : 0,
           }}
           activeOpacity={0.7}
         >
-          <Text style={{ fontSize: 18, marginBottom: 2 }}>🧭</Text>
-          <Text
-            style={{
-              color: activeTab === 'qibla' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 11,
-              fontWeight: activeTab === 'qibla' ? 'bold' : 'normal',
-            }}
-          >
-            الأذكار
+          <Text style={{ color: activeTab === 'qibla' ? THEME.colors.goldLight : THEME.colors.textMuted, fontSize: 14, fontFamily: THEME.fonts.arabicBold }}>
+            🧭 القبلة
           </Text>
         </TouchableOpacity>
 
@@ -242,22 +298,17 @@ export default function App() {
           onPress={() => setActiveTab('settings')}
           style={{
             alignItems: 'center',
-            paddingVertical: 4,
-            paddingHorizontal: 12,
-            borderRadius: 16,
+            paddingVertical: 6,
+            paddingHorizontal: 14,
+            borderRadius: 18,
             backgroundColor: activeTab === 'settings' ? THEME.colors.goldGlass : 'transparent',
+            borderColor: activeTab === 'settings' ? THEME.colors.goldBorder : 'transparent',
+            borderWidth: activeTab === 'settings' ? 1 : 0,
           }}
           activeOpacity={0.7}
         >
-          <Text style={{ fontSize: 18, marginBottom: 2 }}>⚙️</Text>
-          <Text
-            style={{
-              color: activeTab === 'settings' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 11,
-              fontWeight: activeTab === 'settings' ? 'bold' : 'normal',
-            }}
-          >
-            الضبط
+          <Text style={{ color: activeTab === 'settings' ? THEME.colors.goldLight : THEME.colors.textMuted, fontSize: 14, fontFamily: THEME.fonts.arabicBold }}>
+            ⚙️ الختمة
           </Text>
         </TouchableOpacity>
       </View>

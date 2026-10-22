@@ -114,8 +114,8 @@ export const PrayerHeroCard: React.FC<PrayerHeroCardProps> = ({
 
         {/* Hijri Date */}
         <Text
-          style={{ color: THEME.colors.gold }}
-          className="text-xs font-medium text-right"
+          style={{ color: THEME.colors.gold, fontFamily: THEME.fonts.arabicBold, fontSize: 13 }}
+          className="text-right"
         >
           {hijri.formattedAr}
         </Text>
@@ -124,15 +124,15 @@ export const PrayerHeroCard: React.FC<PrayerHeroCardProps> = ({
       {/* Next Prayer Focal Info */}
       <View className="items-center py-2">
         <Text
-          style={{ color: THEME.colors.textSecondary }}
-          className="text-xs font-medium uppercase tracking-wider mb-1"
+          style={{ color: THEME.colors.textSecondary, fontFamily: THEME.fonts.arabic }}
+          className="text-xs uppercase tracking-wider mb-1"
         >
           الصلاة القادمة
         </Text>
 
         <Text
-          style={{ color: THEME.colors.goldLight }}
-          className="text-3xl font-bold mb-2 font-uthmani"
+          style={{ color: THEME.colors.goldLight, fontFamily: THEME.fonts.arabicBold, fontSize: 32 }}
+          className="mb-2"
         >
           {nextPrayerNameAr}
         </Text>

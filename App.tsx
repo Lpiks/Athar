@@ -1,7 +1,7 @@
 import './global.css';
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as Location from 'expo-location';
@@ -13,6 +13,7 @@ import {
   PrayerTimeCalculator,
 } from './src/core/astronomy';
 import { ExactAlarmManager } from './src/core/alarms/alarmManager';
+import { QuranVaultService } from './src/core/database';
 
 // Screens
 import { PrayerHeroCard } from './src/ui/components/PrayerHeroCard';
@@ -30,7 +31,8 @@ const DEFAULT_COORDS = {
 
 type AppTab = 'prayer' | 'quran' | 'qibla' | 'settings';
 
-export default function App() {
+function AtharMainContent() {
+  const insets = useSafeAreaInsets();
   const [activeTab, setActiveTab] = useState<AppTab>('prayer');
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
   const [coords, setCoords] = useState(DEFAULT_COORDS);
@@ -41,6 +43,11 @@ export default function App() {
     AmiriBold: require('./assets/fonts/Amiri-Bold.ttf'),
     AmiriQuran: require('./assets/fonts/AmiriQuran-Regular.ttf'),
   });
+
+  // Pre-warm Quran & Tafsir SQLite database in the background on startup
+  useEffect(() => {
+    QuranVaultService.getInstance().initialize().catch(() => {});
+  }, []);
 
   // 1-second clock heartbeat
   useEffect(() => {
@@ -122,17 +129,18 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
+    <View style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
       <StatusBar style="light" />
 
-      {/* Top Sovereign App Header with Brand Logo */}
+      {/* Top Sovereign App Header with Brand Logo (Respects System Status Bar & Camera Notch) */}
       <View
         style={{
           backgroundColor: THEME.colors.canvas,
           borderBottomColor: THEME.colors.cardBorder,
           borderBottomWidth: 1,
+          paddingTop: Math.max(insets.top, 12),
+          paddingBottom: 10,
           paddingHorizontal: 16,
-          paddingVertical: 10,
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -142,9 +150,9 @@ export default function App() {
           <Image
             source={require('./assets/icon.png')}
             style={{
-              width: 38,
-              height: 38,
-              borderRadius: 11,
+              width: 36,
+              height: 36,
+              borderRadius: 10,
               borderWidth: 1.2,
               borderColor: THEME.colors.goldBorder,
               marginRight: 10,
@@ -152,7 +160,7 @@ export default function App() {
             resizeMode="cover"
           />
           <View>
-            <Text style={{ color: THEME.colors.goldLight, fontSize: 19, fontFamily: THEME.fonts.arabicBold }}>
+            <Text style={{ color: THEME.colors.goldLight, fontSize: 18, fontFamily: THEME.fonts.arabicBold }}>
               أَثَــر
             </Text>
             <Text style={{ color: THEME.colors.textMuted, fontSize: 8.5, letterSpacing: 1 }}>
@@ -183,7 +191,7 @@ export default function App() {
         {activeTab === 'prayer' && (
           <ScrollView
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ padding: 16, paddingBottom: 110 }}
+            contentContainerStyle={{ padding: 16, paddingBottom: insets.bottom + 90 }}
           >
             <PrayerHeroCard
               currentPrayer={activeCurrentPrayer}
@@ -210,15 +218,15 @@ export default function App() {
         {activeTab === 'settings' && <KhatmahSettingsScreen />}
       </View>
 
-      {/* Bottom Floating Glassmorphic Navigation Dock */}
+      {/* Bottom Floating Glassmorphic Navigation Dock (Respects Android Gesture Bar) */}
       <View
         style={{
           position: 'absolute',
-          bottom: 14,
+          bottom: Math.max(insets.bottom, 10),
           left: 14,
           right: 14,
-          height: 66,
-          backgroundColor: 'rgba(5, 13, 11, 0.94)',
+          height: 64,
+          backgroundColor: 'rgba(5, 13, 11, 0.95)',
           borderColor: 'rgba(197, 160, 89, 0.28)',
           borderWidth: 1.2,
           borderRadius: 24,
@@ -236,12 +244,12 @@ export default function App() {
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
-            paddingVertical: 5,
+            paddingVertical: 4,
             borderRadius: 16,
             backgroundColor: activeTab === 'prayer' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
             borderColor: activeTab === 'prayer' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
             borderWidth: activeTab === 'prayer' ? 1 : 0,
-            marginHorizontal: 3,
+            marginHorizontal: 2,
           }}
           activeOpacity={0.7}
         >
@@ -253,9 +261,9 @@ export default function App() {
           <Text
             style={{
               color: activeTab === 'prayer' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 11,
+              fontSize: 10.5,
               fontFamily: THEME.fonts.arabicBold,
-              marginTop: 2,
+              marginTop: 1,
             }}
           >
             الصلاة
@@ -280,12 +288,12 @@ export default function App() {
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
-            paddingVertical: 5,
+            paddingVertical: 4,
             borderRadius: 16,
             backgroundColor: activeTab === 'quran' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
             borderColor: activeTab === 'quran' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
             borderWidth: activeTab === 'quran' ? 1 : 0,
-            marginHorizontal: 3,
+            marginHorizontal: 2,
           }}
           activeOpacity={0.7}
         >
@@ -297,9 +305,9 @@ export default function App() {
           <Text
             style={{
               color: activeTab === 'quran' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 11,
+              fontSize: 10.5,
               fontFamily: THEME.fonts.arabicBold,
-              marginTop: 2,
+              marginTop: 1,
             }}
           >
             المصحف
@@ -324,12 +332,12 @@ export default function App() {
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
-            paddingVertical: 5,
+            paddingVertical: 4,
             borderRadius: 16,
             backgroundColor: activeTab === 'qibla' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
             borderColor: activeTab === 'qibla' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
             borderWidth: activeTab === 'qibla' ? 1 : 0,
-            marginHorizontal: 3,
+            marginHorizontal: 2,
           }}
           activeOpacity={0.7}
         >
@@ -341,9 +349,9 @@ export default function App() {
           <Text
             style={{
               color: activeTab === 'qibla' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 11,
+              fontSize: 10.5,
               fontFamily: THEME.fonts.arabicBold,
-              marginTop: 2,
+              marginTop: 1,
             }}
           >
             القبلة
@@ -368,12 +376,12 @@ export default function App() {
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
-            paddingVertical: 5,
+            paddingVertical: 4,
             borderRadius: 16,
             backgroundColor: activeTab === 'settings' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
             borderColor: activeTab === 'settings' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
             borderWidth: activeTab === 'settings' ? 1 : 0,
-            marginHorizontal: 3,
+            marginHorizontal: 2,
           }}
           activeOpacity={0.7}
         >
@@ -385,9 +393,9 @@ export default function App() {
           <Text
             style={{
               color: activeTab === 'settings' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 11,
+              fontSize: 10.5,
               fontFamily: THEME.fonts.arabicBold,
-              marginTop: 2,
+              marginTop: 1,
             }}
           >
             الختمة
@@ -405,6 +413,14 @@ export default function App() {
           )}
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
+  );
+}
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <AtharMainContent />
+    </SafeAreaProvider>
   );
 }

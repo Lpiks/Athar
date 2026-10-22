@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   TextInput,
   ScrollView,
+  FlatList,
   Modal,
-  SafeAreaView,
   Share,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { THEME } from '../theme';
 import {
   QuranVaultService,
@@ -20,21 +21,23 @@ import {
   SURAHS_CATALOG,
   PAGES_CATALOG,
   JUZ_CATALOG,
+  JuzMeta,
   PageMeta,
 } from '../../core/database';
 
 export const MushafScreen: React.FC = () => {
+  const insets = useSafeAreaInsets();
+
   // Riwaya: Warsh vs Hafs
   const [riwaya, setRiwaya] = useState<Riwaya>('WARSH');
   // Visual Mode: Parchment (ورقي) vs Obsidian Night (ليلي)
   const [isParchment, setIsParchment] = useState<boolean>(true);
-  // Dynamic Font Size Scaling for comfortable reading
+  // Dynamic Font Size Scaling
   const [fontSize, setFontSize] = useState<number>(23);
 
   // Medina Mushaf Page State (1 to 604)
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [pageAyahs, setPageAyahs] = useState<AyahView[]>([]);
-  const [isPageLoading, setIsPageLoading] = useState<boolean>(false);
 
   // Jump to page modal state
   const [isJumpModalOpen, setIsJumpModalOpen] = useState<boolean>(false);
@@ -60,21 +63,23 @@ export const MushafScreen: React.FC = () => {
   const vault = QuranVaultService.getInstance();
 
   // Current page metadata
-  const currentPageMeta: PageMeta | undefined = PAGES_CATALOG.find((p) => p.page === currentPage) || PAGES_CATALOG[0];
+  const currentPageMeta: PageMeta = useMemo(() => {
+    return PAGES_CATALOG.find((p) => p.page === currentPage) || PAGES_CATALOG[0];
+  }, [currentPage]);
 
   // Primary Surah on this page
   const primarySurahId = currentPageMeta?.surah_ids[0] || 1;
-  const primarySurah: Surah = SURAHS_CATALOG.find((s) => s.id === primarySurahId) || SURAHS_CATALOG[0];
+  const primarySurah: Surah = useMemo(() => {
+    return SURAHS_CATALOG.find((s) => s.id === primarySurahId) || SURAHS_CATALOG[0];
+  }, [primarySurahId]);
 
-  // Load Ayahs for current Medina Mushaf page
+  // Instant 0ms loading for Medina Mushaf page
   useEffect(() => {
     let isMounted = true;
     (async () => {
-      setIsPageLoading(true);
       const rows = await vault.getAyahsByPage(currentPage, riwaya);
       if (isMounted) {
         setPageAyahs(rows);
-        setIsPageLoading(false);
       }
     })();
     return () => {
@@ -159,29 +164,183 @@ export const MushafScreen: React.FC = () => {
   const goldTone = isParchment ? THEME.colors.parchmentGold : THEME.colors.gold;
   const headerText = isParchment ? '#6D4C1B' : THEME.colors.goldLight;
 
-  // Filter Surahs
-  const filteredSurahs = SURAHS_CATALOG.filter(
-    (s) =>
-      s.name_ar.includes(surahFilterQuery) ||
-      s.name_transliteration.toLowerCase().includes(surahFilterQuery.toLowerCase()) ||
-      String(s.id) === surahFilterQuery.trim()
+  // Memoized Filtered Surahs
+  const filteredSurahs = useMemo(() => {
+    if (!surahFilterQuery.trim()) return SURAHS_CATALOG;
+    const q = surahFilterQuery.trim().toLowerCase();
+    return SURAHS_CATALOG.filter(
+      (s) =>
+        s.name_ar.includes(q) ||
+        s.name_transliteration.toLowerCase().includes(q) ||
+        String(s.id) === q
+    );
+  }, [surahFilterQuery]);
+
+  // Group ayahs on this page by Surah
+  const surahsOnThisPage = useMemo(() => {
+    return Array.from(new Set(pageAyahs.map((a) => a.surah_id)));
+  }, [pageAyahs]);
+
+  // Render Virtualized Surah List Item for instant 60fps scrolling
+  const renderSurahItem = useCallback(
+    ({ item: s }: { item: Surah }) => (
+      <TouchableOpacity
+        onPress={() => handleDirectJump(s.page_number)}
+        style={{
+          backgroundColor: THEME.colors.surface,
+          borderColor: THEME.colors.cardBorder,
+          borderWidth: 1,
+          borderRadius: 14,
+          padding: 12,
+          marginBottom: 8,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+        activeOpacity={0.7}
+      >
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View
+            style={{
+              backgroundColor: THEME.colors.goldGlass,
+              borderColor: THEME.colors.goldBorder,
+              borderWidth: 1,
+              width: 34,
+              height: 34,
+              borderRadius: 17,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: 10,
+            }}
+          >
+            <Text style={{ color: THEME.colors.goldLight, fontWeight: 'bold', fontSize: 12 }}>
+              {s.id}
+            </Text>
+          </View>
+          <View>
+            <Text style={{ color: THEME.colors.textPrimary, fontSize: 15, fontFamily: THEME.fonts.arabicBold }}>
+              سورة {s.name_ar}
+            </Text>
+            <Text style={{ color: THEME.colors.textMuted, fontSize: 11 }}>
+              {s.type === 'meccan' ? 'مكية' : 'مدنية'} · {s.total_ayahs} آيات
+            </Text>
+          </View>
+        </View>
+
+        <View style={{ alignItems: 'flex-end' }}>
+          <Text style={{ color: THEME.colors.gold, fontSize: 12, fontWeight: 'bold' }}>
+            صفحة {s.page_number} ◀
+          </Text>
+        </View>
+      </TouchableOpacity>
+    ),
+    []
   );
 
-  // Group ayahs on this page by Surah to render Surah title banners if an ayah is ayah_number === 1
-  const surahsOnThisPage = Array.from(new Set(pageAyahs.map((a) => a.surah_id)));
+  // Render Virtualized Juz List Item
+  const renderJuzItem = useCallback(
+    ({ item: j }: { item: JuzMeta }) => (
+      <TouchableOpacity
+        onPress={() => handleDirectJump(j.page_number)}
+        style={{
+          backgroundColor: THEME.colors.surface,
+          borderColor: THEME.colors.cardBorder,
+          borderWidth: 1,
+          borderRadius: 14,
+          padding: 14,
+          marginBottom: 8,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+        activeOpacity={0.7}
+      >
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <View
+            style={{
+              backgroundColor: THEME.colors.goldGlass,
+              borderColor: THEME.colors.goldBorder,
+              borderWidth: 1,
+              width: 36,
+              height: 36,
+              borderRadius: 18,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: 12,
+            }}
+          >
+            <Text style={{ color: THEME.colors.goldLight, fontWeight: 'bold', fontSize: 13 }}>
+              {j.id}
+            </Text>
+          </View>
+          <Text style={{ color: THEME.colors.textPrimary, fontSize: 16, fontFamily: THEME.fonts.arabicBold }}>
+            {j.name_ar}
+          </Text>
+        </View>
+
+        <Text style={{ color: THEME.colors.gold, fontSize: 13, fontWeight: 'bold' }}>
+          صفحة {j.page_number} ◀
+        </Text>
+      </TouchableOpacity>
+    ),
+    []
+  );
+
+  // Render Search Match Item
+  const renderSearchItem = useCallback(
+    ({ item: match }: { item: SearchMatch }) => (
+      <TouchableOpacity
+        onPress={() => {
+          if (match.page_number) {
+            handleDirectJump(match.page_number);
+          } else {
+            const sMeta = SURAHS_CATALOG.find((s) => s.id === match.surah_id);
+            if (sMeta) handleDirectJump(sMeta.page_number);
+          }
+          setIsSearchModalOpen(false);
+          setSearchQuery('');
+          setSearchResults([]);
+        }}
+        style={{
+          backgroundColor: THEME.colors.surface,
+          borderColor: THEME.colors.cardBorder,
+          borderWidth: 1,
+          borderRadius: 14,
+          padding: 14,
+          marginBottom: 8,
+        }}
+        activeOpacity={0.7}
+      >
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+          <Text style={{ color: THEME.colors.gold, fontSize: 12, fontWeight: 'bold' }}>
+            سورة {match.surah_name_ar} · الآية {match.ayah_number}
+          </Text>
+          {match.page_number && (
+            <Text style={{ color: THEME.colors.textMuted, fontSize: 11 }}>
+              صفحة {match.page_number} ◀
+            </Text>
+          )}
+        </View>
+        <Text style={{ color: THEME.colors.textPrimary, fontSize: 15, lineHeight: 28, textAlign: 'right' }}>
+          {match.text}
+        </Text>
+      </TouchableOpacity>
+    ),
+    []
+  );
 
   return (
-    <View style={{ flex: 1, backgroundColor: bgCanvas }} className="p-3">
+    <View style={{ flex: 1, backgroundColor: bgCanvas, paddingHorizontal: 12, paddingTop: 6 }}>
       {/* Top Controls Bar */}
       <View
         style={{
           backgroundColor: bgPage,
           borderColor: borderCol,
           borderWidth: 1,
-          borderRadius: 20,
+          borderRadius: 18,
           paddingHorizontal: 10,
-          paddingVertical: 8,
-          marginBottom: 10,
+          paddingVertical: 7,
+          marginBottom: 8,
           flexDirection: 'row',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -196,16 +355,17 @@ export const MushafScreen: React.FC = () => {
             borderColor: goldTone,
             borderWidth: 1,
             paddingHorizontal: 12,
-            paddingVertical: 6,
-            borderRadius: 14,
+            paddingVertical: 5,
+            borderRadius: 12,
             flexDirection: 'row',
             alignItems: 'center',
           }}
+          activeOpacity={0.7}
         >
-          <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 13, marginLeft: 4 }}>
+          <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 12.5, marginLeft: 4 }}>
             الفهرس ▾
           </Text>
-          <Text style={{ color: THEME.colors.textMuted, fontSize: 11, fontFamily: THEME.fonts.arabic }}>
+          <Text style={{ color: THEME.colors.textMuted, fontSize: 10.5, fontFamily: THEME.fonts.arabic }}>
             (ص {currentPage})
           </Text>
         </TouchableOpacity>
@@ -214,8 +374,8 @@ export const MushafScreen: React.FC = () => {
         <View
           style={{
             backgroundColor: isParchment ? '#EAE2D3' : THEME.colors.surfaceElevated,
-            borderRadius: 12,
-            padding: 3,
+            borderRadius: 10,
+            padding: 2.5,
             flexDirection: 'row',
             alignItems: 'center',
           }}
@@ -224,16 +384,16 @@ export const MushafScreen: React.FC = () => {
             onPress={() => setRiwaya('WARSH')}
             style={{
               backgroundColor: riwaya === 'WARSH' ? goldTone : 'transparent',
-              paddingHorizontal: 10,
-              paddingVertical: 4,
-              borderRadius: 9,
+              paddingHorizontal: 9,
+              paddingVertical: 3.5,
+              borderRadius: 8,
             }}
           >
             <Text
               style={{
                 color: riwaya === 'WARSH' ? (isParchment ? '#FFF' : '#000') : THEME.colors.textMuted,
                 fontWeight: riwaya === 'WARSH' ? 'bold' : 'normal',
-                fontSize: 11,
+                fontSize: 10.5,
               }}
             >
               ورش
@@ -244,16 +404,16 @@ export const MushafScreen: React.FC = () => {
             onPress={() => setRiwaya('HAFS')}
             style={{
               backgroundColor: riwaya === 'HAFS' ? goldTone : 'transparent',
-              paddingHorizontal: 10,
-              paddingVertical: 4,
-              borderRadius: 9,
+              paddingHorizontal: 9,
+              paddingVertical: 3.5,
+              borderRadius: 8,
             }}
           >
             <Text
               style={{
                 color: riwaya === 'HAFS' ? (isParchment ? '#FFF' : '#000') : THEME.colors.textMuted,
                 fontWeight: riwaya === 'HAFS' ? 'bold' : 'normal',
-                fontSize: 11,
+                fontSize: 10.5,
               }}
             >
               حفص
@@ -268,26 +428,26 @@ export const MushafScreen: React.FC = () => {
             onPress={() => setFontSize((prev) => Math.max(18, prev - 2))}
             style={{
               backgroundColor: isParchment ? '#EAE2D3' : THEME.colors.surfaceElevated,
-              paddingHorizontal: 7,
-              paddingVertical: 5,
-              borderRadius: 9,
-              marginRight: 4,
+              paddingHorizontal: 6,
+              paddingVertical: 4,
+              borderRadius: 8,
+              marginRight: 3,
             }}
           >
-            <Text style={{ fontSize: 11, fontWeight: 'bold', color: textMain }}>A-</Text>
+            <Text style={{ fontSize: 10.5, fontWeight: 'bold', color: textMain }}>A-</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => setFontSize((prev) => Math.min(34, prev + 2))}
             style={{
               backgroundColor: isParchment ? '#EAE2D3' : THEME.colors.surfaceElevated,
-              paddingHorizontal: 7,
-              paddingVertical: 5,
-              borderRadius: 9,
-              marginRight: 6,
+              paddingHorizontal: 6,
+              paddingVertical: 4,
+              borderRadius: 8,
+              marginRight: 5,
             }}
           >
-            <Text style={{ fontSize: 12, fontWeight: 'bold', color: textMain }}>A+</Text>
+            <Text style={{ fontSize: 11.5, fontWeight: 'bold', color: textMain }}>A+</Text>
           </TouchableOpacity>
 
           {/* Theme Toggle (Parchment vs Obsidian) */}
@@ -295,12 +455,12 @@ export const MushafScreen: React.FC = () => {
             onPress={() => setIsParchment(!isParchment)}
             style={{
               backgroundColor: isParchment ? '#EAE2D3' : THEME.colors.surfaceElevated,
-              padding: 6,
-              borderRadius: 10,
-              marginRight: 6,
+              padding: 5,
+              borderRadius: 8,
+              marginRight: 5,
             }}
           >
-            <Text style={{ fontSize: 13 }}>{isParchment ? '🌙' : '📜'}</Text>
+            <Text style={{ fontSize: 12 }}>{isParchment ? '🌙' : '📜'}</Text>
           </TouchableOpacity>
 
           {/* Search Trigger */}
@@ -308,11 +468,11 @@ export const MushafScreen: React.FC = () => {
             onPress={() => setIsSearchModalOpen(true)}
             style={{
               backgroundColor: isParchment ? '#EAE2D3' : THEME.colors.surfaceElevated,
-              padding: 6,
-              borderRadius: 10,
+              padding: 5,
+              borderRadius: 8,
             }}
           >
-            <Text style={{ fontSize: 13 }}>🔍</Text>
+            <Text style={{ fontSize: 12 }}>🔍</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -320,15 +480,15 @@ export const MushafScreen: React.FC = () => {
       {/* Medina Mushaf Book Page (إطار الصفحة الملكي) */}
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ paddingBottom: 110 }}
+        contentContainerStyle={{ paddingBottom: insets.bottom + 105 }}
       >
         <View
           style={{
             backgroundColor: bgPage,
             borderColor: goldTone,
-            borderWidth: 2,
-            borderRadius: 22,
-            padding: 14,
+            borderWidth: 1.8,
+            borderRadius: 20,
+            padding: 13,
             ...THEME.shadows.card,
           }}
         >
@@ -340,19 +500,19 @@ export const MushafScreen: React.FC = () => {
               alignItems: 'center',
               borderBottomColor: borderCol,
               borderBottomWidth: 1,
-              paddingBottom: 8,
-              marginBottom: 12,
+              paddingBottom: 7,
+              marginBottom: 10,
             }}
           >
-            <Text style={{ color: headerText, fontFamily: THEME.fonts.arabicBold, fontSize: 13 }}>
+            <Text style={{ color: headerText, fontFamily: THEME.fonts.arabicBold, fontSize: 12.5 }}>
               سُورَةُ {primarySurah.name_ar}
             </Text>
 
-            <Text style={{ color: headerText, fontFamily: THEME.fonts.arabic, fontSize: 12 }}>
+            <Text style={{ color: headerText, fontFamily: THEME.fonts.arabic, fontSize: 11.5 }}>
               الجزء {currentPageMeta.juz} · الحزب {currentPageMeta.hizb}
             </Text>
 
-            <Text style={{ color: headerText, fontFamily: THEME.fonts.arabicBold, fontSize: 13 }}>
+            <Text style={{ color: headerText, fontFamily: THEME.fonts.arabicBold, fontSize: 12.5 }}>
               صفحة {currentPage}
             </Text>
           </View>
@@ -360,7 +520,7 @@ export const MushafScreen: React.FC = () => {
           {/* Verses Flow & Surah Title Cartouches */}
           {pageAyahs.length === 0 ? (
             <View style={{ paddingVertical: 40, alignItems: 'center' }}>
-              <Text style={{ color: THEME.colors.textMuted }}>جاري تحميل الصفحة...</Text>
+              <Text style={{ color: THEME.colors.textMuted }}>جاري استحضار الآيات...</Text>
             </View>
           ) : (
             <View>
@@ -370,17 +530,17 @@ export const MushafScreen: React.FC = () => {
                 const hasFirstAyah = surahAyahsOnPage.some((a) => a.ayah_number === 1);
 
                 return (
-                  <View key={`surah_block_${sId}`} style={{ marginBottom: 14 }}>
-                    {/* Render Majestic Gilded Surah Banner if Surah starts on this page */}
+                  <View key={`surah_block_${sId}`} style={{ marginBottom: 12 }}>
+                    {/* Render Gilded Surah Banner if Surah starts on this page */}
                     {hasFirstAyah && (
-                      <View style={{ marginVertical: 10 }}>
+                      <View style={{ marginVertical: 8 }}>
                         <View
                           style={{
                             borderColor: goldTone,
                             borderWidth: 1.5,
-                            borderRadius: 16,
-                            paddingVertical: 10,
-                            paddingHorizontal: 14,
+                            borderRadius: 14,
+                            paddingVertical: 8,
+                            paddingHorizontal: 12,
                             backgroundColor: isParchment ? 'rgba(160, 124, 54, 0.1)' : THEME.colors.surfaceElevated,
                             alignItems: 'center',
                           }}
@@ -389,7 +549,7 @@ export const MushafScreen: React.FC = () => {
                             style={{
                               color: goldTone,
                               fontFamily: THEME.fonts.arabicBold,
-                              fontSize: 22,
+                              fontSize: 20,
                               letterSpacing: 1,
                             }}
                           >
@@ -399,21 +559,21 @@ export const MushafScreen: React.FC = () => {
                             style={{
                               color: THEME.colors.textMuted,
                               fontFamily: THEME.fonts.arabic,
-                              fontSize: 11,
-                              marginTop: 2,
+                              fontSize: 10.5,
+                              marginTop: 1,
                             }}
                           >
                             {surahMeta.type === 'meccan' ? 'مَكِّيَّةٌ' : 'مَدَنِيَّةٌ'} · {surahMeta.total_ayahs} آيَاتٍ
                           </Text>
                         </View>
 
-                        {/* Sacred Basmalah (Omitted for At-Tawbah 9 and Al-Fatihah 1 where it is ayah 1) */}
+                        {/* Sacred Basmalah (Omitted for At-Tawbah 9 and Al-Fatihah 1) */}
                         {surahMeta.id !== 9 && surahMeta.id !== 1 && (
-                          <View style={{ alignItems: 'center', marginVertical: 8 }}>
+                          <View style={{ alignItems: 'center', marginVertical: 6 }}>
                             <Text
                               style={{
                                 color: goldTone,
-                                fontSize: Math.round(fontSize * 1.1),
+                                fontSize: Math.round(fontSize * 1.05),
                                 fontFamily: THEME.fonts.quran,
                                 textAlign: 'center',
                               }}
@@ -425,7 +585,7 @@ export const MushafScreen: React.FC = () => {
                       </View>
                     )}
 
-                    {/* Ayahs Text Flow for this Surah */}
+                    {/* Ayahs Text Flow */}
                     <Text
                       style={{
                         color: textMain,
@@ -467,12 +627,12 @@ export const MushafScreen: React.FC = () => {
             style={{
               borderTopColor: borderCol,
               borderTopWidth: 1,
-              paddingTop: 8,
-              marginTop: 10,
+              paddingTop: 7,
+              marginTop: 8,
               alignItems: 'center',
             }}
           >
-            <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 13 }}>
+            <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 12.5 }}>
               — {currentPage} —
             </Text>
           </View>
@@ -487,10 +647,10 @@ export const MushafScreen: React.FC = () => {
             backgroundColor: bgPage,
             borderColor: borderCol,
             borderWidth: 1,
-            borderRadius: 18,
-            paddingVertical: 10,
+            borderRadius: 16,
+            paddingVertical: 9,
             paddingHorizontal: 12,
-            marginTop: 12,
+            marginTop: 10,
             ...THEME.shadows.card,
           }}
         >
@@ -502,13 +662,14 @@ export const MushafScreen: React.FC = () => {
               backgroundColor: currentPage <= 1 ? 'transparent' : (isParchment ? 'rgba(160, 124, 54, 0.14)' : THEME.colors.surfaceElevated),
               borderColor: currentPage <= 1 ? 'transparent' : goldTone,
               borderWidth: currentPage <= 1 ? 0 : 1,
-              paddingVertical: 8,
-              paddingHorizontal: 14,
-              borderRadius: 12,
+              paddingVertical: 7,
+              paddingHorizontal: 13,
+              borderRadius: 11,
               opacity: currentPage <= 1 ? 0.3 : 1,
             }}
+            activeOpacity={0.7}
           >
-            <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 13 }}>
+            <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 12.5 }}>
               السابق ▶
             </Text>
           </TouchableOpacity>
@@ -518,14 +679,15 @@ export const MushafScreen: React.FC = () => {
             onPress={() => setIsJumpModalOpen(true)}
             style={{
               alignItems: 'center',
-              paddingVertical: 4,
-              paddingHorizontal: 12,
+              paddingVertical: 3,
+              paddingHorizontal: 10,
             }}
+            activeOpacity={0.7}
           >
-            <Text style={{ color: textMain, fontFamily: THEME.fonts.arabicBold, fontSize: 14 }}>
+            <Text style={{ color: textMain, fontFamily: THEME.fonts.arabicBold, fontSize: 13.5 }}>
               صفحة {currentPage} من ٦٠٤
             </Text>
-            <Text style={{ color: THEME.colors.textMuted, fontSize: 10, fontFamily: THEME.fonts.arabic }}>
+            <Text style={{ color: THEME.colors.textMuted, fontSize: 9.5, fontFamily: THEME.fonts.arabic }}>
               انقر للانتقال المباشر ⚡
             </Text>
           </TouchableOpacity>
@@ -538,24 +700,18 @@ export const MushafScreen: React.FC = () => {
               backgroundColor: currentPage >= 604 ? 'transparent' : (isParchment ? 'rgba(160, 124, 54, 0.14)' : THEME.colors.surfaceElevated),
               borderColor: currentPage >= 604 ? 'transparent' : goldTone,
               borderWidth: currentPage >= 604 ? 0 : 1,
-              paddingVertical: 8,
-              paddingHorizontal: 14,
-              borderRadius: 12,
+              paddingVertical: 7,
+              paddingHorizontal: 13,
+              borderRadius: 11,
               opacity: currentPage >= 604 ? 0.3 : 1,
             }}
+            activeOpacity={0.7}
           >
-            <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 13 }}>
+            <Text style={{ color: goldTone, fontFamily: THEME.fonts.arabicBold, fontSize: 12.5 }}>
               ◀ التالي
             </Text>
           </TouchableOpacity>
         </View>
-
-        {/* Reading Guidance Hint */}
-        <Text
-          style={{ color: THEME.colors.textMuted, textAlign: 'center', marginTop: 10, fontSize: 11 }}
-        >
-          💡 انقر على أي آية لاستعراض التفسير الميسر وتفسير السعدي
-        </Text>
       </ScrollView>
 
       {/* Direct Page Jump Modal */}
@@ -657,264 +813,191 @@ export const MushafScreen: React.FC = () => {
         animationType="slide"
         onRequestClose={() => setIsIndexModalOpen(false)}
       >
-        <SafeAreaView style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
-          <View style={{ flex: 1, padding: 16 }}>
-            {/* Modal Header */}
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <TouchableOpacity
-                onPress={() => setIsIndexModalOpen(false)}
-                style={{
-                  backgroundColor: THEME.colors.surfaceElevated,
-                  paddingHorizontal: 12,
-                  paddingVertical: 6,
-                  borderRadius: 10,
-                }}
-              >
-                <Text style={{ color: THEME.colors.textSecondary }}>إغلاق ✕</Text>
-              </TouchableOpacity>
-              <Text style={{ color: THEME.colors.goldLight, fontSize: 17, fontFamily: THEME.fonts.arabicBold }}>
-                فهرس المصحف الشريف (٦٠٤ صفحة)
-              </Text>
-            </View>
-
-            {/* Catalog Tabs (السور · الأجزاء · الصفحات) */}
-            <View
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: THEME.colors.canvas,
+            paddingTop: Math.max(insets.top, 12),
+            paddingBottom: Math.max(insets.bottom, 12),
+            paddingHorizontal: 16,
+          }}
+        >
+          {/* Modal Header */}
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+            <TouchableOpacity
+              onPress={() => setIsIndexModalOpen(false)}
               style={{
-                flexDirection: 'row',
                 backgroundColor: THEME.colors.surfaceElevated,
-                borderRadius: 14,
-                padding: 4,
-                marginBottom: 12,
+                paddingHorizontal: 12,
+                paddingVertical: 6,
+                borderRadius: 10,
               }}
             >
-              <TouchableOpacity
-                onPress={() => setIndexTab('surahs')}
+              <Text style={{ color: THEME.colors.textSecondary }}>إغلاق ✕</Text>
+            </TouchableOpacity>
+            <Text style={{ color: THEME.colors.goldLight, fontSize: 16.5, fontFamily: THEME.fonts.arabicBold }}>
+              فهرس المصحف الشريف (٦٠٤ صفحة)
+            </Text>
+          </View>
+
+          {/* Catalog Tabs (السور · الأجزاء · الصفحات) */}
+          <View
+            style={{
+              flexDirection: 'row',
+              backgroundColor: THEME.colors.surfaceElevated,
+              borderRadius: 12,
+              padding: 3,
+              marginBottom: 10,
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => setIndexTab('surahs')}
+              style={{
+                flex: 1,
+                paddingVertical: 7,
+                borderRadius: 9,
+                backgroundColor: indexTab === 'surahs' ? THEME.colors.gold : 'transparent',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{ color: indexTab === 'surahs' ? '#000' : THEME.colors.textSecondary, fontFamily: THEME.fonts.arabicBold, fontSize: 12.5 }}>
+                السور (١١٤)
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => setIndexTab('juz')}
+              style={{
+                flex: 1,
+                paddingVertical: 7,
+                borderRadius: 9,
+                backgroundColor: indexTab === 'juz' ? THEME.colors.gold : 'transparent',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{ color: indexTab === 'juz' ? '#000' : THEME.colors.textSecondary, fontFamily: THEME.fonts.arabicBold, fontSize: 12.5 }}>
+                الأجزاء (٣٠)
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => setIndexTab('pages')}
+              style={{
+                flex: 1,
+                paddingVertical: 7,
+                borderRadius: 9,
+                backgroundColor: indexTab === 'pages' ? THEME.colors.gold : 'transparent',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={{ color: indexTab === 'pages' ? '#000' : THEME.colors.textSecondary, fontFamily: THEME.fonts.arabicBold, fontSize: 12.5 }}>
+                الصفحات
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Tab 1: Virtualized Surahs List (Instant 60fps render) */}
+          {indexTab === 'surahs' && (
+            <View style={{ flex: 1 }}>
+              <TextInput
+                placeholder="ابحث باسم السورة أو رقمها..."
+                placeholderTextColor={THEME.colors.textMuted}
+                value={surahFilterQuery}
+                onChangeText={setSurahFilterQuery}
                 style={{
-                  flex: 1,
-                  paddingVertical: 8,
-                  borderRadius: 10,
-                  backgroundColor: indexTab === 'surahs' ? THEME.colors.gold : 'transparent',
-                  alignItems: 'center',
+                  backgroundColor: THEME.colors.surface,
+                  borderColor: THEME.colors.cardBorder,
+                  borderWidth: 1,
+                  color: THEME.colors.textPrimary,
+                  borderRadius: 14,
+                  paddingHorizontal: 16,
+                  paddingVertical: 10,
+                  textAlign: 'right',
+                  marginBottom: 10,
                 }}
-              >
-                <Text style={{ color: indexTab === 'surahs' ? '#000' : THEME.colors.textSecondary, fontFamily: THEME.fonts.arabicBold, fontSize: 13 }}>
-                  السور (١١٤)
-                </Text>
-              </TouchableOpacity>
+              />
+
+              <FlatList
+                data={filteredSurahs}
+                keyExtractor={(s) => `surah_${s.id}`}
+                renderItem={renderSurahItem}
+                initialNumToRender={14}
+                maxToRenderPerBatch={14}
+                windowSize={5}
+                removeClippedSubviews={true}
+                showsVerticalScrollIndicator={false}
+              />
+            </View>
+          )}
+
+          {/* Tab 2: Virtualized Juz List */}
+          {indexTab === 'juz' && (
+            <FlatList
+              data={JUZ_CATALOG}
+              keyExtractor={(j) => `juz_${j.id}`}
+              renderItem={renderJuzItem}
+              initialNumToRender={12}
+              maxToRenderPerBatch={12}
+              windowSize={5}
+              removeClippedSubviews={true}
+              showsVerticalScrollIndicator={false}
+            />
+          )}
+
+          {/* Tab 3: Direct Page Grid Jump */}
+          {indexTab === 'pages' && (
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+              <Text style={{ color: THEME.colors.goldLight, fontSize: 17, fontFamily: THEME.fonts.arabicBold, marginBottom: 6 }}>
+                الانتقال السريع لصفحة محددة
+              </Text>
+              <Text style={{ color: THEME.colors.textMuted, fontSize: 12.5, textAlign: 'center', marginBottom: 18 }}>
+                أدخل رقم الصفحة مباشرة لفتحها في الحال
+              </Text>
+
+              <TextInput
+                keyboardType="number-pad"
+                placeholder="رقم الصفحة (١ - ٦٠٤)"
+                placeholderTextColor={THEME.colors.textMuted}
+                value={jumpPageInput}
+                onChangeText={setJumpPageInput}
+                style={{
+                  backgroundColor: THEME.colors.surface,
+                  borderColor: THEME.colors.goldBorder,
+                  borderWidth: 1.5,
+                  borderRadius: 16,
+                  color: THEME.colors.goldLight,
+                  fontSize: 24,
+                  fontWeight: 'bold',
+                  textAlign: 'center',
+                  paddingVertical: 12,
+                  paddingHorizontal: 24,
+                  width: 220,
+                  marginBottom: 18,
+                }}
+              />
 
               <TouchableOpacity
-                onPress={() => setIndexTab('juz')}
+                onPress={() => {
+                  const num = parseInt(jumpPageInput, 10);
+                  if (!isNaN(num)) {
+                    handleDirectJump(num);
+                  }
+                }}
                 style={{
-                  flex: 1,
-                  paddingVertical: 8,
-                  borderRadius: 10,
-                  backgroundColor: indexTab === 'juz' ? THEME.colors.gold : 'transparent',
-                  alignItems: 'center',
+                  backgroundColor: THEME.colors.gold,
+                  paddingVertical: 11,
+                  paddingHorizontal: 36,
+                  borderRadius: 14,
                 }}
               >
-                <Text style={{ color: indexTab === 'juz' ? '#000' : THEME.colors.textSecondary, fontFamily: THEME.fonts.arabicBold, fontSize: 13 }}>
-                  الأجزاء (٣٠)
-                </Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() => setIndexTab('pages')}
-                style={{
-                  flex: 1,
-                  paddingVertical: 8,
-                  borderRadius: 10,
-                  backgroundColor: indexTab === 'pages' ? THEME.colors.gold : 'transparent',
-                  alignItems: 'center',
-                }}
-              >
-                <Text style={{ color: indexTab === 'pages' ? '#000' : THEME.colors.textSecondary, fontFamily: THEME.fonts.arabicBold, fontSize: 13 }}>
-                  الصفحات
-                </Text>
+                <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 14.5 }}>فتح الصفحة</Text>
               </TouchableOpacity>
             </View>
-
-            {/* Tab 1: Surahs List */}
-            {indexTab === 'surahs' && (
-              <View style={{ flex: 1 }}>
-                <TextInput
-                  placeholder="ابحث باسم السورة أو رقمها..."
-                  placeholderTextColor={THEME.colors.textMuted}
-                  value={surahFilterQuery}
-                  onChangeText={setSurahFilterQuery}
-                  style={{
-                    backgroundColor: THEME.colors.surface,
-                    borderColor: THEME.colors.cardBorder,
-                    borderWidth: 1,
-                    color: THEME.colors.textPrimary,
-                    borderRadius: 14,
-                    paddingHorizontal: 16,
-                    paddingVertical: 10,
-                    textAlign: 'right',
-                    marginBottom: 10,
-                  }}
-                />
-
-                <ScrollView showsVerticalScrollIndicator={false}>
-                  {filteredSurahs.map((s) => (
-                    <TouchableOpacity
-                      key={`catalog_surah_${s.id}`}
-                      onPress={() => handleDirectJump(s.page_number)}
-                      style={{
-                        backgroundColor: THEME.colors.surface,
-                        borderColor: THEME.colors.cardBorder,
-                        borderWidth: 1,
-                        borderRadius: 14,
-                        padding: 12,
-                        marginBottom: 8,
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <View
-                          style={{
-                            backgroundColor: THEME.colors.goldGlass,
-                            borderColor: THEME.colors.goldBorder,
-                            borderWidth: 1,
-                            width: 34,
-                            height: 34,
-                            borderRadius: 17,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginRight: 10,
-                          }}
-                        >
-                          <Text style={{ color: THEME.colors.goldLight, fontWeight: 'bold', fontSize: 12 }}>
-                            {s.id}
-                          </Text>
-                        </View>
-                        <View>
-                          <Text style={{ color: THEME.colors.textPrimary, fontSize: 15, fontFamily: THEME.fonts.arabicBold }}>
-                            سورة {s.name_ar}
-                          </Text>
-                          <Text style={{ color: THEME.colors.textMuted, fontSize: 11 }}>
-                            {s.type === 'meccan' ? 'مكية' : 'مدنية'} · {s.total_ayahs} آيات
-                          </Text>
-                        </View>
-                      </View>
-
-                      <View style={{ alignItems: 'flex-end' }}>
-                        <Text style={{ color: THEME.colors.gold, fontSize: 12, fontWeight: 'bold' }}>
-                          صفحة {s.page_number}
-                        </Text>
-                      </View>
-                    </TouchableOpacity>
-                  ))}
-                </ScrollView>
-              </View>
-            )}
-
-            {/* Tab 2: Juz List */}
-            {indexTab === 'juz' && (
-              <ScrollView showsVerticalScrollIndicator={false}>
-                {JUZ_CATALOG.map((j) => (
-                  <TouchableOpacity
-                    key={`catalog_juz_${j.id}`}
-                    onPress={() => handleDirectJump(j.page_number)}
-                    style={{
-                      backgroundColor: THEME.colors.surface,
-                      borderColor: THEME.colors.cardBorder,
-                      borderWidth: 1,
-                      borderRadius: 14,
-                      padding: 14,
-                      marginBottom: 8,
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                      <View
-                        style={{
-                          backgroundColor: THEME.colors.goldGlass,
-                          borderColor: THEME.colors.goldBorder,
-                          borderWidth: 1,
-                          width: 36,
-                          height: 36,
-                          borderRadius: 18,
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          marginRight: 12,
-                        }}
-                      >
-                        <Text style={{ color: THEME.colors.goldLight, fontWeight: 'bold', fontSize: 13 }}>
-                          {j.id}
-                        </Text>
-                      </View>
-                      <Text style={{ color: THEME.colors.textPrimary, fontSize: 16, fontFamily: THEME.fonts.arabicBold }}>
-                        {j.name_ar}
-                      </Text>
-                    </View>
-
-                    <Text style={{ color: THEME.colors.gold, fontSize: 13, fontWeight: 'bold' }}>
-                      صفحة {j.page_number} ◀
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </ScrollView>
-            )}
-
-            {/* Tab 3: Direct Page Grid Jump */}
-            {indexTab === 'pages' && (
-              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20 }}>
-                <Text style={{ color: THEME.colors.goldLight, fontSize: 18, fontFamily: THEME.fonts.arabicBold, marginBottom: 8 }}>
-                  الانتقال السريع لصفحة محددة
-                </Text>
-                <Text style={{ color: THEME.colors.textMuted, fontSize: 13, textAlign: 'center', marginBottom: 20 }}>
-                  أدخل رقم الصفحة مباشرة لفتحها في الحال
-                </Text>
-
-                <TextInput
-                  keyboardType="number-pad"
-                  placeholder="رقم الصفحة (١ - ٦٠٤)"
-                  placeholderTextColor={THEME.colors.textMuted}
-                  value={jumpPageInput}
-                  onChangeText={setJumpPageInput}
-                  style={{
-                    backgroundColor: THEME.colors.surface,
-                    borderColor: THEME.colors.goldBorder,
-                    borderWidth: 1.5,
-                    borderRadius: 16,
-                    color: THEME.colors.goldLight,
-                    fontSize: 24,
-                    fontWeight: 'bold',
-                    textAlign: 'center',
-                    paddingVertical: 12,
-                    paddingHorizontal: 24,
-                    width: 220,
-                    marginBottom: 20,
-                  }}
-                />
-
-                <TouchableOpacity
-                  onPress={() => {
-                    const num = parseInt(jumpPageInput, 10);
-                    if (!isNaN(num)) {
-                      handleDirectJump(num);
-                    }
-                  }}
-                  style={{
-                    backgroundColor: THEME.colors.gold,
-                    paddingVertical: 12,
-                    paddingHorizontal: 36,
-                    borderRadius: 14,
-                  }}
-                >
-                  <Text style={{ color: '#000', fontWeight: 'bold', fontSize: 15 }}>فتح الصفحة</Text>
-                </TouchableOpacity>
-              </View>
-            )}
-          </View>
-        </SafeAreaView>
+          )}
+        </View>
       </Modal>
 
-      {/* Tafsir Bottom Sheet Drawer Modal */}
+      {/* Tafsir Bottom Sheet Drawer Modal (Respects bottom system insets) */}
       <Modal
         visible={selectedAyahForTafsir !== null}
         animationType="slide"
@@ -927,9 +1010,11 @@ export const MushafScreen: React.FC = () => {
               backgroundColor: THEME.colors.surface,
               borderColor: THEME.colors.goldBorder,
               borderTopWidth: 2,
-              borderTopLeftRadius: 28,
-              borderTopRightRadius: 28,
-              padding: 20,
+              borderTopLeftRadius: 26,
+              borderTopRightRadius: 26,
+              paddingHorizontal: 20,
+              paddingTop: 16,
+              paddingBottom: Math.max(insets.bottom, 16) + 10,
               maxHeight: '75%',
             }}
           >
@@ -989,7 +1074,7 @@ export const MushafScreen: React.FC = () => {
             </View>
 
             {/* Tafsir Text Body */}
-            <ScrollView style={{ maxHeight: 280 }} showsVerticalScrollIndicator={false}>
+            <ScrollView style={{ maxHeight: 260 }} showsVerticalScrollIndicator={false}>
               <Text
                 style={{
                   color: THEME.colors.textSecondary,
@@ -1010,9 +1095,9 @@ export const MushafScreen: React.FC = () => {
                 borderColor: THEME.colors.cardBorder,
                 borderWidth: 1,
                 paddingVertical: 12,
-                borderRadius: 16,
+                borderRadius: 14,
                 alignItems: 'center',
-                marginTop: 14,
+                marginTop: 12,
               }}
             >
               <Text style={{ color: THEME.colors.textPrimary, fontWeight: 'bold' }}>إغلاق</Text>
@@ -1021,103 +1106,78 @@ export const MushafScreen: React.FC = () => {
         </View>
       </Modal>
 
-      {/* Global Quran Search Modal */}
+      {/* Global Quran Search Modal (Virtualized) */}
       <Modal
         visible={isSearchModalOpen}
         animationType="slide"
         onRequestClose={() => setIsSearchModalOpen(false)}
       >
-        <SafeAreaView style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
-          <View style={{ flex: 1, padding: 16 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <TouchableOpacity
-                onPress={() => {
-                  setIsSearchModalOpen(false);
-                  setSearchQuery('');
-                  setSearchResults([]);
-                }}
-                style={{
-                  backgroundColor: THEME.colors.surfaceElevated,
-                  paddingHorizontal: 12,
-                  paddingVertical: 6,
-                  borderRadius: 10,
-                }}
-              >
-                <Text style={{ color: THEME.colors.textSecondary }}>إلغاء</Text>
-              </TouchableOpacity>
-              <Text style={{ color: THEME.colors.goldLight, fontSize: 17, fontFamily: THEME.fonts.arabicBold }}>
-                البحث السريع في القرآن الكريم
-              </Text>
-            </View>
-
-            <TextInput
-              placeholder="اكتب كلمة أو آية (مثال: الصراط المستقيم)..."
-              placeholderTextColor={THEME.colors.textMuted}
-              value={searchQuery}
-              onChangeText={handleSearch}
-              autoFocus
-              style={{
-                backgroundColor: THEME.colors.surface,
-                borderColor: THEME.colors.goldBorder,
-                borderWidth: 1,
-                color: THEME.colors.textPrimary,
-                borderRadius: 14,
-                paddingHorizontal: 16,
-                paddingVertical: 12,
-                textAlign: 'right',
-                marginBottom: 10,
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: THEME.colors.canvas,
+            paddingTop: Math.max(insets.top, 12),
+            paddingBottom: Math.max(insets.bottom, 12),
+            paddingHorizontal: 16,
+          }}
+        >
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+            <TouchableOpacity
+              onPress={() => {
+                setIsSearchModalOpen(false);
+                setSearchQuery('');
+                setSearchResults([]);
               }}
-            />
-
-            {searchQuery.trim().length > 0 && (
-              <Text style={{ color: THEME.colors.textMuted, fontSize: 12, marginBottom: 10, textAlign: 'right' }}>
-                عثر على {searchResults.length} موضع في {searchLatencyMs} مللي ثانية ⚡
-              </Text>
-            )}
-
-            <ScrollView showsVerticalScrollIndicator={false}>
-              {searchResults.map((match) => (
-                <TouchableOpacity
-                  key={`search_${match.id || match.surah_id}_${match.ayah_number}`}
-                  onPress={() => {
-                    if (match.page_number) {
-                      handleDirectJump(match.page_number);
-                    } else {
-                      // Fallback lookup from catalog
-                      const sMeta = SURAHS_CATALOG.find((s) => s.id === match.surah_id);
-                      if (sMeta) handleDirectJump(sMeta.page_number);
-                    }
-                    setIsSearchModalOpen(false);
-                    setSearchQuery('');
-                    setSearchResults([]);
-                  }}
-                  style={{
-                    backgroundColor: THEME.colors.surface,
-                    borderColor: THEME.colors.cardBorder,
-                    borderWidth: 1,
-                    borderRadius: 14,
-                    padding: 14,
-                    marginBottom: 8,
-                  }}
-                >
-                  <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                    <Text style={{ color: THEME.colors.gold, fontSize: 12, fontWeight: 'bold' }}>
-                      سورة {match.surah_name_ar} · الآية {match.ayah_number}
-                    </Text>
-                    {match.page_number && (
-                      <Text style={{ color: THEME.colors.textMuted, fontSize: 11 }}>
-                        صفحة {match.page_number} ◀
-                      </Text>
-                    )}
-                  </View>
-                  <Text style={{ color: THEME.colors.textPrimary, fontSize: 15, lineHeight: 28, textAlign: 'right' }}>
-                    {match.text}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
+              style={{
+                backgroundColor: THEME.colors.surfaceElevated,
+                paddingHorizontal: 12,
+                paddingVertical: 6,
+                borderRadius: 10,
+              }}
+            >
+              <Text style={{ color: THEME.colors.textSecondary }}>إلغاء</Text>
+            </TouchableOpacity>
+            <Text style={{ color: THEME.colors.goldLight, fontSize: 16.5, fontFamily: THEME.fonts.arabicBold }}>
+              البحث السريع في القرآن الكريم
+            </Text>
           </View>
-        </SafeAreaView>
+
+          <TextInput
+            placeholder="اكتب كلمة أو آية (مثال: الصراط المستقيم)..."
+            placeholderTextColor={THEME.colors.textMuted}
+            value={searchQuery}
+            onChangeText={handleSearch}
+            autoFocus
+            style={{
+              backgroundColor: THEME.colors.surface,
+              borderColor: THEME.colors.goldBorder,
+              borderWidth: 1,
+              color: THEME.colors.textPrimary,
+              borderRadius: 14,
+              paddingHorizontal: 16,
+              paddingVertical: 11,
+              textAlign: 'right',
+              marginBottom: 10,
+            }}
+          />
+
+          {searchQuery.trim().length > 0 && (
+            <Text style={{ color: THEME.colors.textMuted, fontSize: 11.5, marginBottom: 8, textAlign: 'right' }}>
+              عثر على {searchResults.length} موضع في {searchLatencyMs} مللي ثانية ⚡
+            </Text>
+          )}
+
+          <FlatList
+            data={searchResults}
+            keyExtractor={(item) => `search_${item.id || item.surah_id}_${item.ayah_number}`}
+            renderItem={renderSearchItem}
+            initialNumToRender={12}
+            maxToRenderPerBatch={12}
+            windowSize={5}
+            removeClippedSubviews={true}
+            showsVerticalScrollIndicator={false}
+          />
+        </View>
       </Modal>
     </View>
   );

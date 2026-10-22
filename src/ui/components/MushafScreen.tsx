@@ -796,7 +796,31 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
                           </Text>
                         </View>
 
-                        {/* Sacred Basmalah (Omitted for At-Tawbah 9 and Al-Fatihah 1) */}
+                        {/* Sacred Basmalah for Surah 1 (Al-Fatihah): Standalone on top with Ayah 1 */}
+                        {surahMeta.id === 1 && (
+                          <View style={{ alignItems: 'center', marginVertical: 10 }}>
+                            <Text
+                              style={{
+                                color: goldTone,
+                                fontSize: Math.round(fontSize * 1.15),
+                                fontFamily: THEME.fonts.quran,
+                                textAlign: 'center',
+                              }}
+                            >
+                              بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ{' '}
+                              <Text
+                                style={{
+                                  fontSize: Math.round(fontSize * 0.8),
+                                  fontWeight: 'bold',
+                                }}
+                              >
+                                ﴿١﴾
+                              </Text>
+                            </Text>
+                          </View>
+                        )}
+
+                        {/* Sacred Basmalah (For all other Surahs except At-Tawbah 9 and Al-Fatihah 1) */}
                         {surahMeta.id !== 9 && surahMeta.id !== 1 && (
                           <View style={{ alignItems: 'center', marginVertical: 6 }}>
                             <Text
@@ -821,11 +845,14 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
                         fontFamily: THEME.fonts.quran,
                         fontSize: fontSize,
                         lineHeight: Math.round(fontSize * 2.2),
-                        textAlign: 'justify',
+                        textAlign: sId === 1 ? 'center' : 'justify',
                         writingDirection: 'rtl',
                       }}
                     >
-                      {surahAyahsOnPage.map((ayah) => {
+                      {(sId === 1
+                        ? surahAyahsOnPage.filter((a) => a.ayah_number !== 1)
+                        : surahAyahsOnPage
+                      ).map((ayah) => {
                         const isMaskedAll = isHifdhActive && maskMode === 'ALL' && !revealedAyahs[ayah.id];
                         const isMaskedCues = isHifdhActive && maskMode === 'FIRST_LETTER' && !revealedAyahs[ayah.id];
 

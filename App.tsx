@@ -5,7 +5,6 @@ import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-cont
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as Location from 'expo-location';
-import { NavigationBar, setVisibilityAsync } from 'expo-navigation-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { THEME } from './src/ui/theme';
 import {
@@ -50,12 +49,17 @@ function AtharMainContent() {
     QuranVaultService.getInstance().initialize().catch(() => {});
   }, []);
 
-  // Android Full Screen Immersive Mode (Auto-hides native navigation buttons)
+  // Android Full Screen Immersive Mode (Safely guarded for current & future builds)
   useEffect(() => {
     if (Platform.OS === 'android') {
       try {
-        setVisibilityAsync('hidden').catch(() => {});
-      } catch (err) {}
+        const navBar = require('expo-navigation-bar');
+        if (navBar && typeof navBar.setVisibilityAsync === 'function') {
+          navBar.setVisibilityAsync('hidden').catch(() => {});
+        }
+      } catch (err) {
+        // ExpoNavigationBar native module not compiled into current dev APK binary yet
+      }
     }
   }, []);
 
@@ -141,7 +145,6 @@ function AtharMainContent() {
   return (
     <View style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
       <StatusBar style="light" />
-      <NavigationBar hidden={true} />
 
       {/* Top Sovereign App Header with Brand Logo (Respects System Status Bar & Camera Notch) */}
       <View

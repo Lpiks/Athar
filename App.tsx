@@ -280,6 +280,7 @@ function AtharMainContent() {
           <QiblaAdhkarScreen
             latitude={coords.latitude}
             longitude={coords.longitude}
+            onScroll={handleScroll}
           />
         )}
 

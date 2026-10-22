@@ -36,6 +36,9 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# local dataset cache
+.cache_datasets/
+
 # generated native folders
 /ios
 /android

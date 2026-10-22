@@ -4,6 +4,7 @@ import {
   TAJWEED_COLORS,
 } from '../tajweed';
 import { MistakeVaultService } from '../mistakeVault';
+import { QuranVoiceEngine } from '../../voice/quranVoiceEngine';
 import { AyahView } from '../../database/types';
 
 describe('Tajweed & Hifdh Engine Suite', () => {
@@ -93,6 +94,42 @@ describe('Tajweed & Hifdh Engine Suite', () => {
       expect(question?.current_ayah_text).toBe('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ');
       expect(question?.correct_next_ayah_text).toBe('الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ');
       expect(question?.options).toContain('الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ');
+    });
+  });
+
+  describe('Local Quran Voice & Mistake Recognition Engine', () => {
+    const voiceEngine = QuranVoiceEngine.getInstance();
+    const testAyah: AyahView = {
+      id: 1,
+      surah_id: 1,
+      ayah_number: 1,
+      juz_number: 1,
+      hizb_number: 1,
+      rub_number: 1,
+      page_number: 1,
+      text: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ',
+      riwaya: 'HAFS',
+      tafsir_muyassar: '',
+      tafsir_saadi: '',
+    };
+
+    it('evaluates a 100% accurate recitation correctly', () => {
+      const result = voiceEngine.evaluateRecitation('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', testAyah);
+      expect(result.isFullyCorrect).toBe(true);
+      expect(result.accuracyScore).toBe(100);
+      expect(result.missingWordsCount).toBe(0);
+      expect(result.mismatchedWordsCount).toBe(0);
+    });
+
+    it('detects missing words and automatically logs them into mistake vault', () => {
+      // User forgot "الرَّحِيمِ"
+      const result = voiceEngine.evaluateRecitation('بِسْمِ اللَّهِ الرَّحْمَٰنِ', testAyah);
+      expect(result.isFullyCorrect).toBe(false);
+      expect(result.missingWordsCount).toBe(1);
+      expect(result.wordResults.some((w) => w.status === 'MISSING')).toBe(true);
+
+      const vault = MistakeVaultService.getInstance();
+      expect(vault.isFlagged(1, 1, 'الرَّحِيمِ')).toBe(true);
     });
   });
 });

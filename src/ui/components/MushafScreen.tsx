@@ -37,6 +37,7 @@ import { MistakeVaultService } from '../../core/memorization/mistakeVault';
 import { TajweedInspectorModal } from './TajweedInspectorModal';
 import { HifdhQuizModal } from './HifdhQuizModal';
 import { MistakeVaultModal } from './MistakeVaultModal';
+import { VoiceTasmeeModal } from './VoiceTasmeeModal';
 
 function getFirstLetterCues(text: string): string {
   return text
@@ -105,6 +106,8 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
 
   const [isQuizModalOpen, setIsQuizModalOpen] = useState<boolean>(false);
   const [isMistakeVaultOpen, setIsMistakeVaultOpen] = useState<boolean>(false);
+  const [isVoiceModalOpen, setIsVoiceModalOpen] = useState<boolean>(false);
+  const [voiceTargetAyah, setVoiceTargetAyah] = useState<AyahView | null>(null);
   const mistakeVault = MistakeVaultService.getInstance();
 
   // Reset revealed ayahs when flipping page
@@ -672,7 +675,31 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
               </TouchableOpacity>
             </View>
 
-            {/* Bottom row: Quiz & Mistake Vault buttons */}
+            {/* Action buttons: Voice Tasmee, Quiz & Mistake Vault */}
+            <TouchableOpacity
+              onPress={() => {
+                const target = pageAyahs[0] || null;
+                setVoiceTargetAyah(target);
+                setIsVoiceModalOpen(true);
+              }}
+              style={{
+                backgroundColor: 'rgba(16, 185, 129, 0.18)',
+                borderColor: THEME.colors.emeraldLight,
+                borderWidth: 1.2,
+                borderRadius: 12,
+                paddingVertical: 7,
+                alignItems: 'center',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginBottom: 6,
+              }}
+            >
+              <Ionicons name="mic" size={15} color={THEME.colors.emeraldLight} style={{ marginRight: 6 }} />
+              <Text style={{ color: THEME.colors.emeraldLight, fontFamily: THEME.fonts.arabicBold, fontSize: 12 }}>
+                🎙️ التسميع الصوتي المحلي (فحص النطق والأخطاء)
+              </Text>
+            </TouchableOpacity>
+
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <TouchableOpacity
                 onPress={() => setIsQuizModalOpen(true)}
@@ -1577,6 +1604,15 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
           handleDirectJump(p);
         }}
       />
+
+      {/* Local Voice Tasmee Modal */}
+      {voiceTargetAyah && (
+        <VoiceTasmeeModal
+          visible={isVoiceModalOpen}
+          onClose={() => setIsVoiceModalOpen(false)}
+          targetAyah={voiceTargetAyah}
+        />
+      )}
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import {
   View,
   Text,
@@ -33,6 +33,7 @@ export interface MushafScreenProps {
 
 export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
   const insets = useSafeAreaInsets();
+  const pageScrollRef = useRef<ScrollView>(null);
 
   // Riwaya: Warsh vs Hafs
   const [riwaya, setRiwaya] = useState<Riwaya>('WARSH');
@@ -140,21 +141,29 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
     } catch {}
   };
 
+  // Auto-scroll to top whenever page changes so reader immediately sees the first line
+  useEffect(() => {
+    pageScrollRef.current?.scrollTo({ y: 0, animated: false });
+  }, [currentPage]);
+
   // Page Navigation Handlers
   const goToNextPage = () => {
     if (currentPage < 604) {
+      pageScrollRef.current?.scrollTo({ y: 0, animated: false });
       setCurrentPage((p) => p + 1);
     }
   };
 
   const goToPrevPage = () => {
     if (currentPage > 1) {
+      pageScrollRef.current?.scrollTo({ y: 0, animated: false });
       setCurrentPage((p) => p - 1);
     }
   };
 
   const handleDirectJump = (targetPage: number) => {
     if (targetPage >= 1 && targetPage <= 604) {
+      pageScrollRef.current?.scrollTo({ y: 0, animated: false });
       setCurrentPage(targetPage);
       setIsJumpModalOpen(false);
       setIsIndexModalOpen(false);
@@ -485,6 +494,7 @@ export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
 
       {/* Medina Mushaf Book Page (إطار الصفحة الملكي) */}
       <ScrollView
+        ref={pageScrollRef}
         showsVerticalScrollIndicator={false}
         onScroll={onScroll}
         scrollEventThrottle={16}

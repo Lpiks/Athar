@@ -1,7 +1,21 @@
 import './global.css';
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, Image, Platform } from 'react-native';
-import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  ActivityIndicator,
+  Image,
+  Animated,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+} from 'react-native';
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+  useSafeAreaInsets,
+} from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as Location from 'expo-location';
@@ -36,6 +50,58 @@ function AtharMainContent() {
   const [activeTab, setActiveTab] = useState<AppTab>('prayer');
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
   const [coords, setCoords] = useState(DEFAULT_COORDS);
+
+  // Smooth Scroll-to-Hide Animation for Bottom Navigation Dock
+  const navAnim = useRef(new Animated.Value(0)).current;
+  const isNavHiddenRef = useRef(false);
+
+  const hideNav = useCallback(() => {
+    if (!isNavHiddenRef.current) {
+      isNavHiddenRef.current = true;
+      Animated.timing(navAnim, {
+        toValue: 120,
+        duration: 220,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [navAnim]);
+
+  const showNav = useCallback(() => {
+    if (isNavHiddenRef.current) {
+      isNavHiddenRef.current = false;
+      Animated.timing(navAnim, {
+        toValue: 0,
+        duration: 220,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [navAnim]);
+
+  const lastScrollY = useRef(0);
+  const handleScroll = useCallback(
+    (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+      const y = event.nativeEvent.contentOffset.y;
+      const diff = y - lastScrollY.current;
+
+      if (y <= 12) {
+        showNav();
+      } else if (diff > 10) {
+        // Scrolling down -> smoothly hide the navigation dock for full-screen reading
+        hideNav();
+      } else if (diff < -10) {
+        // Scrolling up -> smoothly restore navigation dock
+        showNav();
+      }
+      lastScrollY.current = y;
+    },
+    [hideNav, showNav]
+  );
+
+  // Tab switcher with instant nav restoration
+  const switchTab = (tab: AppTab) => {
+    showNav();
+    setActiveTab(tab);
+  };
 
   // Load authentic Quranic and Arabic calligraphy fonts
   const [fontsLoaded] = useFonts({
@@ -132,7 +198,7 @@ function AtharMainContent() {
     <View style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
       <StatusBar style="light" />
 
-      {/* Top Sovereign App Header with Brand Logo (Respects System Status Bar & Camera Notch) */}
+      {/* Top Sovereign App Header with Brand Logo */}
       <View
         style={{
           backgroundColor: THEME.colors.canvas,
@@ -191,6 +257,8 @@ function AtharMainContent() {
         {activeTab === 'prayer' && (
           <ScrollView
             showsVerticalScrollIndicator={false}
+            onScroll={handleScroll}
+            scrollEventThrottle={16}
             contentContainerStyle={{ padding: 16, paddingBottom: insets.bottom + 90 }}
           >
             <PrayerHeroCard
@@ -206,7 +274,7 @@ function AtharMainContent() {
           </ScrollView>
         )}
 
-        {activeTab === 'quran' && <MushafScreen />}
+        {activeTab === 'quran' && <MushafScreen onScroll={handleScroll} />}
 
         {activeTab === 'qibla' && (
           <QiblaAdhkarScreen
@@ -218,8 +286,8 @@ function AtharMainContent() {
         {activeTab === 'settings' && <KhatmahSettingsScreen />}
       </View>
 
-      {/* Bottom Floating Glassmorphic Navigation Dock (Respects Android Gesture Bar) */}
-      <View
+      {/* Bottom Floating Glassmorphic Navigation Dock with Scroll-to-Hide Animation */}
+      <Animated.View
         style={{
           position: 'absolute',
           bottom: Math.max(insets.bottom, 10),
@@ -234,12 +302,13 @@ function AtharMainContent() {
           justifyContent: 'space-around',
           alignItems: 'center',
           paddingHorizontal: 6,
+          transform: [{ translateY: navAnim }],
           ...THEME.shadows.card,
         }}
       >
         {/* Tab 1: Prayer */}
         <TouchableOpacity
-          onPress={() => setActiveTab('prayer')}
+          onPress={() => switchTab('prayer')}
           style={{
             flex: 1,
             alignItems: 'center',
@@ -283,7 +352,7 @@ function AtharMainContent() {
 
         {/* Tab 2: Quran */}
         <TouchableOpacity
-          onPress={() => setActiveTab('quran')}
+          onPress={() => switchTab('quran')}
           style={{
             flex: 1,
             alignItems: 'center',
@@ -327,7 +396,7 @@ function AtharMainContent() {
 
         {/* Tab 3: Qibla & Adhkar */}
         <TouchableOpacity
-          onPress={() => setActiveTab('qibla')}
+          onPress={() => switchTab('qibla')}
           style={{
             flex: 1,
             alignItems: 'center',
@@ -371,7 +440,7 @@ function AtharMainContent() {
 
         {/* Tab 4: Khatmah & Settings */}
         <TouchableOpacity
-          onPress={() => setActiveTab('settings')}
+          onPress={() => switchTab('settings')}
           style={{
             flex: 1,
             alignItems: 'center',
@@ -412,14 +481,17 @@ function AtharMainContent() {
             />
           )}
         </TouchableOpacity>
-      </View>
+      </Animated.View>
     </View>
   );
 }
 
 export default function App() {
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider
+      initialMetrics={initialWindowMetrics}
+      style={{ flex: 1, backgroundColor: THEME.colors.canvas }}
+    >
       <AtharMainContent />
     </SafeAreaProvider>
   );

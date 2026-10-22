@@ -8,6 +8,8 @@ import {
   FlatList,
   Modal,
   Share,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { THEME } from '../theme';
@@ -25,7 +27,11 @@ import {
   PageMeta,
 } from '../../core/database';
 
-export const MushafScreen: React.FC = () => {
+export interface MushafScreenProps {
+  onScroll?: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+}
+
+export const MushafScreen: React.FC<MushafScreenProps> = ({ onScroll }) => {
   const insets = useSafeAreaInsets();
 
   // Riwaya: Warsh vs Hafs
@@ -480,6 +486,8 @@ export const MushafScreen: React.FC = () => {
       {/* Medina Mushaf Book Page (إطار الصفحة الملكي) */}
       <ScrollView
         showsVerticalScrollIndicator={false}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
         contentContainerStyle={{ paddingBottom: insets.bottom + 105 }}
       >
         <View

@@ -34,21 +34,52 @@ export class QuranVaultService {
 
   /**
    * Initializes the database connection and configures hardened SQLite pragmas.
+   * Auto-extracts the pre-packaged 49MB Quran & Tafsir vault asset on mobile if not present.
    */
   public async initialize(): Promise<void> {
     if (this.db) return;
     if (this.initPromise) return this.initPromise;
 
     this.initPromise = (async () => {
-      this.db = await SQLite.openDatabaseAsync(QuranVaultService.DB_NAME);
+      let isReady = false;
+      try {
+        this.db = await SQLite.openDatabaseAsync(QuranVaultService.DB_NAME);
+        const check = await this.db.getFirstAsync<{ count: number }>(
+          "SELECT count(*) as count FROM sqlite_master WHERE type='table' AND name='surahs';"
+        );
+        if (check && check.count > 0) {
+          isReady = true;
+        }
+      } catch {
+        isReady = false;
+      }
+
+      if (!isReady) {
+        if (this.db) {
+          try {
+            await this.db.closeAsync();
+          } catch {}
+          this.db = null;
+        }
+
+        const dbAsset = require('../../../assets/databases/athar_vault.db');
+        await SQLite.importDatabaseFromAssetAsync(QuranVaultService.DB_NAME, {
+          assetId: dbAsset,
+          forceOverwrite: true,
+        });
+
+        this.db = await SQLite.openDatabaseAsync(QuranVaultService.DB_NAME);
+      }
 
       // Execute performance and concurrency pragmas
-      await this.db.execAsync(`
-        PRAGMA journal_mode = WAL;
-        PRAGMA synchronous = NORMAL;
-        PRAGMA cache_size = -64000;
-        PRAGMA temp_store = MEMORY;
-      `);
+      if (this.db) {
+        await this.db.execAsync(`
+          PRAGMA journal_mode = WAL;
+          PRAGMA synchronous = NORMAL;
+          PRAGMA cache_size = -64000;
+          PRAGMA temp_store = MEMORY;
+        `);
+      }
     })();
 
     await this.initPromise;

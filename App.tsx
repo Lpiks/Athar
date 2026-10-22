@@ -1,10 +1,11 @@
 import './global.css';
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, Image, Platform } from 'react-native';
 import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as Location from 'expo-location';
+import { NavigationBar, setVisibilityAsync } from 'expo-navigation-bar';
 import { Ionicons } from '@expo/vector-icons';
 import { THEME } from './src/ui/theme';
 import {
@@ -47,6 +48,15 @@ function AtharMainContent() {
   // Pre-warm Quran & Tafsir SQLite database in the background on startup
   useEffect(() => {
     QuranVaultService.getInstance().initialize().catch(() => {});
+  }, []);
+
+  // Android Full Screen Immersive Mode (Auto-hides native navigation buttons)
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      try {
+        setVisibilityAsync('hidden').catch(() => {});
+      } catch (err) {}
+    }
   }, []);
 
   // 1-second clock heartbeat
@@ -131,6 +141,7 @@ function AtharMainContent() {
   return (
     <View style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
       <StatusBar style="light" />
+      <NavigationBar hidden={true} />
 
       {/* Top Sovereign App Header with Brand Logo (Respects System Status Bar & Camera Notch) */}
       <View

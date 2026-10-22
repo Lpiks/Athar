@@ -3,20 +3,29 @@
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
+    "adhan": "^4.4.6",
     "expo": "~58.0.17",
     "expo-status-bar": "~58.0.4",
+    "nativewind": "^4.2.7",
     "react": "19.3.0",
-    "react-native": "0.88.0"
+    "react-native": "0.88.0",
+    "react-native-reanimated": "^4.7.1",
+    "react-native-safe-area-context": "^5.10.1",
+    "tailwindcss": "^3.4.19"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/react": "~19.3.0",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.15",
     "typescript": "~6.0.3"
   },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "test": "jest"
   },
   "private": true
 }

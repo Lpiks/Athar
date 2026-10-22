@@ -1,0 +1,6704 @@
+[
+  {
+    "page": 1,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      1
+    ],
+    "start_key": "1:1",
+    "end_key": "1:7",
+    "total_verses": 7
+  },
+  {
+    "page": 2,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:1",
+    "end_key": "2:5",
+    "total_verses": 5
+  },
+  {
+    "page": 3,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:6",
+    "end_key": "2:16",
+    "total_verses": 11
+  },
+  {
+    "page": 4,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:17",
+    "end_key": "2:24",
+    "total_verses": 8
+  },
+  {
+    "page": 5,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:25",
+    "end_key": "2:29",
+    "total_verses": 5
+  },
+  {
+    "page": 6,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:30",
+    "end_key": "2:37",
+    "total_verses": 8
+  },
+  {
+    "page": 7,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:38",
+    "end_key": "2:48",
+    "total_verses": 11
+  },
+  {
+    "page": 8,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:49",
+    "end_key": "2:57",
+    "total_verses": 9
+  },
+  {
+    "page": 9,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:58",
+    "end_key": "2:61",
+    "total_verses": 4
+  },
+  {
+    "page": 10,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:62",
+    "end_key": "2:69",
+    "total_verses": 8
+  },
+  {
+    "page": 11,
+    "juz": 1,
+    "hizb": 1,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:70",
+    "end_key": "2:76",
+    "total_verses": 7
+  },
+  {
+    "page": 12,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:77",
+    "end_key": "2:83",
+    "total_verses": 7
+  },
+  {
+    "page": 13,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:84",
+    "end_key": "2:88",
+    "total_verses": 5
+  },
+  {
+    "page": 14,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:89",
+    "end_key": "2:93",
+    "total_verses": 5
+  },
+  {
+    "page": 15,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:94",
+    "end_key": "2:101",
+    "total_verses": 8
+  },
+  {
+    "page": 16,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:102",
+    "end_key": "2:105",
+    "total_verses": 4
+  },
+  {
+    "page": 17,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:106",
+    "end_key": "2:112",
+    "total_verses": 7
+  },
+  {
+    "page": 18,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:113",
+    "end_key": "2:119",
+    "total_verses": 7
+  },
+  {
+    "page": 19,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:120",
+    "end_key": "2:126",
+    "total_verses": 7
+  },
+  {
+    "page": 20,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:127",
+    "end_key": "2:134",
+    "total_verses": 8
+  },
+  {
+    "page": 21,
+    "juz": 1,
+    "hizb": 2,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:135",
+    "end_key": "2:141",
+    "total_verses": 7
+  },
+  {
+    "page": 22,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:142",
+    "end_key": "2:145",
+    "total_verses": 4
+  },
+  {
+    "page": 23,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:146",
+    "end_key": "2:153",
+    "total_verses": 8
+  },
+  {
+    "page": 24,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:154",
+    "end_key": "2:163",
+    "total_verses": 10
+  },
+  {
+    "page": 25,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:164",
+    "end_key": "2:169",
+    "total_verses": 6
+  },
+  {
+    "page": 26,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:170",
+    "end_key": "2:176",
+    "total_verses": 7
+  },
+  {
+    "page": 27,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:177",
+    "end_key": "2:181",
+    "total_verses": 5
+  },
+  {
+    "page": 28,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:182",
+    "end_key": "2:186",
+    "total_verses": 5
+  },
+  {
+    "page": 29,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:187",
+    "end_key": "2:190",
+    "total_verses": 4
+  },
+  {
+    "page": 30,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:191",
+    "end_key": "2:196",
+    "total_verses": 6
+  },
+  {
+    "page": 31,
+    "juz": 2,
+    "hizb": 3,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:197",
+    "end_key": "2:202",
+    "total_verses": 6
+  },
+  {
+    "page": 32,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:203",
+    "end_key": "2:210",
+    "total_verses": 8
+  },
+  {
+    "page": 33,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:211",
+    "end_key": "2:215",
+    "total_verses": 5
+  },
+  {
+    "page": 34,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:216",
+    "end_key": "2:219",
+    "total_verses": 4
+  },
+  {
+    "page": 35,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:220",
+    "end_key": "2:224",
+    "total_verses": 5
+  },
+  {
+    "page": 36,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:225",
+    "end_key": "2:230",
+    "total_verses": 6
+  },
+  {
+    "page": 37,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:231",
+    "end_key": "2:233",
+    "total_verses": 3
+  },
+  {
+    "page": 38,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:234",
+    "end_key": "2:237",
+    "total_verses": 4
+  },
+  {
+    "page": 39,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:238",
+    "end_key": "2:245",
+    "total_verses": 8
+  },
+  {
+    "page": 40,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:246",
+    "end_key": "2:248",
+    "total_verses": 3
+  },
+  {
+    "page": 41,
+    "juz": 2,
+    "hizb": 4,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:249",
+    "end_key": "2:252",
+    "total_verses": 4
+  },
+  {
+    "page": 42,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:253",
+    "end_key": "2:256",
+    "total_verses": 4
+  },
+  {
+    "page": 43,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:257",
+    "end_key": "2:259",
+    "total_verses": 3
+  },
+  {
+    "page": 44,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:260",
+    "end_key": "2:264",
+    "total_verses": 5
+  },
+  {
+    "page": 45,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:265",
+    "end_key": "2:269",
+    "total_verses": 5
+  },
+  {
+    "page": 46,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:270",
+    "end_key": "2:274",
+    "total_verses": 5
+  },
+  {
+    "page": 47,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:275",
+    "end_key": "2:281",
+    "total_verses": 7
+  },
+  {
+    "page": 48,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:282",
+    "end_key": "2:282",
+    "total_verses": 1
+  },
+  {
+    "page": 49,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      2
+    ],
+    "start_key": "2:283",
+    "end_key": "2:286",
+    "total_verses": 4
+  },
+  {
+    "page": 50,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:1",
+    "end_key": "3:9",
+    "total_verses": 9
+  },
+  {
+    "page": 51,
+    "juz": 3,
+    "hizb": 5,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:10",
+    "end_key": "3:15",
+    "total_verses": 6
+  },
+  {
+    "page": 52,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:16",
+    "end_key": "3:22",
+    "total_verses": 7
+  },
+  {
+    "page": 53,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:23",
+    "end_key": "3:29",
+    "total_verses": 7
+  },
+  {
+    "page": 54,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:30",
+    "end_key": "3:37",
+    "total_verses": 8
+  },
+  {
+    "page": 55,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:38",
+    "end_key": "3:45",
+    "total_verses": 8
+  },
+  {
+    "page": 56,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:46",
+    "end_key": "3:52",
+    "total_verses": 7
+  },
+  {
+    "page": 57,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:53",
+    "end_key": "3:61",
+    "total_verses": 9
+  },
+  {
+    "page": 58,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:62",
+    "end_key": "3:70",
+    "total_verses": 9
+  },
+  {
+    "page": 59,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:71",
+    "end_key": "3:77",
+    "total_verses": 7
+  },
+  {
+    "page": 60,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:78",
+    "end_key": "3:83",
+    "total_verses": 6
+  },
+  {
+    "page": 61,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:84",
+    "end_key": "3:91",
+    "total_verses": 8
+  },
+  {
+    "page": 62,
+    "juz": 3,
+    "hizb": 6,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:92",
+    "end_key": "3:100",
+    "total_verses": 9
+  },
+  {
+    "page": 63,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:101",
+    "end_key": "3:108",
+    "total_verses": 8
+  },
+  {
+    "page": 64,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:109",
+    "end_key": "3:115",
+    "total_verses": 7
+  },
+  {
+    "page": 65,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:116",
+    "end_key": "3:121",
+    "total_verses": 6
+  },
+  {
+    "page": 66,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:122",
+    "end_key": "3:132",
+    "total_verses": 11
+  },
+  {
+    "page": 67,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:133",
+    "end_key": "3:140",
+    "total_verses": 8
+  },
+  {
+    "page": 68,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:141",
+    "end_key": "3:148",
+    "total_verses": 8
+  },
+  {
+    "page": 69,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:149",
+    "end_key": "3:153",
+    "total_verses": 5
+  },
+  {
+    "page": 70,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:154",
+    "end_key": "3:157",
+    "total_verses": 4
+  },
+  {
+    "page": 71,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:158",
+    "end_key": "3:165",
+    "total_verses": 8
+  },
+  {
+    "page": 72,
+    "juz": 4,
+    "hizb": 7,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:166",
+    "end_key": "3:173",
+    "total_verses": 8
+  },
+  {
+    "page": 73,
+    "juz": 4,
+    "hizb": 8,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:174",
+    "end_key": "3:180",
+    "total_verses": 7
+  },
+  {
+    "page": 74,
+    "juz": 4,
+    "hizb": 8,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:181",
+    "end_key": "3:186",
+    "total_verses": 6
+  },
+  {
+    "page": 75,
+    "juz": 4,
+    "hizb": 8,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:187",
+    "end_key": "3:194",
+    "total_verses": 8
+  },
+  {
+    "page": 76,
+    "juz": 4,
+    "hizb": 8,
+    "surah_ids": [
+      3
+    ],
+    "start_key": "3:195",
+    "end_key": "3:200",
+    "total_verses": 6
+  },
+  {
+    "page": 77,
+    "juz": 4,
+    "hizb": 8,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:1",
+    "end_key": "4:6",
+    "total_verses": 6
+  },
+  {
+    "page": 78,
+    "juz": 4,
+    "hizb": 8,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:7",
+    "end_key": "4:11",
+    "total_verses": 5
+  },
+  {
+    "page": 79,
+    "juz": 4,
+    "hizb": 8,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:12",
+    "end_key": "4:14",
+    "total_verses": 3
+  },
+  {
+    "page": 80,
+    "juz": 4,
+    "hizb": 8,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:15",
+    "end_key": "4:19",
+    "total_verses": 5
+  },
+  {
+    "page": 81,
+    "juz": 4,
+    "hizb": 8,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:20",
+    "end_key": "4:23",
+    "total_verses": 4
+  },
+  {
+    "page": 82,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:24",
+    "end_key": "4:26",
+    "total_verses": 3
+  },
+  {
+    "page": 83,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:27",
+    "end_key": "4:33",
+    "total_verses": 7
+  },
+  {
+    "page": 84,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:34",
+    "end_key": "4:37",
+    "total_verses": 4
+  },
+  {
+    "page": 85,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:38",
+    "end_key": "4:44",
+    "total_verses": 7
+  },
+  {
+    "page": 86,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:45",
+    "end_key": "4:51",
+    "total_verses": 7
+  },
+  {
+    "page": 87,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:52",
+    "end_key": "4:59",
+    "total_verses": 8
+  },
+  {
+    "page": 88,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:60",
+    "end_key": "4:65",
+    "total_verses": 6
+  },
+  {
+    "page": 89,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:66",
+    "end_key": "4:74",
+    "total_verses": 9
+  },
+  {
+    "page": 90,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:75",
+    "end_key": "4:79",
+    "total_verses": 5
+  },
+  {
+    "page": 91,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:80",
+    "end_key": "4:86",
+    "total_verses": 7
+  },
+  {
+    "page": 92,
+    "juz": 5,
+    "hizb": 9,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:87",
+    "end_key": "4:91",
+    "total_verses": 5
+  },
+  {
+    "page": 93,
+    "juz": 5,
+    "hizb": 10,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:92",
+    "end_key": "4:94",
+    "total_verses": 3
+  },
+  {
+    "page": 94,
+    "juz": 5,
+    "hizb": 10,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:95",
+    "end_key": "4:101",
+    "total_verses": 7
+  },
+  {
+    "page": 95,
+    "juz": 5,
+    "hizb": 10,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:102",
+    "end_key": "4:105",
+    "total_verses": 4
+  },
+  {
+    "page": 96,
+    "juz": 5,
+    "hizb": 10,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:106",
+    "end_key": "4:113",
+    "total_verses": 8
+  },
+  {
+    "page": 97,
+    "juz": 5,
+    "hizb": 10,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:114",
+    "end_key": "4:121",
+    "total_verses": 8
+  },
+  {
+    "page": 98,
+    "juz": 5,
+    "hizb": 10,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:122",
+    "end_key": "4:127",
+    "total_verses": 6
+  },
+  {
+    "page": 99,
+    "juz": 5,
+    "hizb": 10,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:128",
+    "end_key": "4:134",
+    "total_verses": 7
+  },
+  {
+    "page": 100,
+    "juz": 5,
+    "hizb": 10,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:135",
+    "end_key": "4:140",
+    "total_verses": 6
+  },
+  {
+    "page": 101,
+    "juz": 5,
+    "hizb": 10,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:141",
+    "end_key": "4:147",
+    "total_verses": 7
+  },
+  {
+    "page": 102,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:148",
+    "end_key": "4:154",
+    "total_verses": 7
+  },
+  {
+    "page": 103,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:155",
+    "end_key": "4:162",
+    "total_verses": 8
+  },
+  {
+    "page": 104,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:163",
+    "end_key": "4:170",
+    "total_verses": 8
+  },
+  {
+    "page": 105,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      4
+    ],
+    "start_key": "4:171",
+    "end_key": "4:175",
+    "total_verses": 5
+  },
+  {
+    "page": 106,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      4,
+      5
+    ],
+    "start_key": "4:176",
+    "end_key": "5:2",
+    "total_verses": 3
+  },
+  {
+    "page": 107,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:3",
+    "end_key": "5:5",
+    "total_verses": 3
+  },
+  {
+    "page": 108,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:6",
+    "end_key": "5:9",
+    "total_verses": 4
+  },
+  {
+    "page": 109,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:10",
+    "end_key": "5:13",
+    "total_verses": 4
+  },
+  {
+    "page": 110,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:14",
+    "end_key": "5:17",
+    "total_verses": 4
+  },
+  {
+    "page": 111,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:18",
+    "end_key": "5:23",
+    "total_verses": 6
+  },
+  {
+    "page": 112,
+    "juz": 6,
+    "hizb": 11,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:24",
+    "end_key": "5:31",
+    "total_verses": 8
+  },
+  {
+    "page": 113,
+    "juz": 6,
+    "hizb": 12,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:32",
+    "end_key": "5:36",
+    "total_verses": 5
+  },
+  {
+    "page": 114,
+    "juz": 6,
+    "hizb": 12,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:37",
+    "end_key": "5:41",
+    "total_verses": 5
+  },
+  {
+    "page": 115,
+    "juz": 6,
+    "hizb": 12,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:42",
+    "end_key": "5:45",
+    "total_verses": 4
+  },
+  {
+    "page": 116,
+    "juz": 6,
+    "hizb": 12,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:46",
+    "end_key": "5:50",
+    "total_verses": 5
+  },
+  {
+    "page": 117,
+    "juz": 6,
+    "hizb": 12,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:51",
+    "end_key": "5:57",
+    "total_verses": 7
+  },
+  {
+    "page": 118,
+    "juz": 6,
+    "hizb": 12,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:58",
+    "end_key": "5:64",
+    "total_verses": 7
+  },
+  {
+    "page": 119,
+    "juz": 6,
+    "hizb": 12,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:65",
+    "end_key": "5:70",
+    "total_verses": 6
+  },
+  {
+    "page": 120,
+    "juz": 6,
+    "hizb": 12,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:71",
+    "end_key": "5:76",
+    "total_verses": 6
+  },
+  {
+    "page": 121,
+    "juz": 6,
+    "hizb": 12,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:77",
+    "end_key": "5:82",
+    "total_verses": 6
+  },
+  {
+    "page": 122,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:83",
+    "end_key": "5:89",
+    "total_verses": 7
+  },
+  {
+    "page": 123,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:90",
+    "end_key": "5:95",
+    "total_verses": 6
+  },
+  {
+    "page": 124,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:96",
+    "end_key": "5:103",
+    "total_verses": 8
+  },
+  {
+    "page": 125,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:104",
+    "end_key": "5:108",
+    "total_verses": 5
+  },
+  {
+    "page": 126,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:109",
+    "end_key": "5:113",
+    "total_verses": 5
+  },
+  {
+    "page": 127,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      5
+    ],
+    "start_key": "5:114",
+    "end_key": "5:120",
+    "total_verses": 7
+  },
+  {
+    "page": 128,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:1",
+    "end_key": "6:8",
+    "total_verses": 8
+  },
+  {
+    "page": 129,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:9",
+    "end_key": "6:18",
+    "total_verses": 10
+  },
+  {
+    "page": 130,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:19",
+    "end_key": "6:27",
+    "total_verses": 9
+  },
+  {
+    "page": 131,
+    "juz": 7,
+    "hizb": 13,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:28",
+    "end_key": "6:35",
+    "total_verses": 8
+  },
+  {
+    "page": 132,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:36",
+    "end_key": "6:44",
+    "total_verses": 9
+  },
+  {
+    "page": 133,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:45",
+    "end_key": "6:52",
+    "total_verses": 8
+  },
+  {
+    "page": 134,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:53",
+    "end_key": "6:59",
+    "total_verses": 7
+  },
+  {
+    "page": 135,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:60",
+    "end_key": "6:68",
+    "total_verses": 9
+  },
+  {
+    "page": 136,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:69",
+    "end_key": "6:73",
+    "total_verses": 5
+  },
+  {
+    "page": 137,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:74",
+    "end_key": "6:81",
+    "total_verses": 8
+  },
+  {
+    "page": 138,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:82",
+    "end_key": "6:90",
+    "total_verses": 9
+  },
+  {
+    "page": 139,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:91",
+    "end_key": "6:94",
+    "total_verses": 4
+  },
+  {
+    "page": 140,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:95",
+    "end_key": "6:101",
+    "total_verses": 7
+  },
+  {
+    "page": 141,
+    "juz": 7,
+    "hizb": 14,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:102",
+    "end_key": "6:110",
+    "total_verses": 9
+  },
+  {
+    "page": 142,
+    "juz": 8,
+    "hizb": 15,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:111",
+    "end_key": "6:118",
+    "total_verses": 8
+  },
+  {
+    "page": 143,
+    "juz": 8,
+    "hizb": 15,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:119",
+    "end_key": "6:124",
+    "total_verses": 6
+  },
+  {
+    "page": 144,
+    "juz": 8,
+    "hizb": 15,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:125",
+    "end_key": "6:131",
+    "total_verses": 7
+  },
+  {
+    "page": 145,
+    "juz": 8,
+    "hizb": 15,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:132",
+    "end_key": "6:137",
+    "total_verses": 6
+  },
+  {
+    "page": 146,
+    "juz": 8,
+    "hizb": 15,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:138",
+    "end_key": "6:142",
+    "total_verses": 5
+  },
+  {
+    "page": 147,
+    "juz": 8,
+    "hizb": 15,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:143",
+    "end_key": "6:146",
+    "total_verses": 4
+  },
+  {
+    "page": 148,
+    "juz": 8,
+    "hizb": 15,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:147",
+    "end_key": "6:151",
+    "total_verses": 5
+  },
+  {
+    "page": 149,
+    "juz": 8,
+    "hizb": 15,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:152",
+    "end_key": "6:157",
+    "total_verses": 6
+  },
+  {
+    "page": 150,
+    "juz": 8,
+    "hizb": 15,
+    "surah_ids": [
+      6
+    ],
+    "start_key": "6:158",
+    "end_key": "6:165",
+    "total_verses": 8
+  },
+  {
+    "page": 151,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:1",
+    "end_key": "7:11",
+    "total_verses": 11
+  },
+  {
+    "page": 152,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:12",
+    "end_key": "7:22",
+    "total_verses": 11
+  },
+  {
+    "page": 153,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:23",
+    "end_key": "7:30",
+    "total_verses": 8
+  },
+  {
+    "page": 154,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:31",
+    "end_key": "7:37",
+    "total_verses": 7
+  },
+  {
+    "page": 155,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:38",
+    "end_key": "7:43",
+    "total_verses": 6
+  },
+  {
+    "page": 156,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:44",
+    "end_key": "7:51",
+    "total_verses": 8
+  },
+  {
+    "page": 157,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:52",
+    "end_key": "7:57",
+    "total_verses": 6
+  },
+  {
+    "page": 158,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:58",
+    "end_key": "7:67",
+    "total_verses": 10
+  },
+  {
+    "page": 159,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:68",
+    "end_key": "7:73",
+    "total_verses": 6
+  },
+  {
+    "page": 160,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:74",
+    "end_key": "7:81",
+    "total_verses": 8
+  },
+  {
+    "page": 161,
+    "juz": 8,
+    "hizb": 16,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:82",
+    "end_key": "7:87",
+    "total_verses": 6
+  },
+  {
+    "page": 162,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:88",
+    "end_key": "7:95",
+    "total_verses": 8
+  },
+  {
+    "page": 163,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:96",
+    "end_key": "7:104",
+    "total_verses": 9
+  },
+  {
+    "page": 164,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:105",
+    "end_key": "7:120",
+    "total_verses": 16
+  },
+  {
+    "page": 165,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:121",
+    "end_key": "7:130",
+    "total_verses": 10
+  },
+  {
+    "page": 166,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:131",
+    "end_key": "7:137",
+    "total_verses": 7
+  },
+  {
+    "page": 167,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:138",
+    "end_key": "7:143",
+    "total_verses": 6
+  },
+  {
+    "page": 168,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:144",
+    "end_key": "7:149",
+    "total_verses": 6
+  },
+  {
+    "page": 169,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:150",
+    "end_key": "7:155",
+    "total_verses": 6
+  },
+  {
+    "page": 170,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:156",
+    "end_key": "7:159",
+    "total_verses": 4
+  },
+  {
+    "page": 171,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:160",
+    "end_key": "7:163",
+    "total_verses": 4
+  },
+  {
+    "page": 172,
+    "juz": 9,
+    "hizb": 17,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:164",
+    "end_key": "7:170",
+    "total_verses": 7
+  },
+  {
+    "page": 173,
+    "juz": 9,
+    "hizb": 18,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:171",
+    "end_key": "7:178",
+    "total_verses": 8
+  },
+  {
+    "page": 174,
+    "juz": 9,
+    "hizb": 18,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:179",
+    "end_key": "7:187",
+    "total_verses": 9
+  },
+  {
+    "page": 175,
+    "juz": 9,
+    "hizb": 18,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:188",
+    "end_key": "7:195",
+    "total_verses": 8
+  },
+  {
+    "page": 176,
+    "juz": 9,
+    "hizb": 18,
+    "surah_ids": [
+      7
+    ],
+    "start_key": "7:196",
+    "end_key": "7:206",
+    "total_verses": 11
+  },
+  {
+    "page": 177,
+    "juz": 9,
+    "hizb": 18,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:1",
+    "end_key": "8:8",
+    "total_verses": 8
+  },
+  {
+    "page": 178,
+    "juz": 9,
+    "hizb": 18,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:9",
+    "end_key": "8:16",
+    "total_verses": 8
+  },
+  {
+    "page": 179,
+    "juz": 9,
+    "hizb": 18,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:17",
+    "end_key": "8:25",
+    "total_verses": 9
+  },
+  {
+    "page": 180,
+    "juz": 9,
+    "hizb": 18,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:26",
+    "end_key": "8:33",
+    "total_verses": 8
+  },
+  {
+    "page": 181,
+    "juz": 9,
+    "hizb": 18,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:34",
+    "end_key": "8:40",
+    "total_verses": 7
+  },
+  {
+    "page": 182,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:41",
+    "end_key": "8:45",
+    "total_verses": 5
+  },
+  {
+    "page": 183,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:46",
+    "end_key": "8:52",
+    "total_verses": 7
+  },
+  {
+    "page": 184,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:53",
+    "end_key": "8:61",
+    "total_verses": 9
+  },
+  {
+    "page": 185,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:62",
+    "end_key": "8:69",
+    "total_verses": 8
+  },
+  {
+    "page": 186,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      8
+    ],
+    "start_key": "8:70",
+    "end_key": "8:75",
+    "total_verses": 6
+  },
+  {
+    "page": 187,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:1",
+    "end_key": "9:6",
+    "total_verses": 6
+  },
+  {
+    "page": 188,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:7",
+    "end_key": "9:13",
+    "total_verses": 7
+  },
+  {
+    "page": 189,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:14",
+    "end_key": "9:20",
+    "total_verses": 7
+  },
+  {
+    "page": 190,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:21",
+    "end_key": "9:26",
+    "total_verses": 6
+  },
+  {
+    "page": 191,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:27",
+    "end_key": "9:31",
+    "total_verses": 5
+  },
+  {
+    "page": 192,
+    "juz": 10,
+    "hizb": 19,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:32",
+    "end_key": "9:36",
+    "total_verses": 5
+  },
+  {
+    "page": 193,
+    "juz": 10,
+    "hizb": 20,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:37",
+    "end_key": "9:40",
+    "total_verses": 4
+  },
+  {
+    "page": 194,
+    "juz": 10,
+    "hizb": 20,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:41",
+    "end_key": "9:47",
+    "total_verses": 7
+  },
+  {
+    "page": 195,
+    "juz": 10,
+    "hizb": 20,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:48",
+    "end_key": "9:54",
+    "total_verses": 7
+  },
+  {
+    "page": 196,
+    "juz": 10,
+    "hizb": 20,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:55",
+    "end_key": "9:61",
+    "total_verses": 7
+  },
+  {
+    "page": 197,
+    "juz": 10,
+    "hizb": 20,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:62",
+    "end_key": "9:68",
+    "total_verses": 7
+  },
+  {
+    "page": 198,
+    "juz": 10,
+    "hizb": 20,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:69",
+    "end_key": "9:72",
+    "total_verses": 4
+  },
+  {
+    "page": 199,
+    "juz": 10,
+    "hizb": 20,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:73",
+    "end_key": "9:79",
+    "total_verses": 7
+  },
+  {
+    "page": 200,
+    "juz": 10,
+    "hizb": 20,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:80",
+    "end_key": "9:86",
+    "total_verses": 7
+  },
+  {
+    "page": 201,
+    "juz": 10,
+    "hizb": 20,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:87",
+    "end_key": "9:93",
+    "total_verses": 7
+  },
+  {
+    "page": 202,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:94",
+    "end_key": "9:99",
+    "total_verses": 6
+  },
+  {
+    "page": 203,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:100",
+    "end_key": "9:106",
+    "total_verses": 7
+  },
+  {
+    "page": 204,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:107",
+    "end_key": "9:111",
+    "total_verses": 5
+  },
+  {
+    "page": 205,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:112",
+    "end_key": "9:117",
+    "total_verses": 6
+  },
+  {
+    "page": 206,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:118",
+    "end_key": "9:122",
+    "total_verses": 5
+  },
+  {
+    "page": 207,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      9
+    ],
+    "start_key": "9:123",
+    "end_key": "9:129",
+    "total_verses": 7
+  },
+  {
+    "page": 208,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:1",
+    "end_key": "10:6",
+    "total_verses": 6
+  },
+  {
+    "page": 209,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:7",
+    "end_key": "10:14",
+    "total_verses": 8
+  },
+  {
+    "page": 210,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:15",
+    "end_key": "10:20",
+    "total_verses": 6
+  },
+  {
+    "page": 211,
+    "juz": 11,
+    "hizb": 21,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:21",
+    "end_key": "10:25",
+    "total_verses": 5
+  },
+  {
+    "page": 212,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:26",
+    "end_key": "10:33",
+    "total_verses": 8
+  },
+  {
+    "page": 213,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:34",
+    "end_key": "10:42",
+    "total_verses": 9
+  },
+  {
+    "page": 214,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:43",
+    "end_key": "10:53",
+    "total_verses": 11
+  },
+  {
+    "page": 215,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:54",
+    "end_key": "10:61",
+    "total_verses": 8
+  },
+  {
+    "page": 216,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:62",
+    "end_key": "10:70",
+    "total_verses": 9
+  },
+  {
+    "page": 217,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:71",
+    "end_key": "10:78",
+    "total_verses": 8
+  },
+  {
+    "page": 218,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:79",
+    "end_key": "10:88",
+    "total_verses": 10
+  },
+  {
+    "page": 219,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:89",
+    "end_key": "10:97",
+    "total_verses": 9
+  },
+  {
+    "page": 220,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10
+    ],
+    "start_key": "10:98",
+    "end_key": "10:106",
+    "total_verses": 9
+  },
+  {
+    "page": 221,
+    "juz": 11,
+    "hizb": 22,
+    "surah_ids": [
+      10,
+      11
+    ],
+    "start_key": "10:107",
+    "end_key": "11:5",
+    "total_verses": 8
+  },
+  {
+    "page": 222,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:6",
+    "end_key": "11:12",
+    "total_verses": 7
+  },
+  {
+    "page": 223,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:13",
+    "end_key": "11:19",
+    "total_verses": 7
+  },
+  {
+    "page": 224,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:20",
+    "end_key": "11:28",
+    "total_verses": 9
+  },
+  {
+    "page": 225,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:29",
+    "end_key": "11:37",
+    "total_verses": 9
+  },
+  {
+    "page": 226,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:38",
+    "end_key": "11:45",
+    "total_verses": 8
+  },
+  {
+    "page": 227,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:46",
+    "end_key": "11:53",
+    "total_verses": 8
+  },
+  {
+    "page": 228,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:54",
+    "end_key": "11:62",
+    "total_verses": 9
+  },
+  {
+    "page": 229,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:63",
+    "end_key": "11:71",
+    "total_verses": 9
+  },
+  {
+    "page": 230,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:72",
+    "end_key": "11:81",
+    "total_verses": 10
+  },
+  {
+    "page": 231,
+    "juz": 12,
+    "hizb": 23,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:82",
+    "end_key": "11:88",
+    "total_verses": 7
+  },
+  {
+    "page": 232,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:89",
+    "end_key": "11:97",
+    "total_verses": 9
+  },
+  {
+    "page": 233,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:98",
+    "end_key": "11:108",
+    "total_verses": 11
+  },
+  {
+    "page": 234,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      11
+    ],
+    "start_key": "11:109",
+    "end_key": "11:117",
+    "total_verses": 9
+  },
+  {
+    "page": 235,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      11,
+      12
+    ],
+    "start_key": "11:118",
+    "end_key": "12:4",
+    "total_verses": 10
+  },
+  {
+    "page": 236,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:5",
+    "end_key": "12:14",
+    "total_verses": 10
+  },
+  {
+    "page": 237,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:15",
+    "end_key": "12:22",
+    "total_verses": 8
+  },
+  {
+    "page": 238,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:23",
+    "end_key": "12:30",
+    "total_verses": 8
+  },
+  {
+    "page": 239,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:31",
+    "end_key": "12:37",
+    "total_verses": 7
+  },
+  {
+    "page": 240,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:38",
+    "end_key": "12:43",
+    "total_verses": 6
+  },
+  {
+    "page": 241,
+    "juz": 12,
+    "hizb": 24,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:44",
+    "end_key": "12:52",
+    "total_verses": 9
+  },
+  {
+    "page": 242,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:53",
+    "end_key": "12:63",
+    "total_verses": 11
+  },
+  {
+    "page": 243,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:64",
+    "end_key": "12:69",
+    "total_verses": 6
+  },
+  {
+    "page": 244,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:70",
+    "end_key": "12:78",
+    "total_verses": 9
+  },
+  {
+    "page": 245,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:79",
+    "end_key": "12:86",
+    "total_verses": 8
+  },
+  {
+    "page": 246,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:87",
+    "end_key": "12:95",
+    "total_verses": 9
+  },
+  {
+    "page": 247,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:96",
+    "end_key": "12:103",
+    "total_verses": 8
+  },
+  {
+    "page": 248,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      12
+    ],
+    "start_key": "12:104",
+    "end_key": "12:111",
+    "total_verses": 8
+  },
+  {
+    "page": 249,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      13
+    ],
+    "start_key": "13:1",
+    "end_key": "13:5",
+    "total_verses": 5
+  },
+  {
+    "page": 250,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      13
+    ],
+    "start_key": "13:6",
+    "end_key": "13:13",
+    "total_verses": 8
+  },
+  {
+    "page": 251,
+    "juz": 13,
+    "hizb": 25,
+    "surah_ids": [
+      13
+    ],
+    "start_key": "13:14",
+    "end_key": "13:18",
+    "total_verses": 5
+  },
+  {
+    "page": 252,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      13
+    ],
+    "start_key": "13:19",
+    "end_key": "13:28",
+    "total_verses": 10
+  },
+  {
+    "page": 253,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      13
+    ],
+    "start_key": "13:29",
+    "end_key": "13:34",
+    "total_verses": 6
+  },
+  {
+    "page": 254,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      13
+    ],
+    "start_key": "13:35",
+    "end_key": "13:42",
+    "total_verses": 8
+  },
+  {
+    "page": 255,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      13,
+      14
+    ],
+    "start_key": "13:43",
+    "end_key": "14:5",
+    "total_verses": 6
+  },
+  {
+    "page": 256,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      14
+    ],
+    "start_key": "14:6",
+    "end_key": "14:10",
+    "total_verses": 5
+  },
+  {
+    "page": 257,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      14
+    ],
+    "start_key": "14:11",
+    "end_key": "14:18",
+    "total_verses": 8
+  },
+  {
+    "page": 258,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      14
+    ],
+    "start_key": "14:19",
+    "end_key": "14:24",
+    "total_verses": 6
+  },
+  {
+    "page": 259,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      14
+    ],
+    "start_key": "14:25",
+    "end_key": "14:33",
+    "total_verses": 9
+  },
+  {
+    "page": 260,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      14
+    ],
+    "start_key": "14:34",
+    "end_key": "14:42",
+    "total_verses": 9
+  },
+  {
+    "page": 261,
+    "juz": 13,
+    "hizb": 26,
+    "surah_ids": [
+      14
+    ],
+    "start_key": "14:43",
+    "end_key": "14:52",
+    "total_verses": 10
+  },
+  {
+    "page": 262,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      15
+    ],
+    "start_key": "15:1",
+    "end_key": "15:15",
+    "total_verses": 15
+  },
+  {
+    "page": 263,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      15
+    ],
+    "start_key": "15:16",
+    "end_key": "15:31",
+    "total_verses": 16
+  },
+  {
+    "page": 264,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      15
+    ],
+    "start_key": "15:32",
+    "end_key": "15:51",
+    "total_verses": 20
+  },
+  {
+    "page": 265,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      15
+    ],
+    "start_key": "15:52",
+    "end_key": "15:70",
+    "total_verses": 19
+  },
+  {
+    "page": 266,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      15
+    ],
+    "start_key": "15:71",
+    "end_key": "15:90",
+    "total_verses": 20
+  },
+  {
+    "page": 267,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      15,
+      16
+    ],
+    "start_key": "15:91",
+    "end_key": "16:6",
+    "total_verses": 15
+  },
+  {
+    "page": 268,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:7",
+    "end_key": "16:14",
+    "total_verses": 8
+  },
+  {
+    "page": 269,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:15",
+    "end_key": "16:26",
+    "total_verses": 12
+  },
+  {
+    "page": 270,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:27",
+    "end_key": "16:34",
+    "total_verses": 8
+  },
+  {
+    "page": 271,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:35",
+    "end_key": "16:42",
+    "total_verses": 8
+  },
+  {
+    "page": 272,
+    "juz": 14,
+    "hizb": 27,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:43",
+    "end_key": "16:54",
+    "total_verses": 12
+  },
+  {
+    "page": 273,
+    "juz": 14,
+    "hizb": 28,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:55",
+    "end_key": "16:64",
+    "total_verses": 10
+  },
+  {
+    "page": 274,
+    "juz": 14,
+    "hizb": 28,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:65",
+    "end_key": "16:72",
+    "total_verses": 8
+  },
+  {
+    "page": 275,
+    "juz": 14,
+    "hizb": 28,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:73",
+    "end_key": "16:79",
+    "total_verses": 7
+  },
+  {
+    "page": 276,
+    "juz": 14,
+    "hizb": 28,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:80",
+    "end_key": "16:87",
+    "total_verses": 8
+  },
+  {
+    "page": 277,
+    "juz": 14,
+    "hizb": 28,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:88",
+    "end_key": "16:93",
+    "total_verses": 6
+  },
+  {
+    "page": 278,
+    "juz": 14,
+    "hizb": 28,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:94",
+    "end_key": "16:102",
+    "total_verses": 9
+  },
+  {
+    "page": 279,
+    "juz": 14,
+    "hizb": 28,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:103",
+    "end_key": "16:110",
+    "total_verses": 8
+  },
+  {
+    "page": 280,
+    "juz": 14,
+    "hizb": 28,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:111",
+    "end_key": "16:118",
+    "total_verses": 8
+  },
+  {
+    "page": 281,
+    "juz": 14,
+    "hizb": 28,
+    "surah_ids": [
+      16
+    ],
+    "start_key": "16:119",
+    "end_key": "16:128",
+    "total_verses": 10
+  },
+  {
+    "page": 282,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:1",
+    "end_key": "17:7",
+    "total_verses": 7
+  },
+  {
+    "page": 283,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:8",
+    "end_key": "17:17",
+    "total_verses": 10
+  },
+  {
+    "page": 284,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:18",
+    "end_key": "17:27",
+    "total_verses": 10
+  },
+  {
+    "page": 285,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:28",
+    "end_key": "17:38",
+    "total_verses": 11
+  },
+  {
+    "page": 286,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:39",
+    "end_key": "17:49",
+    "total_verses": 11
+  },
+  {
+    "page": 287,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:50",
+    "end_key": "17:58",
+    "total_verses": 9
+  },
+  {
+    "page": 288,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:59",
+    "end_key": "17:66",
+    "total_verses": 8
+  },
+  {
+    "page": 289,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:67",
+    "end_key": "17:75",
+    "total_verses": 9
+  },
+  {
+    "page": 290,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:76",
+    "end_key": "17:86",
+    "total_verses": 11
+  },
+  {
+    "page": 291,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:87",
+    "end_key": "17:96",
+    "total_verses": 10
+  },
+  {
+    "page": 292,
+    "juz": 15,
+    "hizb": 29,
+    "surah_ids": [
+      17
+    ],
+    "start_key": "17:97",
+    "end_key": "17:104",
+    "total_verses": 8
+  },
+  {
+    "page": 293,
+    "juz": 15,
+    "hizb": 30,
+    "surah_ids": [
+      17,
+      18
+    ],
+    "start_key": "17:105",
+    "end_key": "18:4",
+    "total_verses": 11
+  },
+  {
+    "page": 294,
+    "juz": 15,
+    "hizb": 30,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:5",
+    "end_key": "18:15",
+    "total_verses": 11
+  },
+  {
+    "page": 295,
+    "juz": 15,
+    "hizb": 30,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:16",
+    "end_key": "18:20",
+    "total_verses": 5
+  },
+  {
+    "page": 296,
+    "juz": 15,
+    "hizb": 30,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:21",
+    "end_key": "18:27",
+    "total_verses": 7
+  },
+  {
+    "page": 297,
+    "juz": 15,
+    "hizb": 30,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:28",
+    "end_key": "18:34",
+    "total_verses": 7
+  },
+  {
+    "page": 298,
+    "juz": 15,
+    "hizb": 30,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:35",
+    "end_key": "18:45",
+    "total_verses": 11
+  },
+  {
+    "page": 299,
+    "juz": 15,
+    "hizb": 30,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:46",
+    "end_key": "18:53",
+    "total_verses": 8
+  },
+  {
+    "page": 300,
+    "juz": 15,
+    "hizb": 30,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:54",
+    "end_key": "18:61",
+    "total_verses": 8
+  },
+  {
+    "page": 301,
+    "juz": 15,
+    "hizb": 30,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:62",
+    "end_key": "18:74",
+    "total_verses": 13
+  },
+  {
+    "page": 302,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:75",
+    "end_key": "18:83",
+    "total_verses": 9
+  },
+  {
+    "page": 303,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:84",
+    "end_key": "18:97",
+    "total_verses": 14
+  },
+  {
+    "page": 304,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      18
+    ],
+    "start_key": "18:98",
+    "end_key": "18:110",
+    "total_verses": 13
+  },
+  {
+    "page": 305,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      19
+    ],
+    "start_key": "19:1",
+    "end_key": "19:11",
+    "total_verses": 11
+  },
+  {
+    "page": 306,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      19
+    ],
+    "start_key": "19:12",
+    "end_key": "19:25",
+    "total_verses": 14
+  },
+  {
+    "page": 307,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      19
+    ],
+    "start_key": "19:26",
+    "end_key": "19:38",
+    "total_verses": 13
+  },
+  {
+    "page": 308,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      19
+    ],
+    "start_key": "19:39",
+    "end_key": "19:51",
+    "total_verses": 13
+  },
+  {
+    "page": 309,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      19
+    ],
+    "start_key": "19:52",
+    "end_key": "19:64",
+    "total_verses": 13
+  },
+  {
+    "page": 310,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      19
+    ],
+    "start_key": "19:65",
+    "end_key": "19:76",
+    "total_verses": 12
+  },
+  {
+    "page": 311,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      19
+    ],
+    "start_key": "19:77",
+    "end_key": "19:95",
+    "total_verses": 19
+  },
+  {
+    "page": 312,
+    "juz": 16,
+    "hizb": 31,
+    "surah_ids": [
+      19,
+      20
+    ],
+    "start_key": "19:96",
+    "end_key": "20:12",
+    "total_verses": 15
+  },
+  {
+    "page": 313,
+    "juz": 16,
+    "hizb": 32,
+    "surah_ids": [
+      20
+    ],
+    "start_key": "20:13",
+    "end_key": "20:37",
+    "total_verses": 25
+  },
+  {
+    "page": 314,
+    "juz": 16,
+    "hizb": 32,
+    "surah_ids": [
+      20
+    ],
+    "start_key": "20:38",
+    "end_key": "20:51",
+    "total_verses": 14
+  },
+  {
+    "page": 315,
+    "juz": 16,
+    "hizb": 32,
+    "surah_ids": [
+      20
+    ],
+    "start_key": "20:52",
+    "end_key": "20:64",
+    "total_verses": 13
+  },
+  {
+    "page": 316,
+    "juz": 16,
+    "hizb": 32,
+    "surah_ids": [
+      20
+    ],
+    "start_key": "20:65",
+    "end_key": "20:76",
+    "total_verses": 12
+  },
+  {
+    "page": 317,
+    "juz": 16,
+    "hizb": 32,
+    "surah_ids": [
+      20
+    ],
+    "start_key": "20:77",
+    "end_key": "20:87",
+    "total_verses": 11
+  },
+  {
+    "page": 318,
+    "juz": 16,
+    "hizb": 32,
+    "surah_ids": [
+      20
+    ],
+    "start_key": "20:88",
+    "end_key": "20:98",
+    "total_verses": 11
+  },
+  {
+    "page": 319,
+    "juz": 16,
+    "hizb": 32,
+    "surah_ids": [
+      20
+    ],
+    "start_key": "20:99",
+    "end_key": "20:113",
+    "total_verses": 15
+  },
+  {
+    "page": 320,
+    "juz": 16,
+    "hizb": 32,
+    "surah_ids": [
+      20
+    ],
+    "start_key": "20:114",
+    "end_key": "20:125",
+    "total_verses": 12
+  },
+  {
+    "page": 321,
+    "juz": 16,
+    "hizb": 32,
+    "surah_ids": [
+      20
+    ],
+    "start_key": "20:126",
+    "end_key": "20:135",
+    "total_verses": 10
+  },
+  {
+    "page": 322,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:1",
+    "end_key": "21:10",
+    "total_verses": 10
+  },
+  {
+    "page": 323,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:11",
+    "end_key": "21:24",
+    "total_verses": 14
+  },
+  {
+    "page": 324,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:25",
+    "end_key": "21:35",
+    "total_verses": 11
+  },
+  {
+    "page": 325,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:36",
+    "end_key": "21:44",
+    "total_verses": 9
+  },
+  {
+    "page": 326,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:45",
+    "end_key": "21:57",
+    "total_verses": 13
+  },
+  {
+    "page": 327,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:58",
+    "end_key": "21:72",
+    "total_verses": 15
+  },
+  {
+    "page": 328,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:73",
+    "end_key": "21:81",
+    "total_verses": 9
+  },
+  {
+    "page": 329,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:82",
+    "end_key": "21:90",
+    "total_verses": 9
+  },
+  {
+    "page": 330,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:91",
+    "end_key": "21:101",
+    "total_verses": 11
+  },
+  {
+    "page": 331,
+    "juz": 17,
+    "hizb": 33,
+    "surah_ids": [
+      21
+    ],
+    "start_key": "21:102",
+    "end_key": "21:112",
+    "total_verses": 11
+  },
+  {
+    "page": 332,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:1",
+    "end_key": "22:5",
+    "total_verses": 5
+  },
+  {
+    "page": 333,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:6",
+    "end_key": "22:15",
+    "total_verses": 10
+  },
+  {
+    "page": 334,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:16",
+    "end_key": "22:23",
+    "total_verses": 8
+  },
+  {
+    "page": 335,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:24",
+    "end_key": "22:30",
+    "total_verses": 7
+  },
+  {
+    "page": 336,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:31",
+    "end_key": "22:38",
+    "total_verses": 8
+  },
+  {
+    "page": 337,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:39",
+    "end_key": "22:46",
+    "total_verses": 8
+  },
+  {
+    "page": 338,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:47",
+    "end_key": "22:55",
+    "total_verses": 9
+  },
+  {
+    "page": 339,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:56",
+    "end_key": "22:64",
+    "total_verses": 9
+  },
+  {
+    "page": 340,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:65",
+    "end_key": "22:72",
+    "total_verses": 8
+  },
+  {
+    "page": 341,
+    "juz": 17,
+    "hizb": 34,
+    "surah_ids": [
+      22
+    ],
+    "start_key": "22:73",
+    "end_key": "22:78",
+    "total_verses": 6
+  },
+  {
+    "page": 342,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      23
+    ],
+    "start_key": "23:1",
+    "end_key": "23:17",
+    "total_verses": 17
+  },
+  {
+    "page": 343,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      23
+    ],
+    "start_key": "23:18",
+    "end_key": "23:27",
+    "total_verses": 10
+  },
+  {
+    "page": 344,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      23
+    ],
+    "start_key": "23:28",
+    "end_key": "23:42",
+    "total_verses": 15
+  },
+  {
+    "page": 345,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      23
+    ],
+    "start_key": "23:43",
+    "end_key": "23:59",
+    "total_verses": 17
+  },
+  {
+    "page": 346,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      23
+    ],
+    "start_key": "23:60",
+    "end_key": "23:74",
+    "total_verses": 15
+  },
+  {
+    "page": 347,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      23
+    ],
+    "start_key": "23:75",
+    "end_key": "23:89",
+    "total_verses": 15
+  },
+  {
+    "page": 348,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      23
+    ],
+    "start_key": "23:90",
+    "end_key": "23:104",
+    "total_verses": 15
+  },
+  {
+    "page": 349,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      23
+    ],
+    "start_key": "23:105",
+    "end_key": "23:118",
+    "total_verses": 14
+  },
+  {
+    "page": 350,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      24
+    ],
+    "start_key": "24:1",
+    "end_key": "24:10",
+    "total_verses": 10
+  },
+  {
+    "page": 351,
+    "juz": 18,
+    "hizb": 35,
+    "surah_ids": [
+      24
+    ],
+    "start_key": "24:11",
+    "end_key": "24:20",
+    "total_verses": 10
+  },
+  {
+    "page": 352,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      24
+    ],
+    "start_key": "24:21",
+    "end_key": "24:27",
+    "total_verses": 7
+  },
+  {
+    "page": 353,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      24
+    ],
+    "start_key": "24:28",
+    "end_key": "24:31",
+    "total_verses": 4
+  },
+  {
+    "page": 354,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      24
+    ],
+    "start_key": "24:32",
+    "end_key": "24:36",
+    "total_verses": 5
+  },
+  {
+    "page": 355,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      24
+    ],
+    "start_key": "24:37",
+    "end_key": "24:43",
+    "total_verses": 7
+  },
+  {
+    "page": 356,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      24
+    ],
+    "start_key": "24:44",
+    "end_key": "24:53",
+    "total_verses": 10
+  },
+  {
+    "page": 357,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      24
+    ],
+    "start_key": "24:54",
+    "end_key": "24:58",
+    "total_verses": 5
+  },
+  {
+    "page": 358,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      24
+    ],
+    "start_key": "24:59",
+    "end_key": "24:61",
+    "total_verses": 3
+  },
+  {
+    "page": 359,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      24,
+      25
+    ],
+    "start_key": "24:62",
+    "end_key": "25:2",
+    "total_verses": 5
+  },
+  {
+    "page": 360,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      25
+    ],
+    "start_key": "25:3",
+    "end_key": "25:11",
+    "total_verses": 9
+  },
+  {
+    "page": 361,
+    "juz": 18,
+    "hizb": 36,
+    "surah_ids": [
+      25
+    ],
+    "start_key": "25:12",
+    "end_key": "25:20",
+    "total_verses": 9
+  },
+  {
+    "page": 362,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      25
+    ],
+    "start_key": "25:21",
+    "end_key": "25:32",
+    "total_verses": 12
+  },
+  {
+    "page": 363,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      25
+    ],
+    "start_key": "25:33",
+    "end_key": "25:43",
+    "total_verses": 11
+  },
+  {
+    "page": 364,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      25
+    ],
+    "start_key": "25:44",
+    "end_key": "25:55",
+    "total_verses": 12
+  },
+  {
+    "page": 365,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      25
+    ],
+    "start_key": "25:56",
+    "end_key": "25:67",
+    "total_verses": 12
+  },
+  {
+    "page": 366,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      25
+    ],
+    "start_key": "25:68",
+    "end_key": "25:77",
+    "total_verses": 10
+  },
+  {
+    "page": 367,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:1",
+    "end_key": "26:19",
+    "total_verses": 19
+  },
+  {
+    "page": 368,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:20",
+    "end_key": "26:39",
+    "total_verses": 20
+  },
+  {
+    "page": 369,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:40",
+    "end_key": "26:60",
+    "total_verses": 21
+  },
+  {
+    "page": 370,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:61",
+    "end_key": "26:83",
+    "total_verses": 23
+  },
+  {
+    "page": 371,
+    "juz": 19,
+    "hizb": 37,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:84",
+    "end_key": "26:111",
+    "total_verses": 28
+  },
+  {
+    "page": 372,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:112",
+    "end_key": "26:136",
+    "total_verses": 25
+  },
+  {
+    "page": 373,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:137",
+    "end_key": "26:159",
+    "total_verses": 23
+  },
+  {
+    "page": 374,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:160",
+    "end_key": "26:183",
+    "total_verses": 24
+  },
+  {
+    "page": 375,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:184",
+    "end_key": "26:206",
+    "total_verses": 23
+  },
+  {
+    "page": 376,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      26
+    ],
+    "start_key": "26:207",
+    "end_key": "26:227",
+    "total_verses": 21
+  },
+  {
+    "page": 377,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      27
+    ],
+    "start_key": "27:1",
+    "end_key": "27:13",
+    "total_verses": 13
+  },
+  {
+    "page": 378,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      27
+    ],
+    "start_key": "27:14",
+    "end_key": "27:22",
+    "total_verses": 9
+  },
+  {
+    "page": 379,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      27
+    ],
+    "start_key": "27:23",
+    "end_key": "27:35",
+    "total_verses": 13
+  },
+  {
+    "page": 380,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      27
+    ],
+    "start_key": "27:36",
+    "end_key": "27:44",
+    "total_verses": 9
+  },
+  {
+    "page": 381,
+    "juz": 19,
+    "hizb": 38,
+    "surah_ids": [
+      27
+    ],
+    "start_key": "27:45",
+    "end_key": "27:55",
+    "total_verses": 11
+  },
+  {
+    "page": 382,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      27
+    ],
+    "start_key": "27:56",
+    "end_key": "27:63",
+    "total_verses": 8
+  },
+  {
+    "page": 383,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      27
+    ],
+    "start_key": "27:64",
+    "end_key": "27:76",
+    "total_verses": 13
+  },
+  {
+    "page": 384,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      27
+    ],
+    "start_key": "27:77",
+    "end_key": "27:88",
+    "total_verses": 12
+  },
+  {
+    "page": 385,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      27,
+      28
+    ],
+    "start_key": "27:89",
+    "end_key": "28:5",
+    "total_verses": 10
+  },
+  {
+    "page": 386,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:6",
+    "end_key": "28:13",
+    "total_verses": 8
+  },
+  {
+    "page": 387,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:14",
+    "end_key": "28:21",
+    "total_verses": 8
+  },
+  {
+    "page": 388,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:22",
+    "end_key": "28:28",
+    "total_verses": 7
+  },
+  {
+    "page": 389,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:29",
+    "end_key": "28:35",
+    "total_verses": 7
+  },
+  {
+    "page": 390,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:36",
+    "end_key": "28:43",
+    "total_verses": 8
+  },
+  {
+    "page": 391,
+    "juz": 20,
+    "hizb": 39,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:44",
+    "end_key": "28:50",
+    "total_verses": 7
+  },
+  {
+    "page": 392,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:51",
+    "end_key": "28:59",
+    "total_verses": 9
+  },
+  {
+    "page": 393,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:60",
+    "end_key": "28:70",
+    "total_verses": 11
+  },
+  {
+    "page": 394,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:71",
+    "end_key": "28:77",
+    "total_verses": 7
+  },
+  {
+    "page": 395,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      28
+    ],
+    "start_key": "28:78",
+    "end_key": "28:84",
+    "total_verses": 7
+  },
+  {
+    "page": 396,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      28,
+      29
+    ],
+    "start_key": "28:85",
+    "end_key": "29:6",
+    "total_verses": 10
+  },
+  {
+    "page": 397,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      29
+    ],
+    "start_key": "29:7",
+    "end_key": "29:14",
+    "total_verses": 8
+  },
+  {
+    "page": 398,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      29
+    ],
+    "start_key": "29:15",
+    "end_key": "29:23",
+    "total_verses": 9
+  },
+  {
+    "page": 399,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      29
+    ],
+    "start_key": "29:24",
+    "end_key": "29:30",
+    "total_verses": 7
+  },
+  {
+    "page": 400,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      29
+    ],
+    "start_key": "29:31",
+    "end_key": "29:38",
+    "total_verses": 8
+  },
+  {
+    "page": 401,
+    "juz": 20,
+    "hizb": 40,
+    "surah_ids": [
+      29
+    ],
+    "start_key": "29:39",
+    "end_key": "29:45",
+    "total_verses": 7
+  },
+  {
+    "page": 402,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      29
+    ],
+    "start_key": "29:46",
+    "end_key": "29:52",
+    "total_verses": 7
+  },
+  {
+    "page": 403,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      29
+    ],
+    "start_key": "29:53",
+    "end_key": "29:63",
+    "total_verses": 11
+  },
+  {
+    "page": 404,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      29,
+      30
+    ],
+    "start_key": "29:64",
+    "end_key": "30:5",
+    "total_verses": 11
+  },
+  {
+    "page": 405,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      30
+    ],
+    "start_key": "30:6",
+    "end_key": "30:15",
+    "total_verses": 10
+  },
+  {
+    "page": 406,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      30
+    ],
+    "start_key": "30:16",
+    "end_key": "30:24",
+    "total_verses": 9
+  },
+  {
+    "page": 407,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      30
+    ],
+    "start_key": "30:25",
+    "end_key": "30:32",
+    "total_verses": 8
+  },
+  {
+    "page": 408,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      30
+    ],
+    "start_key": "30:33",
+    "end_key": "30:41",
+    "total_verses": 9
+  },
+  {
+    "page": 409,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      30
+    ],
+    "start_key": "30:42",
+    "end_key": "30:50",
+    "total_verses": 9
+  },
+  {
+    "page": 410,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      30
+    ],
+    "start_key": "30:51",
+    "end_key": "30:60",
+    "total_verses": 10
+  },
+  {
+    "page": 411,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      31
+    ],
+    "start_key": "31:1",
+    "end_key": "31:11",
+    "total_verses": 11
+  },
+  {
+    "page": 412,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      31
+    ],
+    "start_key": "31:12",
+    "end_key": "31:19",
+    "total_verses": 8
+  },
+  {
+    "page": 413,
+    "juz": 21,
+    "hizb": 41,
+    "surah_ids": [
+      31
+    ],
+    "start_key": "31:20",
+    "end_key": "31:28",
+    "total_verses": 9
+  },
+  {
+    "page": 414,
+    "juz": 21,
+    "hizb": 42,
+    "surah_ids": [
+      31
+    ],
+    "start_key": "31:29",
+    "end_key": "31:34",
+    "total_verses": 6
+  },
+  {
+    "page": 415,
+    "juz": 21,
+    "hizb": 42,
+    "surah_ids": [
+      32
+    ],
+    "start_key": "32:1",
+    "end_key": "32:11",
+    "total_verses": 11
+  },
+  {
+    "page": 416,
+    "juz": 21,
+    "hizb": 42,
+    "surah_ids": [
+      32
+    ],
+    "start_key": "32:12",
+    "end_key": "32:20",
+    "total_verses": 9
+  },
+  {
+    "page": 417,
+    "juz": 21,
+    "hizb": 42,
+    "surah_ids": [
+      32
+    ],
+    "start_key": "32:21",
+    "end_key": "32:30",
+    "total_verses": 10
+  },
+  {
+    "page": 418,
+    "juz": 21,
+    "hizb": 42,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:1",
+    "end_key": "33:6",
+    "total_verses": 6
+  },
+  {
+    "page": 419,
+    "juz": 21,
+    "hizb": 42,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:7",
+    "end_key": "33:15",
+    "total_verses": 9
+  },
+  {
+    "page": 420,
+    "juz": 21,
+    "hizb": 42,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:16",
+    "end_key": "33:22",
+    "total_verses": 7
+  },
+  {
+    "page": 421,
+    "juz": 21,
+    "hizb": 42,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:23",
+    "end_key": "33:30",
+    "total_verses": 8
+  },
+  {
+    "page": 422,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:31",
+    "end_key": "33:35",
+    "total_verses": 5
+  },
+  {
+    "page": 423,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:36",
+    "end_key": "33:43",
+    "total_verses": 8
+  },
+  {
+    "page": 424,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:44",
+    "end_key": "33:50",
+    "total_verses": 7
+  },
+  {
+    "page": 425,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:51",
+    "end_key": "33:54",
+    "total_verses": 4
+  },
+  {
+    "page": 426,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:55",
+    "end_key": "33:62",
+    "total_verses": 8
+  },
+  {
+    "page": 427,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      33
+    ],
+    "start_key": "33:63",
+    "end_key": "33:73",
+    "total_verses": 11
+  },
+  {
+    "page": 428,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      34
+    ],
+    "start_key": "34:1",
+    "end_key": "34:7",
+    "total_verses": 7
+  },
+  {
+    "page": 429,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      34
+    ],
+    "start_key": "34:8",
+    "end_key": "34:14",
+    "total_verses": 7
+  },
+  {
+    "page": 430,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      34
+    ],
+    "start_key": "34:15",
+    "end_key": "34:22",
+    "total_verses": 8
+  },
+  {
+    "page": 431,
+    "juz": 22,
+    "hizb": 43,
+    "surah_ids": [
+      34
+    ],
+    "start_key": "34:23",
+    "end_key": "34:31",
+    "total_verses": 9
+  },
+  {
+    "page": 432,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      34
+    ],
+    "start_key": "34:32",
+    "end_key": "34:39",
+    "total_verses": 8
+  },
+  {
+    "page": 433,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      34
+    ],
+    "start_key": "34:40",
+    "end_key": "34:48",
+    "total_verses": 9
+  },
+  {
+    "page": 434,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      34,
+      35
+    ],
+    "start_key": "34:49",
+    "end_key": "35:3",
+    "total_verses": 9
+  },
+  {
+    "page": 435,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      35
+    ],
+    "start_key": "35:4",
+    "end_key": "35:11",
+    "total_verses": 8
+  },
+  {
+    "page": 436,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      35
+    ],
+    "start_key": "35:12",
+    "end_key": "35:18",
+    "total_verses": 7
+  },
+  {
+    "page": 437,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      35
+    ],
+    "start_key": "35:19",
+    "end_key": "35:30",
+    "total_verses": 12
+  },
+  {
+    "page": 438,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      35
+    ],
+    "start_key": "35:31",
+    "end_key": "35:38",
+    "total_verses": 8
+  },
+  {
+    "page": 439,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      35
+    ],
+    "start_key": "35:39",
+    "end_key": "35:44",
+    "total_verses": 6
+  },
+  {
+    "page": 440,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      35,
+      36
+    ],
+    "start_key": "35:45",
+    "end_key": "36:12",
+    "total_verses": 13
+  },
+  {
+    "page": 441,
+    "juz": 22,
+    "hizb": 44,
+    "surah_ids": [
+      36
+    ],
+    "start_key": "36:13",
+    "end_key": "36:27",
+    "total_verses": 15
+  },
+  {
+    "page": 442,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      36
+    ],
+    "start_key": "36:28",
+    "end_key": "36:40",
+    "total_verses": 13
+  },
+  {
+    "page": 443,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      36
+    ],
+    "start_key": "36:41",
+    "end_key": "36:54",
+    "total_verses": 14
+  },
+  {
+    "page": 444,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      36
+    ],
+    "start_key": "36:55",
+    "end_key": "36:70",
+    "total_verses": 16
+  },
+  {
+    "page": 445,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      36
+    ],
+    "start_key": "36:71",
+    "end_key": "36:83",
+    "total_verses": 13
+  },
+  {
+    "page": 446,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      37
+    ],
+    "start_key": "37:1",
+    "end_key": "37:24",
+    "total_verses": 24
+  },
+  {
+    "page": 447,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      37
+    ],
+    "start_key": "37:25",
+    "end_key": "37:51",
+    "total_verses": 27
+  },
+  {
+    "page": 448,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      37
+    ],
+    "start_key": "37:52",
+    "end_key": "37:76",
+    "total_verses": 25
+  },
+  {
+    "page": 449,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      37
+    ],
+    "start_key": "37:77",
+    "end_key": "37:102",
+    "total_verses": 26
+  },
+  {
+    "page": 450,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      37
+    ],
+    "start_key": "37:103",
+    "end_key": "37:126",
+    "total_verses": 24
+  },
+  {
+    "page": 451,
+    "juz": 23,
+    "hizb": 45,
+    "surah_ids": [
+      37
+    ],
+    "start_key": "37:127",
+    "end_key": "37:153",
+    "total_verses": 27
+  },
+  {
+    "page": 452,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      37
+    ],
+    "start_key": "37:154",
+    "end_key": "37:182",
+    "total_verses": 29
+  },
+  {
+    "page": 453,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      38
+    ],
+    "start_key": "38:1",
+    "end_key": "38:16",
+    "total_verses": 16
+  },
+  {
+    "page": 454,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      38
+    ],
+    "start_key": "38:17",
+    "end_key": "38:26",
+    "total_verses": 10
+  },
+  {
+    "page": 455,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      38
+    ],
+    "start_key": "38:27",
+    "end_key": "38:42",
+    "total_verses": 16
+  },
+  {
+    "page": 456,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      38
+    ],
+    "start_key": "38:43",
+    "end_key": "38:61",
+    "total_verses": 19
+  },
+  {
+    "page": 457,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      38
+    ],
+    "start_key": "38:62",
+    "end_key": "38:83",
+    "total_verses": 22
+  },
+  {
+    "page": 458,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      38,
+      39
+    ],
+    "start_key": "38:84",
+    "end_key": "39:5",
+    "total_verses": 10
+  },
+  {
+    "page": 459,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      39
+    ],
+    "start_key": "39:6",
+    "end_key": "39:10",
+    "total_verses": 5
+  },
+  {
+    "page": 460,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      39
+    ],
+    "start_key": "39:11",
+    "end_key": "39:21",
+    "total_verses": 11
+  },
+  {
+    "page": 461,
+    "juz": 23,
+    "hizb": 46,
+    "surah_ids": [
+      39
+    ],
+    "start_key": "39:22",
+    "end_key": "39:31",
+    "total_verses": 10
+  },
+  {
+    "page": 462,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      39
+    ],
+    "start_key": "39:32",
+    "end_key": "39:40",
+    "total_verses": 9
+  },
+  {
+    "page": 463,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      39
+    ],
+    "start_key": "39:41",
+    "end_key": "39:47",
+    "total_verses": 7
+  },
+  {
+    "page": 464,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      39
+    ],
+    "start_key": "39:48",
+    "end_key": "39:56",
+    "total_verses": 9
+  },
+  {
+    "page": 465,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      39
+    ],
+    "start_key": "39:57",
+    "end_key": "39:67",
+    "total_verses": 11
+  },
+  {
+    "page": 466,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      39
+    ],
+    "start_key": "39:68",
+    "end_key": "39:74",
+    "total_verses": 7
+  },
+  {
+    "page": 467,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      39,
+      40
+    ],
+    "start_key": "39:75",
+    "end_key": "40:7",
+    "total_verses": 8
+  },
+  {
+    "page": 468,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      40
+    ],
+    "start_key": "40:8",
+    "end_key": "40:16",
+    "total_verses": 9
+  },
+  {
+    "page": 469,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      40
+    ],
+    "start_key": "40:17",
+    "end_key": "40:25",
+    "total_verses": 9
+  },
+  {
+    "page": 470,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      40
+    ],
+    "start_key": "40:26",
+    "end_key": "40:33",
+    "total_verses": 8
+  },
+  {
+    "page": 471,
+    "juz": 24,
+    "hizb": 47,
+    "surah_ids": [
+      40
+    ],
+    "start_key": "40:34",
+    "end_key": "40:40",
+    "total_verses": 7
+  },
+  {
+    "page": 472,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      40
+    ],
+    "start_key": "40:41",
+    "end_key": "40:49",
+    "total_verses": 9
+  },
+  {
+    "page": 473,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      40
+    ],
+    "start_key": "40:50",
+    "end_key": "40:58",
+    "total_verses": 9
+  },
+  {
+    "page": 474,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      40
+    ],
+    "start_key": "40:59",
+    "end_key": "40:66",
+    "total_verses": 8
+  },
+  {
+    "page": 475,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      40
+    ],
+    "start_key": "40:67",
+    "end_key": "40:77",
+    "total_verses": 11
+  },
+  {
+    "page": 476,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      40
+    ],
+    "start_key": "40:78",
+    "end_key": "40:85",
+    "total_verses": 8
+  },
+  {
+    "page": 477,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      41
+    ],
+    "start_key": "41:1",
+    "end_key": "41:11",
+    "total_verses": 11
+  },
+  {
+    "page": 478,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      41
+    ],
+    "start_key": "41:12",
+    "end_key": "41:20",
+    "total_verses": 9
+  },
+  {
+    "page": 479,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      41
+    ],
+    "start_key": "41:21",
+    "end_key": "41:29",
+    "total_verses": 9
+  },
+  {
+    "page": 480,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      41
+    ],
+    "start_key": "41:30",
+    "end_key": "41:38",
+    "total_verses": 9
+  },
+  {
+    "page": 481,
+    "juz": 24,
+    "hizb": 48,
+    "surah_ids": [
+      41
+    ],
+    "start_key": "41:39",
+    "end_key": "41:46",
+    "total_verses": 8
+  },
+  {
+    "page": 482,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      41
+    ],
+    "start_key": "41:47",
+    "end_key": "41:54",
+    "total_verses": 8
+  },
+  {
+    "page": 483,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      42
+    ],
+    "start_key": "42:1",
+    "end_key": "42:10",
+    "total_verses": 10
+  },
+  {
+    "page": 484,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      42
+    ],
+    "start_key": "42:11",
+    "end_key": "42:15",
+    "total_verses": 5
+  },
+  {
+    "page": 485,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      42
+    ],
+    "start_key": "42:16",
+    "end_key": "42:22",
+    "total_verses": 7
+  },
+  {
+    "page": 486,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      42
+    ],
+    "start_key": "42:23",
+    "end_key": "42:31",
+    "total_verses": 9
+  },
+  {
+    "page": 487,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      42
+    ],
+    "start_key": "42:32",
+    "end_key": "42:44",
+    "total_verses": 13
+  },
+  {
+    "page": 488,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      42
+    ],
+    "start_key": "42:45",
+    "end_key": "42:51",
+    "total_verses": 7
+  },
+  {
+    "page": 489,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      42,
+      43
+    ],
+    "start_key": "42:52",
+    "end_key": "43:10",
+    "total_verses": 12
+  },
+  {
+    "page": 490,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      43
+    ],
+    "start_key": "43:11",
+    "end_key": "43:22",
+    "total_verses": 12
+  },
+  {
+    "page": 491,
+    "juz": 25,
+    "hizb": 49,
+    "surah_ids": [
+      43
+    ],
+    "start_key": "43:23",
+    "end_key": "43:33",
+    "total_verses": 11
+  },
+  {
+    "page": 492,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      43
+    ],
+    "start_key": "43:34",
+    "end_key": "43:47",
+    "total_verses": 14
+  },
+  {
+    "page": 493,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      43
+    ],
+    "start_key": "43:48",
+    "end_key": "43:60",
+    "total_verses": 13
+  },
+  {
+    "page": 494,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      43
+    ],
+    "start_key": "43:61",
+    "end_key": "43:73",
+    "total_verses": 13
+  },
+  {
+    "page": 495,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      43
+    ],
+    "start_key": "43:74",
+    "end_key": "43:89",
+    "total_verses": 16
+  },
+  {
+    "page": 496,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      44
+    ],
+    "start_key": "44:1",
+    "end_key": "44:18",
+    "total_verses": 18
+  },
+  {
+    "page": 497,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      44
+    ],
+    "start_key": "44:19",
+    "end_key": "44:39",
+    "total_verses": 21
+  },
+  {
+    "page": 498,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      44
+    ],
+    "start_key": "44:40",
+    "end_key": "44:59",
+    "total_verses": 20
+  },
+  {
+    "page": 499,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      45
+    ],
+    "start_key": "45:1",
+    "end_key": "45:13",
+    "total_verses": 13
+  },
+  {
+    "page": 500,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      45
+    ],
+    "start_key": "45:14",
+    "end_key": "45:22",
+    "total_verses": 9
+  },
+  {
+    "page": 501,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      45
+    ],
+    "start_key": "45:23",
+    "end_key": "45:32",
+    "total_verses": 10
+  },
+  {
+    "page": 502,
+    "juz": 25,
+    "hizb": 50,
+    "surah_ids": [
+      45,
+      46
+    ],
+    "start_key": "45:33",
+    "end_key": "46:5",
+    "total_verses": 10
+  },
+  {
+    "page": 503,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      46
+    ],
+    "start_key": "46:6",
+    "end_key": "46:14",
+    "total_verses": 9
+  },
+  {
+    "page": 504,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      46
+    ],
+    "start_key": "46:15",
+    "end_key": "46:20",
+    "total_verses": 6
+  },
+  {
+    "page": 505,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      46
+    ],
+    "start_key": "46:21",
+    "end_key": "46:28",
+    "total_verses": 8
+  },
+  {
+    "page": 506,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      46
+    ],
+    "start_key": "46:29",
+    "end_key": "46:35",
+    "total_verses": 7
+  },
+  {
+    "page": 507,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      47
+    ],
+    "start_key": "47:1",
+    "end_key": "47:11",
+    "total_verses": 11
+  },
+  {
+    "page": 508,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      47
+    ],
+    "start_key": "47:12",
+    "end_key": "47:19",
+    "total_verses": 8
+  },
+  {
+    "page": 509,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      47
+    ],
+    "start_key": "47:20",
+    "end_key": "47:29",
+    "total_verses": 10
+  },
+  {
+    "page": 510,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      47
+    ],
+    "start_key": "47:30",
+    "end_key": "47:38",
+    "total_verses": 9
+  },
+  {
+    "page": 511,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      48
+    ],
+    "start_key": "48:1",
+    "end_key": "48:9",
+    "total_verses": 9
+  },
+  {
+    "page": 512,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      48
+    ],
+    "start_key": "48:10",
+    "end_key": "48:15",
+    "total_verses": 6
+  },
+  {
+    "page": 513,
+    "juz": 26,
+    "hizb": 51,
+    "surah_ids": [
+      48
+    ],
+    "start_key": "48:16",
+    "end_key": "48:23",
+    "total_verses": 8
+  },
+  {
+    "page": 514,
+    "juz": 26,
+    "hizb": 52,
+    "surah_ids": [
+      48
+    ],
+    "start_key": "48:24",
+    "end_key": "48:28",
+    "total_verses": 5
+  },
+  {
+    "page": 515,
+    "juz": 26,
+    "hizb": 52,
+    "surah_ids": [
+      48,
+      49
+    ],
+    "start_key": "48:29",
+    "end_key": "49:4",
+    "total_verses": 5
+  },
+  {
+    "page": 516,
+    "juz": 26,
+    "hizb": 52,
+    "surah_ids": [
+      49
+    ],
+    "start_key": "49:5",
+    "end_key": "49:11",
+    "total_verses": 7
+  },
+  {
+    "page": 517,
+    "juz": 26,
+    "hizb": 52,
+    "surah_ids": [
+      49
+    ],
+    "start_key": "49:12",
+    "end_key": "49:18",
+    "total_verses": 7
+  },
+  {
+    "page": 518,
+    "juz": 26,
+    "hizb": 52,
+    "surah_ids": [
+      50
+    ],
+    "start_key": "50:1",
+    "end_key": "50:15",
+    "total_verses": 15
+  },
+  {
+    "page": 519,
+    "juz": 26,
+    "hizb": 52,
+    "surah_ids": [
+      50
+    ],
+    "start_key": "50:16",
+    "end_key": "50:35",
+    "total_verses": 20
+  },
+  {
+    "page": 520,
+    "juz": 26,
+    "hizb": 52,
+    "surah_ids": [
+      50,
+      51
+    ],
+    "start_key": "50:36",
+    "end_key": "51:6",
+    "total_verses": 16
+  },
+  {
+    "page": 521,
+    "juz": 26,
+    "hizb": 52,
+    "surah_ids": [
+      51
+    ],
+    "start_key": "51:7",
+    "end_key": "51:30",
+    "total_verses": 24
+  },
+  {
+    "page": 522,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      51
+    ],
+    "start_key": "51:31",
+    "end_key": "51:51",
+    "total_verses": 21
+  },
+  {
+    "page": 523,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      51,
+      52
+    ],
+    "start_key": "51:52",
+    "end_key": "52:14",
+    "total_verses": 23
+  },
+  {
+    "page": 524,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      52
+    ],
+    "start_key": "52:15",
+    "end_key": "52:31",
+    "total_verses": 17
+  },
+  {
+    "page": 525,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      52
+    ],
+    "start_key": "52:32",
+    "end_key": "52:49",
+    "total_verses": 18
+  },
+  {
+    "page": 526,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      53
+    ],
+    "start_key": "53:1",
+    "end_key": "53:26",
+    "total_verses": 26
+  },
+  {
+    "page": 527,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      53
+    ],
+    "start_key": "53:27",
+    "end_key": "53:44",
+    "total_verses": 18
+  },
+  {
+    "page": 528,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      53,
+      54
+    ],
+    "start_key": "53:45",
+    "end_key": "54:6",
+    "total_verses": 24
+  },
+  {
+    "page": 529,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      54
+    ],
+    "start_key": "54:7",
+    "end_key": "54:27",
+    "total_verses": 21
+  },
+  {
+    "page": 530,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      54
+    ],
+    "start_key": "54:28",
+    "end_key": "54:49",
+    "total_verses": 22
+  },
+  {
+    "page": 531,
+    "juz": 27,
+    "hizb": 53,
+    "surah_ids": [
+      54,
+      55
+    ],
+    "start_key": "54:50",
+    "end_key": "55:16",
+    "total_verses": 22
+  },
+  {
+    "page": 532,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      55
+    ],
+    "start_key": "55:17",
+    "end_key": "55:40",
+    "total_verses": 24
+  },
+  {
+    "page": 533,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      55
+    ],
+    "start_key": "55:41",
+    "end_key": "55:67",
+    "total_verses": 27
+  },
+  {
+    "page": 534,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      55,
+      56
+    ],
+    "start_key": "55:68",
+    "end_key": "56:16",
+    "total_verses": 27
+  },
+  {
+    "page": 535,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      56
+    ],
+    "start_key": "56:17",
+    "end_key": "56:50",
+    "total_verses": 34
+  },
+  {
+    "page": 536,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      56
+    ],
+    "start_key": "56:51",
+    "end_key": "56:76",
+    "total_verses": 26
+  },
+  {
+    "page": 537,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      56,
+      57
+    ],
+    "start_key": "56:77",
+    "end_key": "57:3",
+    "total_verses": 23
+  },
+  {
+    "page": 538,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      57
+    ],
+    "start_key": "57:4",
+    "end_key": "57:11",
+    "total_verses": 8
+  },
+  {
+    "page": 539,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      57
+    ],
+    "start_key": "57:12",
+    "end_key": "57:18",
+    "total_verses": 7
+  },
+  {
+    "page": 540,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      57
+    ],
+    "start_key": "57:19",
+    "end_key": "57:24",
+    "total_verses": 6
+  },
+  {
+    "page": 541,
+    "juz": 27,
+    "hizb": 54,
+    "surah_ids": [
+      57
+    ],
+    "start_key": "57:25",
+    "end_key": "57:29",
+    "total_verses": 5
+  },
+  {
+    "page": 542,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      58
+    ],
+    "start_key": "58:1",
+    "end_key": "58:6",
+    "total_verses": 6
+  },
+  {
+    "page": 543,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      58
+    ],
+    "start_key": "58:7",
+    "end_key": "58:11",
+    "total_verses": 5
+  },
+  {
+    "page": 544,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      58
+    ],
+    "start_key": "58:12",
+    "end_key": "58:21",
+    "total_verses": 10
+  },
+  {
+    "page": 545,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      58,
+      59
+    ],
+    "start_key": "58:22",
+    "end_key": "59:3",
+    "total_verses": 4
+  },
+  {
+    "page": 546,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      59
+    ],
+    "start_key": "59:4",
+    "end_key": "59:9",
+    "total_verses": 6
+  },
+  {
+    "page": 547,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      59
+    ],
+    "start_key": "59:10",
+    "end_key": "59:16",
+    "total_verses": 7
+  },
+  {
+    "page": 548,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      59
+    ],
+    "start_key": "59:17",
+    "end_key": "59:24",
+    "total_verses": 8
+  },
+  {
+    "page": 549,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      60
+    ],
+    "start_key": "60:1",
+    "end_key": "60:5",
+    "total_verses": 5
+  },
+  {
+    "page": 550,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      60
+    ],
+    "start_key": "60:6",
+    "end_key": "60:11",
+    "total_verses": 6
+  },
+  {
+    "page": 551,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      60,
+      61
+    ],
+    "start_key": "60:12",
+    "end_key": "61:5",
+    "total_verses": 7
+  },
+  {
+    "page": 552,
+    "juz": 28,
+    "hizb": 55,
+    "surah_ids": [
+      61
+    ],
+    "start_key": "61:6",
+    "end_key": "61:14",
+    "total_verses": 9
+  },
+  {
+    "page": 553,
+    "juz": 28,
+    "hizb": 56,
+    "surah_ids": [
+      62
+    ],
+    "start_key": "62:1",
+    "end_key": "62:8",
+    "total_verses": 8
+  },
+  {
+    "page": 554,
+    "juz": 28,
+    "hizb": 56,
+    "surah_ids": [
+      62,
+      63
+    ],
+    "start_key": "62:9",
+    "end_key": "63:4",
+    "total_verses": 7
+  },
+  {
+    "page": 555,
+    "juz": 28,
+    "hizb": 56,
+    "surah_ids": [
+      63
+    ],
+    "start_key": "63:5",
+    "end_key": "63:11",
+    "total_verses": 7
+  },
+  {
+    "page": 556,
+    "juz": 28,
+    "hizb": 56,
+    "surah_ids": [
+      64
+    ],
+    "start_key": "64:1",
+    "end_key": "64:9",
+    "total_verses": 9
+  },
+  {
+    "page": 557,
+    "juz": 28,
+    "hizb": 56,
+    "surah_ids": [
+      64
+    ],
+    "start_key": "64:10",
+    "end_key": "64:18",
+    "total_verses": 9
+  },
+  {
+    "page": 558,
+    "juz": 28,
+    "hizb": 56,
+    "surah_ids": [
+      65
+    ],
+    "start_key": "65:1",
+    "end_key": "65:5",
+    "total_verses": 5
+  },
+  {
+    "page": 559,
+    "juz": 28,
+    "hizb": 56,
+    "surah_ids": [
+      65
+    ],
+    "start_key": "65:6",
+    "end_key": "65:12",
+    "total_verses": 7
+  },
+  {
+    "page": 560,
+    "juz": 28,
+    "hizb": 56,
+    "surah_ids": [
+      66
+    ],
+    "start_key": "66:1",
+    "end_key": "66:7",
+    "total_verses": 7
+  },
+  {
+    "page": 561,
+    "juz": 28,
+    "hizb": 56,
+    "surah_ids": [
+      66
+    ],
+    "start_key": "66:8",
+    "end_key": "66:12",
+    "total_verses": 5
+  },
+  {
+    "page": 562,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      67
+    ],
+    "start_key": "67:1",
+    "end_key": "67:12",
+    "total_verses": 12
+  },
+  {
+    "page": 563,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      67
+    ],
+    "start_key": "67:13",
+    "end_key": "67:26",
+    "total_verses": 14
+  },
+  {
+    "page": 564,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      67,
+      68
+    ],
+    "start_key": "67:27",
+    "end_key": "68:15",
+    "total_verses": 19
+  },
+  {
+    "page": 565,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      68
+    ],
+    "start_key": "68:16",
+    "end_key": "68:42",
+    "total_verses": 27
+  },
+  {
+    "page": 566,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      68,
+      69
+    ],
+    "start_key": "68:43",
+    "end_key": "69:8",
+    "total_verses": 18
+  },
+  {
+    "page": 567,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      69
+    ],
+    "start_key": "69:9",
+    "end_key": "69:34",
+    "total_verses": 26
+  },
+  {
+    "page": 568,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      69,
+      70
+    ],
+    "start_key": "69:35",
+    "end_key": "70:10",
+    "total_verses": 28
+  },
+  {
+    "page": 569,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      70
+    ],
+    "start_key": "70:11",
+    "end_key": "70:39",
+    "total_verses": 29
+  },
+  {
+    "page": 570,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      70,
+      71
+    ],
+    "start_key": "70:40",
+    "end_key": "71:10",
+    "total_verses": 15
+  },
+  {
+    "page": 571,
+    "juz": 29,
+    "hizb": 57,
+    "surah_ids": [
+      71
+    ],
+    "start_key": "71:11",
+    "end_key": "71:28",
+    "total_verses": 18
+  },
+  {
+    "page": 572,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      72
+    ],
+    "start_key": "72:1",
+    "end_key": "72:13",
+    "total_verses": 13
+  },
+  {
+    "page": 573,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      72
+    ],
+    "start_key": "72:14",
+    "end_key": "72:28",
+    "total_verses": 15
+  },
+  {
+    "page": 574,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      73
+    ],
+    "start_key": "73:1",
+    "end_key": "73:19",
+    "total_verses": 19
+  },
+  {
+    "page": 575,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      73,
+      74
+    ],
+    "start_key": "73:20",
+    "end_key": "74:17",
+    "total_verses": 18
+  },
+  {
+    "page": 576,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      74
+    ],
+    "start_key": "74:18",
+    "end_key": "74:47",
+    "total_verses": 30
+  },
+  {
+    "page": 577,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      74,
+      75
+    ],
+    "start_key": "74:48",
+    "end_key": "75:19",
+    "total_verses": 28
+  },
+  {
+    "page": 578,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      75,
+      76
+    ],
+    "start_key": "75:20",
+    "end_key": "76:5",
+    "total_verses": 26
+  },
+  {
+    "page": 579,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      76
+    ],
+    "start_key": "76:6",
+    "end_key": "76:25",
+    "total_verses": 20
+  },
+  {
+    "page": 580,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      76,
+      77
+    ],
+    "start_key": "76:26",
+    "end_key": "77:19",
+    "total_verses": 25
+  },
+  {
+    "page": 581,
+    "juz": 29,
+    "hizb": 58,
+    "surah_ids": [
+      77
+    ],
+    "start_key": "77:20",
+    "end_key": "77:50",
+    "total_verses": 31
+  },
+  {
+    "page": 582,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      78
+    ],
+    "start_key": "78:1",
+    "end_key": "78:30",
+    "total_verses": 30
+  },
+  {
+    "page": 583,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      78,
+      79
+    ],
+    "start_key": "78:31",
+    "end_key": "79:15",
+    "total_verses": 25
+  },
+  {
+    "page": 584,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      79
+    ],
+    "start_key": "79:16",
+    "end_key": "79:46",
+    "total_verses": 31
+  },
+  {
+    "page": 585,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      80
+    ],
+    "start_key": "80:1",
+    "end_key": "80:42",
+    "total_verses": 42
+  },
+  {
+    "page": 586,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      81
+    ],
+    "start_key": "81:1",
+    "end_key": "81:29",
+    "total_verses": 29
+  },
+  {
+    "page": 587,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      82,
+      83
+    ],
+    "start_key": "82:1",
+    "end_key": "83:6",
+    "total_verses": 25
+  },
+  {
+    "page": 588,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      83
+    ],
+    "start_key": "83:7",
+    "end_key": "83:34",
+    "total_verses": 28
+  },
+  {
+    "page": 589,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      83,
+      84
+    ],
+    "start_key": "83:35",
+    "end_key": "84:25",
+    "total_verses": 27
+  },
+  {
+    "page": 590,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      85
+    ],
+    "start_key": "85:1",
+    "end_key": "85:22",
+    "total_verses": 22
+  },
+  {
+    "page": 591,
+    "juz": 30,
+    "hizb": 59,
+    "surah_ids": [
+      86,
+      87
+    ],
+    "start_key": "86:1",
+    "end_key": "87:15",
+    "total_verses": 32
+  },
+  {
+    "page": 592,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      87,
+      88
+    ],
+    "start_key": "87:16",
+    "end_key": "88:26",
+    "total_verses": 30
+  },
+  {
+    "page": 593,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      89
+    ],
+    "start_key": "89:1",
+    "end_key": "89:23",
+    "total_verses": 23
+  },
+  {
+    "page": 594,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      89,
+      90
+    ],
+    "start_key": "89:24",
+    "end_key": "90:20",
+    "total_verses": 27
+  },
+  {
+    "page": 595,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      91,
+      92
+    ],
+    "start_key": "91:1",
+    "end_key": "92:14",
+    "total_verses": 29
+  },
+  {
+    "page": 596,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      92,
+      93,
+      94
+    ],
+    "start_key": "92:15",
+    "end_key": "94:8",
+    "total_verses": 26
+  },
+  {
+    "page": 597,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      95,
+      96
+    ],
+    "start_key": "95:1",
+    "end_key": "96:19",
+    "total_verses": 27
+  },
+  {
+    "page": 598,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      97,
+      98
+    ],
+    "start_key": "97:1",
+    "end_key": "98:7",
+    "total_verses": 12
+  },
+  {
+    "page": 599,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      98,
+      99,
+      100
+    ],
+    "start_key": "98:8",
+    "end_key": "100:9",
+    "total_verses": 18
+  },
+  {
+    "page": 600,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      100,
+      101,
+      102
+    ],
+    "start_key": "100:10",
+    "end_key": "102:8",
+    "total_verses": 21
+  },
+  {
+    "page": 601,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      103,
+      104,
+      105
+    ],
+    "start_key": "103:1",
+    "end_key": "105:5",
+    "total_verses": 17
+  },
+  {
+    "page": 602,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      106,
+      107,
+      108
+    ],
+    "start_key": "106:1",
+    "end_key": "108:3",
+    "total_verses": 14
+  },
+  {
+    "page": 603,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      109,
+      110,
+      111
+    ],
+    "start_key": "109:1",
+    "end_key": "111:5",
+    "total_verses": 14
+  },
+  {
+    "page": 604,
+    "juz": 30,
+    "hizb": 60,
+    "surah_ids": [
+      112,
+      113,
+      114
+    ],
+    "start_key": "112:1",
+    "end_key": "114:6",
+    "total_verses": 15
+  }
+]

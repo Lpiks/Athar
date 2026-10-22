@@ -51,6 +51,7 @@ export interface SearchMatch {
   readonly surah_id: number;
   readonly surah_name_ar: string;
   readonly ayah_number: number;
+  readonly page_number?: number;
   readonly text: string;
   readonly snippet?: string;
 }

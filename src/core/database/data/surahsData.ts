@@ -17,7 +17,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Baqara",
     "type": "medinan",
     "total_ayahs": 286,
-    "page_number": 1
+    "page_number": 2
   },
   {
     "id": 3,
@@ -26,7 +26,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Aal-i-Imraan",
     "type": "medinan",
     "total_ayahs": 200,
-    "page_number": 1
+    "page_number": 50
   },
   {
     "id": 4,
@@ -35,7 +35,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "An-Nisaa",
     "type": "medinan",
     "total_ayahs": 176,
-    "page_number": 1
+    "page_number": 77
   },
   {
     "id": 5,
@@ -44,7 +44,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Maaida",
     "type": "medinan",
     "total_ayahs": 120,
-    "page_number": 1
+    "page_number": 106
   },
   {
     "id": 6,
@@ -53,7 +53,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-An'aam",
     "type": "meccan",
     "total_ayahs": 165,
-    "page_number": 1
+    "page_number": 128
   },
   {
     "id": 7,
@@ -62,7 +62,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-A'raaf",
     "type": "meccan",
     "total_ayahs": 206,
-    "page_number": 1
+    "page_number": 151
   },
   {
     "id": 8,
@@ -71,7 +71,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Anfaal",
     "type": "medinan",
     "total_ayahs": 75,
-    "page_number": 1
+    "page_number": 177
   },
   {
     "id": 9,
@@ -80,7 +80,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "At-Tawba",
     "type": "medinan",
     "total_ayahs": 129,
-    "page_number": 1
+    "page_number": 187
   },
   {
     "id": 10,
@@ -89,7 +89,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Yunus",
     "type": "meccan",
     "total_ayahs": 109,
-    "page_number": 1
+    "page_number": 208
   },
   {
     "id": 11,
@@ -98,7 +98,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Hud",
     "type": "meccan",
     "total_ayahs": 123,
-    "page_number": 1
+    "page_number": 221
   },
   {
     "id": 12,
@@ -107,7 +107,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Yusuf",
     "type": "meccan",
     "total_ayahs": 111,
-    "page_number": 1
+    "page_number": 235
   },
   {
     "id": 13,
@@ -116,7 +116,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ar-Ra'd",
     "type": "medinan",
     "total_ayahs": 43,
-    "page_number": 1
+    "page_number": 249
   },
   {
     "id": 14,
@@ -125,7 +125,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ibrahim",
     "type": "meccan",
     "total_ayahs": 52,
-    "page_number": 1
+    "page_number": 255
   },
   {
     "id": 15,
@@ -134,7 +134,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Hijr",
     "type": "meccan",
     "total_ayahs": 99,
-    "page_number": 1
+    "page_number": 262
   },
   {
     "id": 16,
@@ -143,7 +143,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "An-Nahl",
     "type": "meccan",
     "total_ayahs": 128,
-    "page_number": 1
+    "page_number": 267
   },
   {
     "id": 17,
@@ -152,7 +152,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Israa",
     "type": "meccan",
     "total_ayahs": 111,
-    "page_number": 1
+    "page_number": 282
   },
   {
     "id": 18,
@@ -161,7 +161,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Kahf",
     "type": "meccan",
     "total_ayahs": 110,
-    "page_number": 1
+    "page_number": 293
   },
   {
     "id": 19,
@@ -170,7 +170,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Maryam",
     "type": "meccan",
     "total_ayahs": 98,
-    "page_number": 1
+    "page_number": 305
   },
   {
     "id": 20,
@@ -179,7 +179,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Taa-Haa",
     "type": "meccan",
     "total_ayahs": 135,
-    "page_number": 1
+    "page_number": 312
   },
   {
     "id": 21,
@@ -188,7 +188,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Anbiyaa",
     "type": "meccan",
     "total_ayahs": 112,
-    "page_number": 1
+    "page_number": 322
   },
   {
     "id": 22,
@@ -197,7 +197,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Hajj",
     "type": "medinan",
     "total_ayahs": 78,
-    "page_number": 1
+    "page_number": 332
   },
   {
     "id": 23,
@@ -206,7 +206,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Muminoon",
     "type": "meccan",
     "total_ayahs": 118,
-    "page_number": 1
+    "page_number": 342
   },
   {
     "id": 24,
@@ -215,7 +215,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "An-Noor",
     "type": "medinan",
     "total_ayahs": 64,
-    "page_number": 1
+    "page_number": 350
   },
   {
     "id": 25,
@@ -224,7 +224,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Furqaan",
     "type": "meccan",
     "total_ayahs": 77,
-    "page_number": 1
+    "page_number": 359
   },
   {
     "id": 26,
@@ -233,7 +233,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ash-Shu'araa",
     "type": "meccan",
     "total_ayahs": 227,
-    "page_number": 1
+    "page_number": 367
   },
   {
     "id": 27,
@@ -242,7 +242,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "An-Naml",
     "type": "meccan",
     "total_ayahs": 93,
-    "page_number": 1
+    "page_number": 377
   },
   {
     "id": 28,
@@ -251,7 +251,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Qasas",
     "type": "meccan",
     "total_ayahs": 88,
-    "page_number": 1
+    "page_number": 385
   },
   {
     "id": 29,
@@ -260,7 +260,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Ankaboot",
     "type": "meccan",
     "total_ayahs": 69,
-    "page_number": 1
+    "page_number": 396
   },
   {
     "id": 30,
@@ -269,7 +269,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ar-Room",
     "type": "meccan",
     "total_ayahs": 60,
-    "page_number": 1
+    "page_number": 404
   },
   {
     "id": 31,
@@ -278,7 +278,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Luqman",
     "type": "meccan",
     "total_ayahs": 34,
-    "page_number": 1
+    "page_number": 411
   },
   {
     "id": 32,
@@ -287,7 +287,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "As-Sajda",
     "type": "meccan",
     "total_ayahs": 30,
-    "page_number": 1
+    "page_number": 415
   },
   {
     "id": 33,
@@ -296,7 +296,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Ahzaab",
     "type": "medinan",
     "total_ayahs": 73,
-    "page_number": 1
+    "page_number": 418
   },
   {
     "id": 34,
@@ -305,7 +305,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Saba",
     "type": "meccan",
     "total_ayahs": 54,
-    "page_number": 1
+    "page_number": 428
   },
   {
     "id": 35,
@@ -314,7 +314,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Faatir",
     "type": "meccan",
     "total_ayahs": 45,
-    "page_number": 1
+    "page_number": 434
   },
   {
     "id": 36,
@@ -323,7 +323,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Yaseen",
     "type": "meccan",
     "total_ayahs": 83,
-    "page_number": 1
+    "page_number": 440
   },
   {
     "id": 37,
@@ -332,7 +332,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "As-Saaffaat",
     "type": "meccan",
     "total_ayahs": 182,
-    "page_number": 1
+    "page_number": 446
   },
   {
     "id": 38,
@@ -341,7 +341,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Saad",
     "type": "meccan",
     "total_ayahs": 88,
-    "page_number": 1
+    "page_number": 453
   },
   {
     "id": 39,
@@ -350,7 +350,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Az-Zumar",
     "type": "meccan",
     "total_ayahs": 75,
-    "page_number": 1
+    "page_number": 458
   },
   {
     "id": 40,
@@ -359,7 +359,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Ghaafir",
     "type": "meccan",
     "total_ayahs": 85,
-    "page_number": 1
+    "page_number": 467
   },
   {
     "id": 41,
@@ -368,7 +368,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Fussilat",
     "type": "meccan",
     "total_ayahs": 54,
-    "page_number": 1
+    "page_number": 477
   },
   {
     "id": 42,
@@ -377,7 +377,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ash-Shura",
     "type": "meccan",
     "total_ayahs": 53,
-    "page_number": 1
+    "page_number": 483
   },
   {
     "id": 43,
@@ -386,7 +386,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Az-Zukhruf",
     "type": "meccan",
     "total_ayahs": 89,
-    "page_number": 1
+    "page_number": 489
   },
   {
     "id": 44,
@@ -395,7 +395,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ad-Dukhaan",
     "type": "meccan",
     "total_ayahs": 59,
-    "page_number": 1
+    "page_number": 496
   },
   {
     "id": 45,
@@ -404,7 +404,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Jaathiya",
     "type": "meccan",
     "total_ayahs": 37,
-    "page_number": 1
+    "page_number": 499
   },
   {
     "id": 46,
@@ -413,7 +413,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Ahqaf",
     "type": "meccan",
     "total_ayahs": 35,
-    "page_number": 1
+    "page_number": 502
   },
   {
     "id": 47,
@@ -422,7 +422,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Muhammad",
     "type": "medinan",
     "total_ayahs": 38,
-    "page_number": 1
+    "page_number": 507
   },
   {
     "id": 48,
@@ -431,7 +431,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Fath",
     "type": "medinan",
     "total_ayahs": 29,
-    "page_number": 1
+    "page_number": 511
   },
   {
     "id": 49,
@@ -440,7 +440,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Hujuraat",
     "type": "medinan",
     "total_ayahs": 18,
-    "page_number": 1
+    "page_number": 515
   },
   {
     "id": 50,
@@ -449,7 +449,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Qaaf",
     "type": "meccan",
     "total_ayahs": 45,
-    "page_number": 1
+    "page_number": 518
   },
   {
     "id": 51,
@@ -458,7 +458,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Adh-Dhaariyat",
     "type": "meccan",
     "total_ayahs": 60,
-    "page_number": 1
+    "page_number": 520
   },
   {
     "id": 52,
@@ -467,7 +467,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "At-Tur",
     "type": "meccan",
     "total_ayahs": 49,
-    "page_number": 1
+    "page_number": 523
   },
   {
     "id": 53,
@@ -476,7 +476,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "An-Najm",
     "type": "meccan",
     "total_ayahs": 62,
-    "page_number": 1
+    "page_number": 526
   },
   {
     "id": 54,
@@ -485,7 +485,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Qamar",
     "type": "meccan",
     "total_ayahs": 55,
-    "page_number": 1
+    "page_number": 528
   },
   {
     "id": 55,
@@ -494,7 +494,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ar-Rahmaan",
     "type": "medinan",
     "total_ayahs": 78,
-    "page_number": 1
+    "page_number": 531
   },
   {
     "id": 56,
@@ -503,7 +503,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Waaqia",
     "type": "meccan",
     "total_ayahs": 96,
-    "page_number": 1
+    "page_number": 534
   },
   {
     "id": 57,
@@ -512,7 +512,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Hadid",
     "type": "medinan",
     "total_ayahs": 29,
-    "page_number": 1
+    "page_number": 537
   },
   {
     "id": 58,
@@ -521,7 +521,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Mujaadila",
     "type": "medinan",
     "total_ayahs": 22,
-    "page_number": 1
+    "page_number": 542
   },
   {
     "id": 59,
@@ -530,7 +530,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Hashr",
     "type": "medinan",
     "total_ayahs": 24,
-    "page_number": 1
+    "page_number": 545
   },
   {
     "id": 60,
@@ -539,7 +539,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Mumtahana",
     "type": "medinan",
     "total_ayahs": 13,
-    "page_number": 1
+    "page_number": 549
   },
   {
     "id": 61,
@@ -548,7 +548,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "As-Saff",
     "type": "medinan",
     "total_ayahs": 14,
-    "page_number": 1
+    "page_number": 551
   },
   {
     "id": 62,
@@ -557,7 +557,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Jumu'a",
     "type": "medinan",
     "total_ayahs": 11,
-    "page_number": 1
+    "page_number": 553
   },
   {
     "id": 63,
@@ -566,7 +566,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Munaafiqoon",
     "type": "medinan",
     "total_ayahs": 11,
-    "page_number": 1
+    "page_number": 554
   },
   {
     "id": 64,
@@ -575,7 +575,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "At-Taghaabun",
     "type": "medinan",
     "total_ayahs": 18,
-    "page_number": 1
+    "page_number": 556
   },
   {
     "id": 65,
@@ -584,7 +584,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "At-Talaaq",
     "type": "medinan",
     "total_ayahs": 12,
-    "page_number": 1
+    "page_number": 558
   },
   {
     "id": 66,
@@ -593,7 +593,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "At-Tahrim",
     "type": "medinan",
     "total_ayahs": 12,
-    "page_number": 1
+    "page_number": 560
   },
   {
     "id": 67,
@@ -602,7 +602,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Mulk",
     "type": "meccan",
     "total_ayahs": 30,
-    "page_number": 1
+    "page_number": 562
   },
   {
     "id": 68,
@@ -611,7 +611,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Qalam",
     "type": "meccan",
     "total_ayahs": 52,
-    "page_number": 1
+    "page_number": 564
   },
   {
     "id": 69,
@@ -620,7 +620,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Haaqqa",
     "type": "meccan",
     "total_ayahs": 52,
-    "page_number": 1
+    "page_number": 566
   },
   {
     "id": 70,
@@ -629,7 +629,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Ma'aarij",
     "type": "meccan",
     "total_ayahs": 44,
-    "page_number": 1
+    "page_number": 568
   },
   {
     "id": 71,
@@ -638,7 +638,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Nooh",
     "type": "meccan",
     "total_ayahs": 28,
-    "page_number": 1
+    "page_number": 570
   },
   {
     "id": 72,
@@ -647,7 +647,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Jinn",
     "type": "meccan",
     "total_ayahs": 28,
-    "page_number": 1
+    "page_number": 572
   },
   {
     "id": 73,
@@ -656,7 +656,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Muzzammil",
     "type": "meccan",
     "total_ayahs": 20,
-    "page_number": 1
+    "page_number": 574
   },
   {
     "id": 74,
@@ -665,7 +665,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Muddaththir",
     "type": "meccan",
     "total_ayahs": 56,
-    "page_number": 1
+    "page_number": 575
   },
   {
     "id": 75,
@@ -674,7 +674,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Qiyaama",
     "type": "meccan",
     "total_ayahs": 40,
-    "page_number": 1
+    "page_number": 577
   },
   {
     "id": 76,
@@ -683,7 +683,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Insaan",
     "type": "medinan",
     "total_ayahs": 31,
-    "page_number": 1
+    "page_number": 578
   },
   {
     "id": 77,
@@ -692,7 +692,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Mursalaat",
     "type": "meccan",
     "total_ayahs": 50,
-    "page_number": 1
+    "page_number": 580
   },
   {
     "id": 78,
@@ -701,7 +701,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "An-Naba",
     "type": "meccan",
     "total_ayahs": 40,
-    "page_number": 1
+    "page_number": 582
   },
   {
     "id": 79,
@@ -710,7 +710,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "An-Naazi'aat",
     "type": "meccan",
     "total_ayahs": 46,
-    "page_number": 1
+    "page_number": 583
   },
   {
     "id": 80,
@@ -719,7 +719,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Abasa",
     "type": "meccan",
     "total_ayahs": 42,
-    "page_number": 1
+    "page_number": 585
   },
   {
     "id": 81,
@@ -728,7 +728,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "At-Takwir",
     "type": "meccan",
     "total_ayahs": 29,
-    "page_number": 1
+    "page_number": 586
   },
   {
     "id": 82,
@@ -737,7 +737,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Infitaar",
     "type": "meccan",
     "total_ayahs": 19,
-    "page_number": 1
+    "page_number": 587
   },
   {
     "id": 83,
@@ -746,7 +746,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Mutaffifin",
     "type": "meccan",
     "total_ayahs": 36,
-    "page_number": 1
+    "page_number": 587
   },
   {
     "id": 84,
@@ -755,7 +755,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Inshiqaaq",
     "type": "meccan",
     "total_ayahs": 25,
-    "page_number": 1
+    "page_number": 589
   },
   {
     "id": 85,
@@ -764,7 +764,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Burooj",
     "type": "meccan",
     "total_ayahs": 22,
-    "page_number": 1
+    "page_number": 590
   },
   {
     "id": 86,
@@ -773,7 +773,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "At-Taariq",
     "type": "meccan",
     "total_ayahs": 17,
-    "page_number": 1
+    "page_number": 591
   },
   {
     "id": 87,
@@ -782,7 +782,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-A'laa",
     "type": "meccan",
     "total_ayahs": 19,
-    "page_number": 1
+    "page_number": 591
   },
   {
     "id": 88,
@@ -791,7 +791,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Ghaashiya",
     "type": "meccan",
     "total_ayahs": 26,
-    "page_number": 1
+    "page_number": 592
   },
   {
     "id": 89,
@@ -800,7 +800,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Fajr",
     "type": "meccan",
     "total_ayahs": 30,
-    "page_number": 1
+    "page_number": 593
   },
   {
     "id": 90,
@@ -809,7 +809,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Balad",
     "type": "meccan",
     "total_ayahs": 20,
-    "page_number": 1
+    "page_number": 594
   },
   {
     "id": 91,
@@ -818,7 +818,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ash-Shams",
     "type": "meccan",
     "total_ayahs": 15,
-    "page_number": 1
+    "page_number": 595
   },
   {
     "id": 92,
@@ -827,7 +827,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Lail",
     "type": "meccan",
     "total_ayahs": 21,
-    "page_number": 1
+    "page_number": 595
   },
   {
     "id": 93,
@@ -836,7 +836,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ad-Dhuhaa",
     "type": "meccan",
     "total_ayahs": 11,
-    "page_number": 1
+    "page_number": 596
   },
   {
     "id": 94,
@@ -845,7 +845,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Ash-Sharh",
     "type": "meccan",
     "total_ayahs": 8,
-    "page_number": 1
+    "page_number": 596
   },
   {
     "id": 95,
@@ -854,7 +854,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "At-Tin",
     "type": "meccan",
     "total_ayahs": 8,
-    "page_number": 1
+    "page_number": 597
   },
   {
     "id": 96,
@@ -863,7 +863,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Alaq",
     "type": "meccan",
     "total_ayahs": 19,
-    "page_number": 1
+    "page_number": 597
   },
   {
     "id": 97,
@@ -872,7 +872,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Qadr",
     "type": "meccan",
     "total_ayahs": 5,
-    "page_number": 1
+    "page_number": 598
   },
   {
     "id": 98,
@@ -881,7 +881,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Bayyina",
     "type": "medinan",
     "total_ayahs": 8,
-    "page_number": 1
+    "page_number": 598
   },
   {
     "id": 99,
@@ -890,7 +890,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Az-Zalzala",
     "type": "medinan",
     "total_ayahs": 8,
-    "page_number": 1
+    "page_number": 599
   },
   {
     "id": 100,
@@ -899,7 +899,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Aadiyaat",
     "type": "meccan",
     "total_ayahs": 11,
-    "page_number": 1
+    "page_number": 599
   },
   {
     "id": 101,
@@ -908,7 +908,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Qaari'a",
     "type": "meccan",
     "total_ayahs": 11,
-    "page_number": 1
+    "page_number": 600
   },
   {
     "id": 102,
@@ -917,7 +917,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "At-Takaathur",
     "type": "meccan",
     "total_ayahs": 8,
-    "page_number": 1
+    "page_number": 600
   },
   {
     "id": 103,
@@ -926,7 +926,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Asr",
     "type": "meccan",
     "total_ayahs": 3,
-    "page_number": 1
+    "page_number": 601
   },
   {
     "id": 104,
@@ -935,7 +935,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Humaza",
     "type": "meccan",
     "total_ayahs": 9,
-    "page_number": 1
+    "page_number": 601
   },
   {
     "id": 105,
@@ -944,7 +944,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Fil",
     "type": "meccan",
     "total_ayahs": 5,
-    "page_number": 1
+    "page_number": 601
   },
   {
     "id": 106,
@@ -953,7 +953,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Quraish",
     "type": "meccan",
     "total_ayahs": 4,
-    "page_number": 1
+    "page_number": 602
   },
   {
     "id": 107,
@@ -962,7 +962,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Maa'un",
     "type": "meccan",
     "total_ayahs": 7,
-    "page_number": 1
+    "page_number": 602
   },
   {
     "id": 108,
@@ -971,7 +971,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Kawthar",
     "type": "meccan",
     "total_ayahs": 3,
-    "page_number": 1
+    "page_number": 602
   },
   {
     "id": 109,
@@ -980,7 +980,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Kaafiroon",
     "type": "meccan",
     "total_ayahs": 6,
-    "page_number": 1
+    "page_number": 603
   },
   {
     "id": 110,
@@ -989,7 +989,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "An-Nasr",
     "type": "medinan",
     "total_ayahs": 3,
-    "page_number": 1
+    "page_number": 603
   },
   {
     "id": 111,
@@ -998,7 +998,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Masad",
     "type": "meccan",
     "total_ayahs": 5,
-    "page_number": 1
+    "page_number": 603
   },
   {
     "id": 112,
@@ -1007,7 +1007,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Ikhlaas",
     "type": "meccan",
     "total_ayahs": 4,
-    "page_number": 1
+    "page_number": 604
   },
   {
     "id": 113,
@@ -1016,7 +1016,7 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "Al-Falaq",
     "type": "meccan",
     "total_ayahs": 5,
-    "page_number": 1
+    "page_number": 604
   },
   {
     "id": 114,
@@ -1025,6 +1025,6 @@ export const SURAHS_CATALOG: Surah[] = [
     "name_transliteration": "An-Naas",
     "type": "meccan",
     "total_ayahs": 6,
-    "page_number": 1
+    "page_number": 604
   }
 ];

@@ -1,10 +1,11 @@
 import './global.css';
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as Location from 'expo-location';
+import { Ionicons } from '@expo/vector-icons';
 import { THEME } from './src/ui/theme';
 import {
   AtharAstronomicalSuite,
@@ -96,22 +97,19 @@ export default function App() {
     return (
       <View style={{ flex: 1, backgroundColor: THEME.colors.canvas, alignItems: 'center', justifyContent: 'center' }}>
         <StatusBar style="light" />
-        <View
+        <Image
+          source={require('./assets/icon.png')}
           style={{
-            width: 72,
-            height: 72,
-            borderRadius: 36,
-            backgroundColor: THEME.colors.goldGlass,
-            borderColor: THEME.colors.gold,
+            width: 88,
+            height: 88,
+            borderRadius: 22,
             borderWidth: 1.5,
-            alignItems: 'center',
-            justifyContent: 'center',
+            borderColor: THEME.colors.gold,
             marginBottom: 20,
             ...THEME.shadows.glowGold,
           }}
-        >
-          <Text style={{ color: THEME.colors.goldLight, fontSize: 32, fontWeight: 'bold' }}>أَ</Text>
-        </View>
+          resizeMode="cover"
+        />
         <Text style={{ color: THEME.colors.goldLight, fontSize: 24, fontWeight: 'bold', letterSpacing: 2 }}>
           أَثَــر
         </Text>
@@ -127,13 +125,13 @@ export default function App() {
     <SafeAreaView style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
       <StatusBar style="light" />
 
-      {/* Top Sovereign App Header */}
+      {/* Top Sovereign App Header with Brand Logo */}
       <View
         style={{
           backgroundColor: THEME.colors.canvas,
           borderBottomColor: THEME.colors.cardBorder,
           borderBottomWidth: 1,
-          paddingHorizontal: 20,
+          paddingHorizontal: 16,
           paddingVertical: 10,
           flexDirection: 'row',
           justifyContent: 'space-between',
@@ -141,23 +139,18 @@ export default function App() {
         }}
       >
         <View className="flex-row items-center">
-          <View
+          <Image
+            source={require('./assets/icon.png')}
             style={{
-              backgroundColor: THEME.colors.goldGlass,
+              width: 38,
+              height: 38,
+              borderRadius: 11,
+              borderWidth: 1.2,
               borderColor: THEME.colors.goldBorder,
-              borderWidth: 1,
-              width: 32,
-              height: 32,
-              borderRadius: 16,
-              alignItems: 'center',
-              justifyContent: 'center',
               marginRight: 10,
             }}
-          >
-            <Text style={{ color: THEME.colors.goldLight, fontFamily: THEME.fonts.arabicBold, fontSize: 16 }}>
-              أَ
-            </Text>
-          </View>
+            resizeMode="cover"
+          />
           <View>
             <Text style={{ color: THEME.colors.goldLight, fontSize: 19, fontFamily: THEME.fonts.arabicBold }}>
               أَثَــر
@@ -221,17 +214,17 @@ export default function App() {
       <View
         style={{
           position: 'absolute',
-          bottom: 16,
-          left: 16,
-          right: 16,
-          backgroundColor: THEME.colors.surfaceGlass,
-          borderColor: THEME.colors.cardBorder,
-          borderWidth: 1.5,
-          borderRadius: 26,
+          bottom: 14,
+          left: 14,
+          right: 14,
+          height: 66,
+          backgroundColor: 'rgba(5, 13, 11, 0.94)',
+          borderColor: 'rgba(197, 160, 89, 0.28)',
+          borderWidth: 1.2,
+          borderRadius: 24,
           flexDirection: 'row',
           justifyContent: 'space-around',
           alignItems: 'center',
-          paddingVertical: 8,
           paddingHorizontal: 6,
           ...THEME.shadows.card,
         }}
@@ -240,76 +233,176 @@ export default function App() {
         <TouchableOpacity
           onPress={() => setActiveTab('prayer')}
           style={{
+            flex: 1,
             alignItems: 'center',
-            paddingVertical: 6,
-            paddingHorizontal: 14,
-            borderRadius: 18,
-            backgroundColor: activeTab === 'prayer' ? THEME.colors.goldGlass : 'transparent',
-            borderColor: activeTab === 'prayer' ? THEME.colors.goldBorder : 'transparent',
+            justifyContent: 'center',
+            paddingVertical: 5,
+            borderRadius: 16,
+            backgroundColor: activeTab === 'prayer' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
+            borderColor: activeTab === 'prayer' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
             borderWidth: activeTab === 'prayer' ? 1 : 0,
+            marginHorizontal: 3,
           }}
           activeOpacity={0.7}
         >
-          <Text style={{ color: activeTab === 'prayer' ? THEME.colors.goldLight : THEME.colors.textMuted, fontSize: 14, fontFamily: THEME.fonts.arabicBold }}>
-            🕌 الصلاة
+          <Ionicons
+            name={activeTab === 'prayer' ? 'time' : 'time-outline'}
+            size={20}
+            color={activeTab === 'prayer' ? THEME.colors.goldLight : THEME.colors.textMuted}
+          />
+          <Text
+            style={{
+              color: activeTab === 'prayer' ? THEME.colors.goldLight : THEME.colors.textMuted,
+              fontSize: 11,
+              fontFamily: THEME.fonts.arabicBold,
+              marginTop: 2,
+            }}
+          >
+            الصلاة
           </Text>
+          {activeTab === 'prayer' && (
+            <View
+              style={{
+                width: 4,
+                height: 4,
+                borderRadius: 2,
+                backgroundColor: THEME.colors.gold,
+                marginTop: 2,
+              }}
+            />
+          )}
         </TouchableOpacity>
 
         {/* Tab 2: Quran */}
         <TouchableOpacity
           onPress={() => setActiveTab('quran')}
           style={{
+            flex: 1,
             alignItems: 'center',
-            paddingVertical: 6,
-            paddingHorizontal: 14,
-            borderRadius: 18,
-            backgroundColor: activeTab === 'quran' ? THEME.colors.goldGlass : 'transparent',
-            borderColor: activeTab === 'quran' ? THEME.colors.goldBorder : 'transparent',
+            justifyContent: 'center',
+            paddingVertical: 5,
+            borderRadius: 16,
+            backgroundColor: activeTab === 'quran' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
+            borderColor: activeTab === 'quran' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
             borderWidth: activeTab === 'quran' ? 1 : 0,
+            marginHorizontal: 3,
           }}
           activeOpacity={0.7}
         >
-          <Text style={{ color: activeTab === 'quran' ? THEME.colors.goldLight : THEME.colors.textMuted, fontSize: 14, fontFamily: THEME.fonts.arabicBold }}>
-            📖 المصحف
+          <Ionicons
+            name={activeTab === 'quran' ? 'book' : 'book-outline'}
+            size={20}
+            color={activeTab === 'quran' ? THEME.colors.goldLight : THEME.colors.textMuted}
+          />
+          <Text
+            style={{
+              color: activeTab === 'quran' ? THEME.colors.goldLight : THEME.colors.textMuted,
+              fontSize: 11,
+              fontFamily: THEME.fonts.arabicBold,
+              marginTop: 2,
+            }}
+          >
+            المصحف
           </Text>
+          {activeTab === 'quran' && (
+            <View
+              style={{
+                width: 4,
+                height: 4,
+                borderRadius: 2,
+                backgroundColor: THEME.colors.gold,
+                marginTop: 2,
+              }}
+            />
+          )}
         </TouchableOpacity>
 
         {/* Tab 3: Qibla & Adhkar */}
         <TouchableOpacity
           onPress={() => setActiveTab('qibla')}
           style={{
+            flex: 1,
             alignItems: 'center',
-            paddingVertical: 6,
-            paddingHorizontal: 14,
-            borderRadius: 18,
-            backgroundColor: activeTab === 'qibla' ? THEME.colors.goldGlass : 'transparent',
-            borderColor: activeTab === 'qibla' ? THEME.colors.goldBorder : 'transparent',
+            justifyContent: 'center',
+            paddingVertical: 5,
+            borderRadius: 16,
+            backgroundColor: activeTab === 'qibla' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
+            borderColor: activeTab === 'qibla' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
             borderWidth: activeTab === 'qibla' ? 1 : 0,
+            marginHorizontal: 3,
           }}
           activeOpacity={0.7}
         >
-          <Text style={{ color: activeTab === 'qibla' ? THEME.colors.goldLight : THEME.colors.textMuted, fontSize: 14, fontFamily: THEME.fonts.arabicBold }}>
-            🧭 القبلة
+          <Ionicons
+            name={activeTab === 'qibla' ? 'compass' : 'compass-outline'}
+            size={20}
+            color={activeTab === 'qibla' ? THEME.colors.goldLight : THEME.colors.textMuted}
+          />
+          <Text
+            style={{
+              color: activeTab === 'qibla' ? THEME.colors.goldLight : THEME.colors.textMuted,
+              fontSize: 11,
+              fontFamily: THEME.fonts.arabicBold,
+              marginTop: 2,
+            }}
+          >
+            القبلة
           </Text>
+          {activeTab === 'qibla' && (
+            <View
+              style={{
+                width: 4,
+                height: 4,
+                borderRadius: 2,
+                backgroundColor: THEME.colors.gold,
+                marginTop: 2,
+              }}
+            />
+          )}
         </TouchableOpacity>
 
         {/* Tab 4: Khatmah & Settings */}
         <TouchableOpacity
           onPress={() => setActiveTab('settings')}
           style={{
+            flex: 1,
             alignItems: 'center',
-            paddingVertical: 6,
-            paddingHorizontal: 14,
-            borderRadius: 18,
-            backgroundColor: activeTab === 'settings' ? THEME.colors.goldGlass : 'transparent',
-            borderColor: activeTab === 'settings' ? THEME.colors.goldBorder : 'transparent',
+            justifyContent: 'center',
+            paddingVertical: 5,
+            borderRadius: 16,
+            backgroundColor: activeTab === 'settings' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
+            borderColor: activeTab === 'settings' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
             borderWidth: activeTab === 'settings' ? 1 : 0,
+            marginHorizontal: 3,
           }}
           activeOpacity={0.7}
         >
-          <Text style={{ color: activeTab === 'settings' ? THEME.colors.goldLight : THEME.colors.textMuted, fontSize: 14, fontFamily: THEME.fonts.arabicBold }}>
-            ⚙️ الختمة
+          <Ionicons
+            name={activeTab === 'settings' ? 'shield-checkmark' : 'shield-checkmark-outline'}
+            size={20}
+            color={activeTab === 'settings' ? THEME.colors.goldLight : THEME.colors.textMuted}
+          />
+          <Text
+            style={{
+              color: activeTab === 'settings' ? THEME.colors.goldLight : THEME.colors.textMuted,
+              fontSize: 11,
+              fontFamily: THEME.fonts.arabicBold,
+              marginTop: 2,
+            }}
+          >
+            الختمة
           </Text>
+          {activeTab === 'settings' && (
+            <View
+              style={{
+                width: 4,
+                height: 4,
+                borderRadius: 2,
+                backgroundColor: THEME.colors.gold,
+                marginTop: 2,
+              }}
+            />
+          )}
         </TouchableOpacity>
       </View>
     </SafeAreaView>

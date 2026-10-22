@@ -248,6 +248,69 @@ export class QuranVaultService {
   }
 
   /**
+   * Retrieve all Ayahs belonging to a specific Medina Mushaf page (1 to 604).
+   * Loads in 0ms offline directly from memory or SQLite.
+   */
+  public async getAyahsByPage(
+    pageNumber: number,
+    riwaya: Riwaya = 'WARSH'
+  ): Promise<AyahView[]> {
+    try {
+      if (this.db) {
+        const rows = await this.db.getAllAsync<Ayah>(
+          `SELECT id, surah_id, ayah_number, juz_number, hizb_number, rub_number, page_number,
+                  text_hafs, text_warsh, text_clean, tafsir_muyassar, tafsir_saadi
+           FROM ayahs
+           WHERE page_number = ?
+           ORDER BY surah_id ASC, ayah_number ASC;`,
+          [pageNumber]
+        );
+
+        if (rows && rows.length > 0) {
+          return rows.map((row) => ({
+            id: row.id,
+            surah_id: row.surah_id,
+            ayah_number: row.ayah_number,
+            juz_number: row.juz_number,
+            hizb_number: row.hizb_number,
+            rub_number: row.rub_number,
+            page_number: row.page_number,
+            text: riwaya === 'WARSH' ? row.text_warsh : row.text_hafs,
+            riwaya,
+            tafsir_muyassar: row.tafsir_muyassar,
+            tafsir_saadi: row.tafsir_saadi,
+          }));
+        }
+      }
+    } catch {
+      // In-memory fallback
+    }
+
+    const result: AyahView[] = [];
+    for (const sId in quranDataset) {
+      const ayahs = quranDataset[sId];
+      for (const c of ayahs) {
+        if (c.p === pageNumber) {
+          result.push({
+            id: c.id,
+            surah_id: c.s,
+            ayah_number: c.a,
+            juz_number: c.j,
+            hizb_number: c.h,
+            rub_number: c.r,
+            page_number: c.p,
+            text: riwaya === 'WARSH' ? c.w_txt : c.h_txt,
+            riwaya,
+            tafsir_muyassar: '',
+            tafsir_saadi: '',
+          });
+        }
+      }
+    }
+    return result;
+  }
+
+  /**
    * Retrieve Ayahs by Juz number (1 to 30)
    */
   public async getAyahsByJuz(
@@ -317,7 +380,7 @@ export class QuranVaultService {
         const textColumn = riwaya === 'WARSH' ? 'a.text_warsh' : 'a.text_hafs';
 
         const sql = `
-          SELECT a.id, a.surah_id, s.name_ar AS surah_name_ar, a.ayah_number, ${textColumn} AS text,
+          SELECT a.id, a.surah_id, s.name_ar AS surah_name_ar, a.ayah_number, a.page_number, ${textColumn} AS text,
                  snippet(ayahs_fts, 2, '<mark>', '</mark>', '...', 15) AS snippet
           FROM ayahs_fts f
           JOIN ayahs a ON f.rowid = a.id
@@ -350,6 +413,7 @@ export class QuranVaultService {
             surah_id: sId,
             surah_name_ar: surahName,
             ayah_number: a.a,
+            page_number: a.p,
             text,
             snippet: text.length > 80 ? text.slice(0, 80) + '...' : text,
           });

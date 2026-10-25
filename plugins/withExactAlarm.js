@@ -30,6 +30,8 @@ function withExactAlarm(config) {
       'android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS',
       'android.permission.FOREGROUND_SERVICE',
       'android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK',
+      'android.permission.ACCESS_NOTIFICATION_POLICY',
+      'android.permission.MODIFY_AUDIO_SETTINGS',
     ];
 
     for (const perm of permissions) {

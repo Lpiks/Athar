@@ -22,6 +22,12 @@ export const SettingsScreen: React.FC = () => {
   const [settings, setSettings] = useState<AtharSettings>(() => settingsService.getSettings());
   const [isWilayaModalOpen, setIsWilayaModalOpen] = useState<boolean>(false);
   const [wilayaSearchQuery, setWilayaSearchQuery] = useState<string>('');
+  const [isCurrentlyMuted, setIsCurrentlyMuted] = useState<boolean>(() => silentManager.getIsMuted());
+  const [hasDndPermission, setHasDndPermission] = useState<boolean>(false);
+
+  useEffect(() => {
+    silentManager.hasDndAccess().then(setHasDndPermission);
+  }, []);
 
   useEffect(() => {
     const unsubscribe = settingsService.subscribe((fresh) => {
@@ -64,12 +70,27 @@ export const SettingsScreen: React.FC = () => {
   };
 
   const handleManualMosqueMute = () => {
-    const res = silentManager.activateMosqueSilence(60, settings.mosqueSilentMode.mode);
-    const timeStr = res.unmuteAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    Alert.alert(
-      'تم تفعيل وضع المسجد 🔕',
-      `تم كتم الهاتف لساعة واحدة. سيعود الصوت تلقائياً الساعة ${timeStr}. تقبل الله صلاتكم.`
-    );
+    if (isCurrentlyMuted) {
+      silentManager.restoreRinger();
+      setIsCurrentlyMuted(false);
+      Alert.alert('تمت إعادة الصوت 🔔', 'تم استرجاع الوضع العام للصوت بنجاح.');
+    } else {
+      const res = silentManager.activateMosqueSilence(60, settings.mosqueSilentMode.mode);
+      setIsCurrentlyMuted(true);
+      const timeStr = res.unmuteAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      Alert.alert(
+        'تم تفعيل وضع المسجد 🔕',
+        `تم كتم الهاتف لساعة واحدة (${settings.mosqueSilentMode.mode === 'silent' ? 'صامت تام' : 'اهتزاز'}). سيعود الصوت تلقائياً الساعة ${timeStr}. تقبل الله صلاتكم.`
+      );
+    }
+  };
+
+  const handleOpenDndSettings = async () => {
+    await silentManager.requestNotificationPolicyAccess();
+    setTimeout(async () => {
+      const granted = await silentManager.hasDndAccess();
+      setHasDndPermission(granted);
+    }, 2000);
   };
 
   const handleShareApp = async () => {
@@ -289,37 +310,55 @@ export const SettingsScreen: React.FC = () => {
             {/* Action Buttons: DND Permission & Test Mute */}
             <View className="flex-row justify-between items-center pt-2 border-t border-white/10">
               <TouchableOpacity
-                onPress={() => silentManager.requestNotificationPolicyAccess()}
+                onPress={handleOpenDndSettings}
                 style={{
-                  backgroundColor: THEME.colors.surfaceElevated,
-                  borderColor: THEME.colors.cardBorder,
+                  backgroundColor: hasDndPermission ? THEME.colors.emeraldGlass : THEME.colors.surfaceElevated,
+                  borderColor: hasDndPermission ? THEME.colors.emeraldBorder : THEME.colors.goldBorder,
                   borderWidth: 1,
                   paddingHorizontal: 12,
                   paddingVertical: 8,
                   borderRadius: 12,
                 }}
               >
-                <Text style={{ color: THEME.colors.textSecondary, fontSize: 11 }}>
-                  ⚙️ إذن عدم الإزعاج (DND)
+                <Text
+                  style={{
+                    color: hasDndPermission ? THEME.colors.emeraldLight : THEME.colors.goldLight,
+                    fontSize: 11,
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {hasDndPermission ? 'إذن DND مفعّل ✓' : '⚙️ تفعيل إذن عدم الإزعاج'}
                 </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={handleManualMosqueMute}
                 style={{
-                  backgroundColor: THEME.colors.emeraldGlass,
-                  borderColor: THEME.colors.emeraldBorder,
+                  backgroundColor: isCurrentlyMuted ? THEME.colors.goldGlass : THEME.colors.emeraldGlass,
+                  borderColor: isCurrentlyMuted ? THEME.colors.goldBorder : THEME.colors.emeraldBorder,
                   borderWidth: 1,
                   paddingHorizontal: 14,
                   paddingVertical: 8,
                   borderRadius: 12,
                 }}
               >
-                <Text style={{ color: THEME.colors.emeraldLight, fontWeight: 'bold', fontSize: 11 }}>
-                  كتم لساعة الآن 🔕
+                <Text
+                  style={{
+                    color: isCurrentlyMuted ? THEME.colors.goldLight : THEME.colors.emeraldLight,
+                    fontWeight: 'bold',
+                    fontSize: 11,
+                  }}
+                >
+                  {isCurrentlyMuted ? 'إلغاء الكتم 🔔' : 'تجربة الكتم الآن 🔕'}
                 </Text>
               </TouchableOpacity>
             </View>
+
+            {!hasDndPermission && (
+              <Text style={{ color: THEME.colors.textMuted, fontSize: 10, marginTop: 8, textAlign: 'center' }}>
+                💡 يتطلب الصامت التام منح إذن عدم الإزعاج للتطبيق من إعدادات النظام.
+              </Text>
+            )}
           </View>
         )}
       </View>

@@ -27,7 +27,9 @@ import {
   PrayerTimeCalculator,
 } from './src/core/astronomy';
 import { ExactAlarmManager } from './src/core/alarms/alarmManager';
+import { MosqueSilentModeManager } from './src/core/alarms/silentModeManager';
 import { QuranVaultService } from './src/core/database';
+import * as Notifications from 'expo-notifications';
 
 // Screens
 import { PrayerHeroCard } from './src/ui/components/PrayerHeroCard';
@@ -175,6 +177,31 @@ function AtharMainContent() {
     const alarmManager = ExactAlarmManager.getInstance();
     alarmManager.scheduleUpcomingAdhans(coords.latitude, coords.longitude);
   }, [coords.latitude, coords.longitude]);
+
+  // Automatic Mosque Silent Mode Trigger on Prayer Notification
+  useEffect(() => {
+    const subscription = Notifications.addNotificationReceivedListener((notification) => {
+      const data = notification.request.content.data;
+      if (data && data.prayer && data.prayer !== 'tahajjud') {
+        const currentSettings = SettingsService.getInstance().getSettings();
+        if (currentSettings.mosqueSilentMode.enabled) {
+          const isFridayDhuhr = new Date().getDay() === 5 && data.prayer === Prayer.DHUHR;
+          const duration = isFridayDhuhr
+            ? currentSettings.mosqueSilentMode.fridayDurationMinutes
+            : currentSettings.mosqueSilentMode.durationMinutes;
+
+          MosqueSilentModeManager.getInstance().activateMosqueSilence(
+            duration,
+            currentSettings.mosqueSilentMode.mode
+          );
+        }
+      }
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
 
   const activeCurrentPrayer = prayerState.currentPrayer === 'none' ? Prayer.FAJR : prayerState.currentPrayer;
 

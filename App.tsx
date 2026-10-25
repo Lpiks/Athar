@@ -10,7 +10,9 @@ import {
   Animated,
   NativeSyntheticEvent,
   NativeScrollEvent,
+  Platform,
 } from 'react-native';
+import { NavigationBar } from 'expo-navigation-bar';
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -53,29 +55,53 @@ function AtharMainContent() {
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
   const [coords, setCoords] = useState(DEFAULT_COORDS);
 
-  // Smooth Scroll-to-Hide Animation for Bottom Navigation Dock
+  // Smooth Scroll-to-Hide Animation for Bottom Navigation Bar and Android System Buttons
   const navAnim = useRef(new Animated.Value(0)).current;
   const isNavHiddenRef = useRef(false);
+  const [isNavHidden, setIsNavHidden] = useState(false);
+
+  // Configure Android System Navigation Bar (immersive dark style)
+  useEffect(() => {
+    if (Platform.OS === 'android') {
+      try {
+        NavigationBar.setStyle('dark');
+      } catch {}
+    }
+  }, []);
 
   const hideNav = useCallback(() => {
     if (!isNavHiddenRef.current) {
       isNavHiddenRef.current = true;
+      setIsNavHidden(true);
       Animated.timing(navAnim, {
         toValue: 120,
         duration: 220,
         useNativeDriver: true,
       }).start();
+
+      if (Platform.OS === 'android') {
+        try {
+          NavigationBar.setHidden(true);
+        } catch {}
+      }
     }
   }, [navAnim]);
 
   const showNav = useCallback(() => {
     if (isNavHiddenRef.current) {
       isNavHiddenRef.current = false;
+      setIsNavHidden(false);
       Animated.timing(navAnim, {
         toValue: 0,
         duration: 220,
         useNativeDriver: true,
       }).start();
+
+      if (Platform.OS === 'android') {
+        try {
+          NavigationBar.setHidden(false);
+        } catch {}
+      }
     }
   }, [navAnim]);
 
@@ -236,6 +262,7 @@ function AtharMainContent() {
   return (
     <View style={{ flex: 1, backgroundColor: THEME.colors.canvas }}>
       <StatusBar style="light" />
+      <NavigationBar hidden={isNavHidden} style="dark" />
 
       {/* Top Sovereign App Header with Brand Logo (RTL Arabic Layout) */}
       <View

@@ -37,6 +37,7 @@ import { PrayerScheduleList } from './src/ui/components/PrayerScheduleList';
 import { MushafScreen } from './src/ui/components/MushafScreen';
 import { QiblaAdhkarScreen } from './src/ui/components/QiblaAdhkarScreen';
 import { SettingsScreen } from './src/ui/components/SettingsScreen';
+import { SovereignTabBar, AppTab } from './src/ui/components/SovereignTabBar';
 import { SettingsService } from './src/core/settings/settingsService';
 
 // Default Coordinates: Algiers, Algeria (الجزائر العاصمة)
@@ -45,8 +46,6 @@ const DEFAULT_COORDS = {
   longitude: 3.0588,
   cityAr: 'الجزائر العاصمة',
 };
-
-type AppTab = 'prayer' | 'quran' | 'qibla' | 'settings';
 
 function AtharMainContent() {
   const insets = useSafeAreaInsets();
@@ -328,202 +327,13 @@ function AtharMainContent() {
         {activeTab === 'settings' && <SettingsScreen />}
       </View>
 
-      {/* Bottom Floating Glassmorphic Navigation Dock with Scroll-to-Hide Animation */}
-      <Animated.View
-        style={{
-          position: 'absolute',
-          bottom: Math.max(insets.bottom, 10),
-          left: 14,
-          right: 14,
-          height: 64,
-          backgroundColor: 'rgba(5, 13, 11, 0.95)',
-          borderColor: 'rgba(197, 160, 89, 0.28)',
-          borderWidth: 1.2,
-          borderRadius: 24,
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-          paddingHorizontal: 6,
-          transform: [{ translateY: navAnim }],
-          ...THEME.shadows.card,
-        }}
-      >
-        {/* Tab 1: Prayer */}
-        <TouchableOpacity
-          onPress={() => switchTab('prayer')}
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingVertical: 4,
-            borderRadius: 16,
-            backgroundColor: activeTab === 'prayer' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
-            borderColor: activeTab === 'prayer' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
-            borderWidth: activeTab === 'prayer' ? 1 : 0,
-            marginHorizontal: 2,
-          }}
-          activeOpacity={0.7}
-        >
-          <Ionicons
-            name={activeTab === 'prayer' ? 'time' : 'time-outline'}
-            size={20}
-            color={activeTab === 'prayer' ? THEME.colors.goldLight : THEME.colors.textMuted}
-          />
-          <Text
-            style={{
-              color: activeTab === 'prayer' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 10.5,
-              fontFamily: THEME.fonts.arabicBold,
-              marginTop: 1,
-            }}
-          >
-            الصلاة
-          </Text>
-          {activeTab === 'prayer' && (
-            <View
-              style={{
-                width: 4,
-                height: 4,
-                borderRadius: 2,
-                backgroundColor: THEME.colors.gold,
-                marginTop: 2,
-              }}
-            />
-          )}
-        </TouchableOpacity>
-
-        {/* Tab 2: Quran */}
-        <TouchableOpacity
-          onPress={() => switchTab('quran')}
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingVertical: 4,
-            borderRadius: 16,
-            backgroundColor: activeTab === 'quran' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
-            borderColor: activeTab === 'quran' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
-            borderWidth: activeTab === 'quran' ? 1 : 0,
-            marginHorizontal: 2,
-          }}
-          activeOpacity={0.7}
-        >
-          <Ionicons
-            name={activeTab === 'quran' ? 'book' : 'book-outline'}
-            size={20}
-            color={activeTab === 'quran' ? THEME.colors.goldLight : THEME.colors.textMuted}
-          />
-          <Text
-            style={{
-              color: activeTab === 'quran' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 10.5,
-              fontFamily: THEME.fonts.arabicBold,
-              marginTop: 1,
-            }}
-          >
-            المصحف
-          </Text>
-          {activeTab === 'quran' && (
-            <View
-              style={{
-                width: 4,
-                height: 4,
-                borderRadius: 2,
-                backgroundColor: THEME.colors.gold,
-                marginTop: 2,
-              }}
-            />
-          )}
-        </TouchableOpacity>
-
-        {/* Tab 3: Qibla & Adhkar */}
-        <TouchableOpacity
-          onPress={() => switchTab('qibla')}
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingVertical: 4,
-            borderRadius: 16,
-            backgroundColor: activeTab === 'qibla' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
-            borderColor: activeTab === 'qibla' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
-            borderWidth: activeTab === 'qibla' ? 1 : 0,
-            marginHorizontal: 2,
-          }}
-          activeOpacity={0.7}
-        >
-          <Ionicons
-            name={activeTab === 'qibla' ? 'compass' : 'compass-outline'}
-            size={20}
-            color={activeTab === 'qibla' ? THEME.colors.goldLight : THEME.colors.textMuted}
-          />
-          <Text
-            style={{
-              color: activeTab === 'qibla' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 10.5,
-              fontFamily: THEME.fonts.arabicBold,
-              marginTop: 1,
-            }}
-          >
-            القبلة
-          </Text>
-          {activeTab === 'qibla' && (
-            <View
-              style={{
-                width: 4,
-                height: 4,
-                borderRadius: 2,
-                backgroundColor: THEME.colors.gold,
-                marginTop: 2,
-              }}
-            />
-          )}
-        </TouchableOpacity>
-
-        {/* Tab 4: Khatmah & Settings */}
-        <TouchableOpacity
-          onPress={() => switchTab('settings')}
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingVertical: 4,
-            borderRadius: 16,
-            backgroundColor: activeTab === 'settings' ? 'rgba(197, 160, 89, 0.14)' : 'transparent',
-            borderColor: activeTab === 'settings' ? 'rgba(197, 160, 89, 0.35)' : 'transparent',
-            borderWidth: activeTab === 'settings' ? 1 : 0,
-            marginHorizontal: 2,
-          }}
-          activeOpacity={0.7}
-        >
-          <Ionicons
-            name={activeTab === 'settings' ? 'shield-checkmark' : 'shield-checkmark-outline'}
-            size={20}
-            color={activeTab === 'settings' ? THEME.colors.goldLight : THEME.colors.textMuted}
-          />
-          <Text
-            style={{
-              color: activeTab === 'settings' ? THEME.colors.goldLight : THEME.colors.textMuted,
-              fontSize: 10.5,
-              fontFamily: THEME.fonts.arabicBold,
-              marginTop: 1,
-            }}
-          >
-            الختمة
-          </Text>
-          {activeTab === 'settings' && (
-            <View
-              style={{
-                width: 4,
-                height: 4,
-                borderRadius: 2,
-                backgroundColor: THEME.colors.gold,
-                marginTop: 2,
-              }}
-            />
-          )}
-        </TouchableOpacity>
-      </Animated.View>
+      {/* Bottom Floating Sovereign Islamic Luxury Navigation Dock */}
+      <SovereignTabBar
+        activeTab={activeTab}
+        onTabPress={switchTab}
+        translateY={navAnim}
+        insets={insets}
+      />
     </View>
   );
 }

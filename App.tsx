@@ -34,7 +34,8 @@ import { PrayerHeroCard } from './src/ui/components/PrayerHeroCard';
 import { PrayerScheduleList } from './src/ui/components/PrayerScheduleList';
 import { MushafScreen } from './src/ui/components/MushafScreen';
 import { QiblaAdhkarScreen } from './src/ui/components/QiblaAdhkarScreen';
-import { KhatmahSettingsScreen } from './src/ui/components/KhatmahSettingsScreen';
+import { SettingsScreen } from './src/ui/components/SettingsScreen';
+import { SettingsService } from './src/core/settings/settingsService';
 
 // Default Coordinates: Algiers, Algeria (الجزائر العاصمة)
 const DEFAULT_COORDS = {
@@ -143,6 +144,18 @@ function AtharMainContent() {
         // Fallback to Algiers coordinates
       }
     })();
+  }, []);
+
+  // Subscribe to offline user settings (Wilaya, School, Calculation)
+  useEffect(() => {
+    const unsub = SettingsService.getInstance().subscribe((settings) => {
+      setCoords({
+        latitude: settings.location.latitude,
+        longitude: settings.location.longitude,
+        cityAr: settings.location.cityAr,
+      });
+    });
+    return unsub;
   }, []);
 
   // Compute live deterministic prayer times for current location
@@ -285,7 +298,7 @@ function AtharMainContent() {
           />
         )}
 
-        {activeTab === 'settings' && <KhatmahSettingsScreen />}
+        {activeTab === 'settings' && <SettingsScreen />}
       </View>
 
       {/* Bottom Floating Glassmorphic Navigation Dock with Scroll-to-Hide Animation */}
